@@ -4,3 +4,8 @@ dist/
 *.local
 *.local.conf
 .DS_Store
+
+# Playwright
+playwright-report/
+test-results/
+temp/
