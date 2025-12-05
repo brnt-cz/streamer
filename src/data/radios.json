@@ -1,0 +1,1347 @@
+[
+  {
+    "id": "radio-americana",
+    "name": "Americana Radio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-americana.png",
+    "categories": [],
+    "streams": {
+      "aac": {
+        "128": "https://icecast1.play.cz/americana-192.aac"
+      },
+      "mp3": {
+        "128": "https://icecast9.play.cz/americana-192.mp3"
+      }
+    }
+  },
+  {
+    "id": "beat",
+    "name": "Beat",
+    "logo": "https://api.play.cz/static/radio_logo/t200/beat.png",
+    "categories": [
+      "rock",
+      "metal"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast1.play.cz/beat64.mp3",
+        "128": "https://icecast2.play.cz/radiobeat128.mp3"
+      }
+    }
+  },
+  {
+    "id": "bhradio",
+    "name": "BlackFM Radio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/bhradio.png",
+    "categories": [
+      "rock",
+      "metal"
+    ],
+    "streams": {
+      "aac": {
+        "48": "https://icecast5.play.cz/blackfm-radio.aac"
+      },
+      "mp3": {
+        "128": "https://icecast9.play.cz/bhradio-128.mp3",
+        "192": "https://icecast2.play.cz/bhradio-192.mp3"
+      }
+    }
+  },
+  {
+    "id": "bikersradiodoupe",
+    "name": "BIKERS RADIO DOUPE",
+    "logo": "https://api.play.cz/static/radio_logo/t200/bikersradiodoupe.png",
+    "categories": [
+      "oldies",
+      "metal",
+      "funk",
+      "country",
+      "bigbit",
+      "alternative",
+      "90s",
+      "80s",
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast1.play.cz/bikersradiodoupe64.mp3",
+        "128": "https://icecast7.play.cz/bikersradiodoupe128.mp3"
+      }
+    }
+  },
+  {
+    "id": "cesky-impuls",
+    "name": "Český Impuls",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cesky-impuls.png",
+    "categories": [
+      "pop",
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast6.play.cz/cesky-impuls.mp3"
+      }
+    }
+  },
+  {
+    "id": "classic",
+    "name": "Classic Praha",
+    "logo": "https://api.play.cz/static/radio_logo/t200/classic.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast2.play.cz/classic32.mp3",
+        "64": "https://icecast1.play.cz/classic64.mp3",
+        "128": "https://icecast8.play.cz/classic128.mp3"
+      }
+    }
+  },
+  {
+    "id": "clubradio",
+    "name": "ClubRadio.cz",
+    "logo": "https://api.play.cz/static/radio_logo/t200/clubradio.png",
+    "categories": [
+      "Trance",
+      "rnb",
+      "house",
+      "dance",
+      "90s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast2.play.cz/Clubradio.mp3"
+      }
+    }
+  },
+  {
+    "id": "ethno",
+    "name": "COLOR Music Radio | The Best Music in The Town",
+    "logo": "https://api.play.cz/static/radio_logo/t200/ethno.png",
+    "categories": [
+      "rnb",
+      "jazz",
+      "hiphop",
+      "funk",
+      "ethno",
+      "dance",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast8.play.cz/color128.mp3",
+        "192": "https://icecast6.play.cz/color192.mp3"
+      }
+    }
+  },
+  {
+    "id": "country",
+    "name": "COUNTRY RADIO",
+    "logo": "https://api.play.cz/static/radio_logo/t200/country.png",
+    "categories": [
+      "country"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast2.play.cz/country64.mp3",
+        "128": "https://icecast4.play.cz/country128.mp3"
+      }
+    }
+  },
+  {
+    "id": "cropohoda",
+    "name": "Český rozhlas Pohoda",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cropohoda.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/pohoda.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/pohoda_high.aac"
+      }
+    }
+  },
+  {
+    "id": "cro1",
+    "name": "Český rozhlas Radiožurnál",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cro1.png",
+    "categories": [
+      "news",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/radiozurnal.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro2.play.cz/radiozurnal_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crosport",
+    "name": "Radiožurnál Sport",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crosport.png",
+    "categories": [
+      "news",
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/radiozurnal_sport.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/radiozurnal_sport_high.aac"
+      }
+    }
+  },
+  {
+    "id": "cro2",
+    "name": "Český rozhlas Dvojka",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cro2.png",
+    "categories": [
+      "pop",
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro2.play.cz/dvojka.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/dvojka_high.aac"
+      }
+    }
+  },
+  {
+    "id": "cro3",
+    "name": "Český rozhlas Vltava",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cro3.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/vltava.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/vltava_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croplus",
+    "name": "Český rozhlas Plus",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croplus.png",
+    "categories": [
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/plus.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/plus_high.aac"
+      }
+    }
+  },
+  {
+    "id": "cro7",
+    "name": "Radio Prague International",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cro7.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/radio_prague_int.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/radio_prague_int_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crowave",
+    "name": "Český rozhlas Radio Wave",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crowave.png",
+    "categories": [
+      "rock",
+      "pop",
+      "indie",
+      "folk",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/radio_wave.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/radio_wave_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croddur",
+    "name": "Český rozhlas D-dur",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croddur.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/ddur.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/ddur_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crojazz",
+    "name": "Český rozhlas Jazz",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crojazz.png",
+    "categories": [
+      "jazz",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/jazz.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/jazz_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crojuniormaxi",
+    "name": "Český rozhlas Rádio Junior",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crojuniormaxi.png",
+    "categories": [
+      "kids",
+      "pop",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/radio_junior.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/radio_junior_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crobrno",
+    "name": "Český rozhlas Brno",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crobrno.png",
+    "categories": [
+      "news",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/brno.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/brno_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crocb",
+    "name": "Český rozhlas České Budějovice",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crocb.png",
+    "categories": [
+      "pop",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/ceske_budejovice.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/ceske_budejovice_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crohk",
+    "name": "Český rozhlas Hradec Králové",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crohk.png",
+    "categories": [
+      "pop",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro2.play.cz/hradec_kralove.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/hradec_kralove_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crool",
+    "name": "Český rozhlas Olomouc",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crool.png",
+    "categories": [
+      "oldies",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro2.play.cz/olomouc.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/olomouc_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croov",
+    "name": "Český rozhlas Ostrava",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croov.png",
+    "categories": [
+      "news",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/ostrava.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/ostrava_high.aac"
+      }
+    }
+  },
+  {
+    "id": "cropardubice",
+    "name": "Český rozhlas Pardubice",
+    "logo": "https://api.play.cz/static/radio_logo/t200/cropardubice.png",
+    "categories": [
+      "pop",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/pardubice.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/pardubice_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croplzen",
+    "name": "Český rozhlas Plzeň",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croplzen.png",
+    "categories": [
+      "oldies",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/plzen.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/plzen_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crokv",
+    "name": "Český rozhlas Karlovy Vary",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crokv.png",
+    "categories": [
+      "oldies",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/karlovy_vary.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/karlovy_vary_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croregina",
+    "name": "Český rozhlas Rádio DAB Praha",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croregina.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/radio_dab_praha.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/radio_dab_praha_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croregion",
+    "name": "Český rozhlas Střední Čechy",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croregion.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/region.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/region_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croregionvysocina",
+    "name": "Český rozhlas Vysočina",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croregionvysocina.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/vysocina.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/vysocina_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crosever",
+    "name": "Český rozhlas Sever",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crosever.png",
+    "categories": [
+      "pop",
+      "country",
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/sever.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/sever_high.aac"
+      }
+    }
+  },
+  {
+    "id": "croliberec",
+    "name": "Český rozhlas Liberec ",
+    "logo": "https://api.play.cz/static/radio_logo/t200/croliberec.png",
+    "categories": [
+      "news",
+      "pop",
+      "oldies",
+      "allformat",
+      "90s",
+      "80s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/liberec.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/liberec_high.aac"
+      }
+    }
+  },
+  {
+    "id": "crozlin",
+    "name": "Český rozhlas Zlín",
+    "logo": "https://api.play.cz/static/radio_logo/t200/crozlin.png",
+    "categories": [
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice-cro1.play.cz/zlin.mp3"
+      },
+      "aac": {
+        "192": "https://ice-cro1.play.cz/zlin_high.aac"
+      }
+    }
+  },
+  {
+    "id": "dabplus-top40",
+    "name": "DAB Plus Top 40",
+    "logo": "https://api.play.cz/static/radio_logo/t200/dabplus-top40.png",
+    "categories": [
+      "rnb",
+      "pop",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast6.play.cz/dabplus-top40.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-energic",
+    "name": "ENERGIC",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-energic.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "160": "https://icecast9.play.cz/energic.mp3"
+      }
+    }
+  },
+  {
+    "id": "expres",
+    "name": "Expres FM",
+    "logo": "https://api.play.cz/static/radio_logo/t200/expres.png",
+    "categories": [
+      "rock",
+      "rnb",
+      "pop",
+      "indie",
+      "hiphop",
+      "dance",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast5.play.cz/expres64mp3",
+        "128": "https://icecast8.play.cz/expres128mp3"
+      }
+    }
+  },
+  {
+    "id": "freeradio",
+    "name": "Free Rádio 107,0 FM Brno",
+    "logo": "https://api.play.cz/static/radio_logo/t200/freeradio.png",
+    "categories": [
+      "Trance",
+      "rnb",
+      "pop",
+      "house",
+      "hiphop",
+      "dance",
+      "90s"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast8.play.cz/freeradio32.mp3",
+        "64": "https://icecast6.play.cz/freeradio64.mp3",
+        "128": "https://icecast8.play.cz/freeradio128.mp3"
+      }
+    }
+  },
+  {
+    "id": "hana",
+    "name": "Rádio Haná",
+    "logo": "https://api.play.cz/static/radio_logo/t200/hana.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast3.play.cz/hana64.mp3",
+        "128": "https://icecast8.play.cz/hana128.mp3"
+      }
+    }
+  },
+  {
+    "id": "hardradiofm",
+    "name": "hardradio.fm",
+    "logo": "https://api.play.cz/static/radio_logo/t200/hardradiofm.png",
+    "categories": [
+      "rnb",
+      "hiphop",
+      "dance",
+      "90s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast3.play.cz/hardradiofm128.mp3"
+      }
+    }
+  },
+  {
+    "id": "hey-radio",
+    "name": "HEY Radio | The Power Of ROCK!",
+    "logo": "https://api.play.cz/static/radio_logo/t200/hey-radio.png",
+    "categories": [
+      "oldies",
+      "bigbit",
+      "90s",
+      "80s",
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast8.play.cz/hey-radio64.mp3",
+        "256": "https://icecast3.play.cz/hey-radio128.mp3"
+      }
+    }
+  },
+  {
+    "id": "impuls",
+    "name": "Impuls Ráááádio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/impuls.png",
+    "categories": [
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast1.play.cz/impuls64.mp3",
+        "128": "https://icecast1.play.cz/impuls128.mp3"
+      }
+    }
+  },
+  {
+    "id": "jih",
+    "name": "JIH - Rádio jižní Moravy",
+    "logo": "https://api.play.cz/static/radio_logo/t200/jih.png",
+    "categories": [
+      "rock",
+      "rnb",
+      "pop",
+      "hotac",
+      "dance",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast4.play.cz/jih32.mp3",
+        "64": "https://icecast8.play.cz/jih64.mp3",
+        "128": "https://icecast6.play.cz/jih128.mp3"
+      }
+    }
+  },
+  {
+    "id": "krokodyl",
+    "name": "Krokodýl",
+    "logo": "https://api.play.cz/static/radio_logo/t200/krokodyl.png",
+    "categories": [
+      "rock",
+      "pop",
+      "hotac",
+      "90s",
+      "80s"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast4.play.cz/krokodyl32.mp3",
+        "64": "https://icecast6.play.cz/krokodyl64.mp3",
+        "128": "https://icecast4.play.cz/krokodyl128.mp3"
+      }
+    }
+  },
+  {
+    "id": "joeradioi",
+    "name": "Limonádový JOE",
+    "logo": "https://api.play.cz/static/radio_logo/t200/joeradioi.png",
+    "categories": [
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast8.play.cz/limonadovyjoe128.mp3"
+      }
+    }
+  },
+  {
+    "id": "music-dreamer",
+    "name": "Music Dreamer",
+    "logo": "https://api.play.cz/static/radio_logo/t200/music-dreamer.png",
+    "categories": [
+      "rock",
+      "pop",
+      "jazz"
+    ],
+    "streams": {
+      "mp3": {
+        "160": "https://icecast9.play.cz/music-dreamer.mp3"
+      }
+    }
+  },
+  {
+    "id": "netro-life-radio",
+    "name": "Netro Life radio 100,8 FM",
+    "logo": "https://api.play.cz/static/radio_logo/t200/netro-life-radio.png",
+    "categories": [
+      "dance",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast9.play.cz/netro-life-radio.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-o106",
+    "name": "O 106",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-o106.png",
+    "categories": [
+      "pop",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://www.radioking.com/play/o106"
+      }
+    }
+  },
+  {
+    "id": "proglas",
+    "name": "Radio Proglas",
+    "logo": "https://api.play.cz/static/radio_logo/t200/proglas.png",
+    "categories": [
+      "allformat"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast1.play.cz/xnostream.mp3",
+        "128": "https://icecast1.play.cz/xnostream.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio1",
+    "name": "Radio 1",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio1.png",
+    "categories": [
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast2.play.cz/radio1-64.mp3",
+        "128": "https://icecast6.play.cz/radio1-128.mp3",
+        "192": "https://icecast2.play.cz/radio1-192.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio7",
+    "name": "Rádio 7",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio7.png",
+    "categories": [
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast1.play.cz/radio7cz32.mp3",
+        "128": "https://icecast8.play.cz/radio7-128.mp3"
+      }
+    }
+  },
+  {
+    "id": "casrock",
+    "name": "Rádio Čas Rock",
+    "logo": "https://api.play.cz/static/radio_logo/t200/casrock.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast7.play.cz/casrock32.mp3",
+        "64": "https://icecast7.play.cz/casrock64.mp3",
+        "128": "https://icecast6.play.cz/casrock128.mp3",
+        "192": "https://icecast9.play.cz/casrock192.mp3"
+      }
+    }
+  },
+  {
+    "id": "casradio",
+    "name": "Rádio Čas",
+    "logo": "https://api.play.cz/static/radio_logo/t200/casradio.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast7.play.cz/casradio32.mp3",
+        "64": "https://icecast7.play.cz/casradio64.mp3",
+        "128": "https://icecast6.play.cz/casradio128.mp3",
+        "192": "https://icecast9.play.cz/casradio192.mp3"
+      }
+    }
+  },
+  {
+    "id": "radiodixie",
+    "name": "RADIO DIXIE",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radiodixie.png",
+    "categories": [
+      "rock",
+      "country"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast3.play.cz/radiodixie128.mp3",
+        "192": "https://icecast8.play.cz/radiodixie192.mp3"
+      }
+    }
+  },
+  {
+    "id": "radiodechovka",
+    "name": "Radio Dechovka",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radiodechovka.png",
+    "categories": [
+      "dechovka"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast9.play.cz/dechovka32.mp3",
+        "64": "https://icecast5.play.cz/dechovka64.mp3",
+        "128": "https://icecast5.play.cz/dechovka128.mp3"
+      }
+    }
+  },
+  {
+    "id": "fajnrockmusic",
+    "name": "Radio Fajn Rock Music",
+    "logo": "https://api.play.cz/static/radio_logo/t200/fajnrockmusic.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast1.play.cz/fajnrock64.mp3",
+        "128": "https://icecast1.play.cz/fajnrock128.mp3",
+        "192": "https://icecast2.play.cz/fajnrock192.mp3"
+      }
+    }
+  },
+  {
+    "id": "jihcimbalka",
+    "name": "JIH - Vánoční Rádio Jih",
+    "logo": "https://api.play.cz/static/radio_logo/t200/jihcimbalka.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast4.play.cz/jihcimbalka32.mp3",
+        "64": "https://icecast8.play.cz/jihcimbalka64.mp3",
+        "128": "https://icecast6.play.cz/jihcimbalka128.mp3"
+      }
+    }
+  },
+  {
+    "id": "jihlava",
+    "name": "Rádio Jihlava",
+    "logo": "https://api.play.cz/static/radio_logo/t200/jihlava.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast1.play.cz/radiojihlava32.mp3",
+        "64": "https://icecast6.play.cz/radiojihlava64.mp3",
+        "128": "https://icecast3.play.cz/radiojihlava128.mp3"
+      }
+    }
+  },
+  {
+    "id": "kiss",
+    "name": "Radio Kiss",
+    "logo": "https://api.play.cz/static/radio_logo/t200/kiss.png",
+    "categories": [
+      "pop",
+      "dance",
+      "90s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast2.play.cz/kiss64.mp3",
+        "128": "https://icecast9.play.cz/kiss128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-kromeriz",
+    "name": "Radio Kroměříž",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-kromeriz.png",
+    "categories": [
+      "news",
+      "rock",
+      "rnb",
+      "pop",
+      "hotac",
+      "dance",
+      "90s",
+      "80s"
+    ],
+    "streams": {
+      "mp3": {
+        "32": "https://icecast8.play.cz/radio-kromeriz32.mp3",
+        "64": "https://icecast8.play.cz/radio-kromeriz64.mp3",
+        "128": "https://icecast6.play.cz/radio-kromeriz128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radiomb",
+    "name": "Rádio MB",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radiomb.png",
+    "categories": [
+      "rock",
+      "pop",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast3.play.cz/radiomb.mp3"
+      }
+    }
+  },
+  {
+    "id": "metropole",
+    "name": "Radio Metropole",
+    "logo": "https://api.play.cz/static/radio_logo/t200/metropole.png",
+    "categories": [],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast9.play.cz/metropole64.mp3",
+        "128": "https://icecast9.play.cz/metropole128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-nostalgie",
+    "name": "RADIO NOSTALGIE",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-nostalgie.png",
+    "categories": [
+      "pop",
+      "oldies",
+      "dance",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast-u1.play.cz/radio-nostalgie128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-ostravan",
+    "name": "Rádio Ostravan",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-ostravan.png",
+    "categories": [
+      "bigbit",
+      "alternative",
+      "classic",
+      "folk",
+      "indie",
+      "jazz",
+      "metal",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast9.play.cz/radio-ostravan.mp3",
+        "256": "https://icecast9.play.cz/radio-ostravan-256.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-relax",
+    "name": "RELAX Radio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-relax.png",
+    "categories": [
+      "rock",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast3.play.cz/relax64.mp3",
+        "128": "https://icecast7.play.cz/relax128.mp3"
+      }
+    }
+  },
+  {
+    "id": "samsonfm",
+    "name": "Rádio Samson Digital",
+    "logo": "https://api.play.cz/static/radio_logo/t200/samsonfm.png",
+    "categories": [
+      "rock",
+      "oldies",
+      "folk",
+      "country"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast8.play.cz/samsonfm128.mp3"
+      }
+    }
+  },
+  {
+    "id": "sazava",
+    "name": "Rádio SÁZAVA | Vaše laskavé rádio!",
+    "logo": "https://api.play.cz/static/radio_logo/t200/sazava.png",
+    "categories": [
+      "rock",
+      "oldies",
+      "folk",
+      "country",
+      "bigbit",
+      "90s",
+      "80s"
+    ],
+    "streams": {
+      "aac": {
+        "32": "https://icecast1.play.cz/sazava32DABaac"
+      },
+      "mp3": {
+        "192": "https://icecast8.play.cz/sazava192.mp3"
+      }
+    }
+  },
+  {
+    "id": "spin",
+    "name": "Rádio Spin",
+    "logo": "https://api.play.cz/static/radio_logo/t200/spin.png",
+    "categories": [
+      "rnb",
+      "hiphop",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast1.play.cz/spin64.mp3",
+        "128": "https://icecast4.play.cz/spin128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-trojka",
+    "name": "Rádio Trojka",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-trojka.png",
+    "categories": [
+      "news",
+      "rock",
+      "rnb",
+      "pop",
+      "oldies",
+      "talk",
+      "hiphop",
+      "dance",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "aac": {
+        "32": "https://rbx2.hnux.com/https://12901.cloudrad.io:9306/mobile"
+      },
+      "mp3": {
+        "128": "https://rbx2.hnux.com/https://12901.cloudrad.io:9306/live"
+      }
+    }
+  },
+  {
+    "id": "radio-xaver",
+    "name": "Radio Xaver",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-xaver.png",
+    "categories": [
+      "rock",
+      "talk",
+      "jazz",
+      "folk",
+      "country"
+    ],
+    "streams": {
+      "aac": {
+        "96": "https://icecast6.play.cz/radio-xaver.aac",
+        "256": "https://icecast9.play.cz/radio-xaver-hd.aac"
+      },
+      "mp3": {
+        "192": "https://icecast9.play.cz/radio-xaver.mp3"
+      }
+    }
+  },
+  {
+    "id": "rock-natvrdo",
+    "name": "Rádio Čas Rock NATVRDO",
+    "logo": "https://api.play.cz/static/radio_logo/t200/rock-natvrdo.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast8.play.cz/rocknatvrdo.mp3"
+      }
+    }
+  },
+  {
+    "id": "rockarena",
+    "name": "Rock Arena",
+    "logo": "https://api.play.cz/static/radio_logo/t200/rockarena.png",
+    "categories": [
+      "rock",
+      "metal"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast6.play.cz/rockarena.mp3"
+      }
+    }
+  },
+  {
+    "id": "rockzone",
+    "name": "RockZone 105,9",
+    "logo": "https://api.play.cz/static/radio_logo/t200/rockzone.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast2.play.cz/rockzone64.mp3",
+        "128": "https://icecast2.play.cz/rockzone128.mp3"
+      }
+    }
+  },
+  {
+    "id": "seejay-radio",
+    "name": "SeeJay Radio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/seejay-radio.png",
+    "categories": [
+      "Trance",
+      "pop",
+      "house",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast6.play.cz/seejay128.mp3"
+      }
+    }
+  },
+  {
+    "id": "signal-brno",
+    "name": "Signál Rádio Brno",
+    "logo": "https://api.play.cz/static/radio_logo/t200/signal-brno.png",
+    "categories": [
+      "oldies",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast1.play.cz/signal-brno64.mp3",
+        "128": "https://icecast6.play.cz/signal-brno128.mp3",
+        "192": "https://icecast3.play.cz/signal-brno192.mp3"
+      }
+    }
+  },
+  {
+    "id": "signal",
+    "name": "Signál Rádio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/signal.png",
+    "categories": [
+      "pop",
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast2.play.cz/signal64.mp3",
+        "128": "https://icecast1.play.cz/signal128.mp3",
+        "192": "https://icecast1.play.cz/signal192.mp3"
+      }
+    }
+  },
+  {
+    "id": "skyrock",
+    "name": "SKYROCK",
+    "logo": "https://api.play.cz/static/radio_logo/t200/skyrock.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icecast3.play.cz/skyrock64.mp3",
+        "128": "https://icecast8.play.cz/skyrock128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio-slowdown",
+    "name": "Slow Down Radio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/radio-slowdown.png",
+    "categories": [
+      "rnb",
+      "soul",
+      "jazz",
+      "hiphop",
+      "funk",
+      "alternative"
+    ],
+    "streams": {
+      "aac": {
+        "32": "https://icecast5.play.cz/slowdown.aac"
+      },
+      "mp3": {
+        "160": "https://icecast9.play.cz/slowdown.mp3"
+      }
+    }
+  },
+  {
+    "id": "streetradio",
+    "name": "StreetCulture",
+    "logo": "https://api.play.cz/static/radio_logo/t200/streetradio.png",
+    "categories": [
+      "talk",
+      "metal",
+      "indie",
+      "hiphop",
+      "folk",
+      "alternative",
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast2.play.cz/streetradio.mp3"
+      }
+    }
+  },
+  {
+    "id": "underground",
+    "name": "Undergroundradio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/underground.png",
+    "categories": [
+      "rock",
+      "folk",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast2.play.cz/Underground128.mp3"
+      }
+    }
+  },
+  {
+    "id": "zun-radio",
+    "name": "ZUN rádio",
+    "logo": "https://api.play.cz/static/radio_logo/t200/zun-radio.png",
+    "categories": [
+      "soul",
+      "rnb",
+      "house",
+      "funk",
+      "dance",
+      "90s",
+      "80s",
+      "00s"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast9.play.cz/zun192.mp3"
+      }
+    }
+  }
+]
