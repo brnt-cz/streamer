@@ -28,7 +28,7 @@ export type StreamBitrate = '32' | '48' | '64' | '128' | '192' | '256' | '320'
 const FORMATS: StreamFormat[] = ['mp3', 'aac', 'wma']
 const BITRATES: StreamBitrate[] = ['320', '256', '192', '128', '64', '48', '32']
 
-const radios = ref<Radio[]>(radiosData as Radio[])
+const radios = ref<Radio[]>(radiosData as unknown as Radio[])
 
 export function useRadios() {
   const categories = computed(() => {
