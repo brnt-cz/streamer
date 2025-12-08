@@ -3,7 +3,7 @@ import { ref, computed, watch } from 'vue'
 import { useRadios, type Radio, type StreamFormat } from '../stores/radios'
 import { usePlaylistStore } from '../stores/playlist'
 
-const { radios, categories, formats, getAvailableFormats, getAvailableBitrates, getStreamUrl, filterRadios } = useRadios()
+const { categories, formats, getAvailableFormats, getAvailableBitrates, getStreamUrl, filterRadios } = useRadios()
 const store = usePlaylistStore()
 
 const isOpen = ref(false)
