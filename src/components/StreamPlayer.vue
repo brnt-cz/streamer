@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { usePlaylistStore } from '../stores/playlist'
+import { useMediaSession } from '../composables/useMediaSession'
 
 const store = usePlaylistStore()
 const audioRef = ref<HTMLAudioElement | null>(null)
@@ -67,6 +68,27 @@ watch(() => store.currentStream, (newStream, oldStream) => {
 })
 
 watch(volume, updateVolume)
+
+// Stream name for media session
+const streamName = computed(() => store.currentStream?.name)
+
+// Media Session API for browser/OS playback controls
+useMediaSession({
+  isPlaying,
+  streamName,
+  onPlay: () => {
+    if (audioRef.value && store.currentStream) {
+      audioRef.value.play().catch(e => {
+        error.value = 'Nepodařilo se přehrát stream: ' + e.message
+      })
+    }
+  },
+  onPause: () => {
+    if (audioRef.value) {
+      audioRef.value.pause()
+    }
+  }
+})
 
 onMounted(() => {
   updateVolume()
