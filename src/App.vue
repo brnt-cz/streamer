@@ -5,116 +5,24 @@ import RadioSelector from './components/RadioSelector.vue'
 </script>
 
 <template>
-  <div class="app">
-    <header class="app-header">
-      <div class="logo">
-        <div class="logo-icon"></div>
-        <span>Streamer</span>
+  <div class="max-w-[520px] mx-auto px-5 py-6 min-h-screen flex flex-col">
+    <header class="mb-8">
+      <div class="flex items-center gap-3">
+        <div class="logo-icon w-10 h-10 bg-gradient-brand rounded-xl relative overflow-hidden">
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/90 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)]"></span>
+        </div>
+        <span class="text-[22px] font-bold text-gradient-white">Streamer</span>
       </div>
     </header>
 
-    <main class="app-main">
+    <main class="flex flex-col gap-4 flex-1">
       <StreamPlayer />
       <RadioSelector />
       <PlaylistManager />
     </main>
 
-    <footer class="app-footer">
-      <img src="/brnt-logo-w.png" alt="brnt.cz" class="footer-logo" />
+    <footer class="mt-10 text-center py-4 border-t border-border">
+      <img src="/brnt-logo-w.png" alt="brnt.cz" class="h-6 opacity-80 mix-blend-screen transition-opacity duration-200 hover:opacity-100 inline-block" />
     </footer>
   </div>
 </template>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #09090b;
-  min-height: 100vh;
-  color: #fafafa;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.app {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 24px 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-header {
-  margin-bottom: 32px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #F02F00 0%, #ff4d2a 50%, #d42800 100%);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-icon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.logo span {
-  font-size: 22px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.app-main {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1;
-}
-
-.app-footer {
-  margin-top: 40px;
-  text-align: center;
-  padding: 16px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.footer-logo {
-  height: 24px;
-  opacity: 0.8;
-  mix-blend-mode: screen;
-  transition: opacity 0.2s;
-}
-
-.footer-logo:hover {
-  opacity: 1;
-}
-</style>

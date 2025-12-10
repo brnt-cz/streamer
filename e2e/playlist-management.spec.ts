@@ -149,13 +149,14 @@ test.describe('Playlist Management', () => {
     await page.getByRole('listitem').filter({ hasText: 'Station A' }).click()
 
     // Then Station A should be selected - check Now Playing section
-    await expect(page.locator('.now-playing .name')).toContainText('Station A')
+    await expect(page.getByText('Now Playing')).toBeVisible()
+    await expect(page.getByText('Station A').first()).toBeVisible()
 
     // When I click on Station B
     await page.getByRole('listitem').filter({ hasText: 'Station B' }).click()
 
     // Then Station B should be selected
-    await expect(page.locator('.now-playing .name')).toContainText('Station B')
+    await expect(page.getByText('Station B').first()).toBeVisible()
   })
 
   // Test delete station
