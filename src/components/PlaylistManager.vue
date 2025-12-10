@@ -116,56 +116,67 @@ function handleFileImport(event: Event) {
 </script>
 
 <template>
-  <div class="playlist">
-    <div class="header">
-      <h2>Your Stations</h2>
-      <button class="add-btn" @click="openAddForm">
-        <svg viewBox="0 0 24 24" fill="none">
+  <div class="bg-gradient-surface border border-border-light rounded-[20px] p-5">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4 px-1">
+      <h2 class="text-[15px] font-semibold text-white/90">Your Stations</h2>
+      <button
+        @click="openAddForm"
+        class="flex items-center gap-1.5 bg-white/[0.06] text-white/70 border border-border-light px-3.5 py-2 rounded-[10px] text-[13px] font-medium cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text"
+      >
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
           <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
         Add
       </button>
     </div>
 
-    <div class="form" v-if="showAddForm">
-      <div class="form-header">
-        <span>{{ editingId ? 'Edit Station' : 'New Station' }}</span>
-        <button class="close-btn" @click="closeForm">
-          <svg viewBox="0 0 24 24" fill="none">
+    <!-- Add/Edit Form -->
+    <div v-if="showAddForm" class="bg-black/30 border border-border-light rounded-2xl mb-4 overflow-hidden">
+      <div class="flex justify-between items-center px-4 py-3.5 border-b border-border">
+        <span class="text-sm font-semibold text-white/90">{{ editingId ? 'Edit Station' : 'New Station' }}</span>
+        <button
+          @click="closeForm"
+          class="bg-transparent border-none p-1 cursor-pointer text-text-muted transition-colors duration-200 hover:text-white/80"
+        >
+          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
       </div>
-      <div class="form-body">
-        <div class="input-group">
-          <label>Name</label>
+      <div class="p-4">
+        <div class="mb-3.5">
+          <label class="block text-xs font-medium text-white/50 mb-1.5">Name</label>
           <input
             v-model="newName"
             type="text"
             placeholder="My Radio Station"
-            class="input"
+            class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
           />
         </div>
-        <div class="input-group">
-          <label>Stream URL</label>
+        <div class="mb-3.5">
+          <label class="block text-xs font-medium text-white/50 mb-1.5">Stream URL</label>
           <input
             v-model="newUrl"
             type="url"
             placeholder="https://..."
-            class="input"
+            class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
           />
         </div>
-        <button class="save-btn" @click="saveStream">
+        <button
+          @click="saveStream"
+          class="w-full py-3 bg-gradient-brand-simple border-none rounded-[10px] text-sm font-semibold text-white cursor-pointer transition-all duration-200 mt-1 hover:opacity-90 hover:-translate-y-px"
+        >
           {{ editingId ? 'Save Changes' : 'Add Station' }}
         </button>
       </div>
     </div>
 
-    <ul class="stream-list">
+    <!-- Stream List -->
+    <ul class="list-none p-0 m-0">
       <li
         v-for="item in store.items"
         :key="item.id"
-        :class="['stream-item', { active: item.id === store.currentId, dragging: draggedId === item.id, 'drag-over': dragOverId === item.id }]"
         draggable="true"
         @click="selectAndPlay(item.id)"
         @dragstart="onDragStart($event, item.id)"
@@ -173,482 +184,118 @@ function handleFileImport(event: Event) {
         @dragleave="onDragLeave"
         @drop="onDrop($event, item.id)"
         @dragend="onDragEnd"
+        class="group flex items-center p-3 bg-white/[0.02] border border-transparent rounded-xl mb-1.5 cursor-pointer transition-all duration-200 hover:bg-white/[0.04]"
+        :class="{
+          '!bg-[rgba(240,47,0,0.1)] !border-[rgba(240,47,0,0.2)]': item.id === store.currentId,
+          'opacity-50': draggedId === item.id,
+          '!border-[rgba(240,47,0,0.5)] !bg-[rgba(240,47,0,0.05)]': dragOverId === item.id
+        }"
       >
-        <div class="drag-handle" @mousedown.stop>
-          <svg viewBox="0 0 24 24" fill="none">
+        <!-- Drag Handle -->
+        <div
+          @mousedown.stop
+          class="flex items-center justify-center w-5 h-5 mr-2 cursor-grab active:cursor-grabbing text-white/20 transition-colors duration-200 shrink-0 group-hover:text-white/50"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
             <path d="M8 6h2M8 12h2M8 18h2M14 6h2M14 12h2M14 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="stream-indicator">
-          <div class="indicator-dot" :class="{ active: item.id === store.currentId }"></div>
+
+        <!-- Indicator -->
+        <div class="mr-3">
+          <div
+            class="w-2 h-2 rounded-full transition-all duration-200"
+            :class="item.id === store.currentId ? 'bg-[#F02F00] shadow-[0_0_12px_rgba(240,47,0,0.5)]' : 'bg-white/15'"
+          ></div>
         </div>
-        <div class="stream-info">
-          <span class="stream-name">{{ item.name }}</span>
-          <span class="stream-url">{{ item.url }}</span>
+
+        <!-- Info -->
+        <div class="flex-1 min-w-0">
+          <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ item.name }}</span>
+          <span class="block text-[11px] text-white/30 whitespace-nowrap overflow-hidden text-ellipsis mt-0.5">{{ item.url }}</span>
         </div>
-        <div class="stream-end">
-          <span v-if="item.bitrate" class="bitrate-badge">{{ item.bitrate }}k</span>
-          <div class="stream-actions">
-          <button
-            class="action-btn"
-            @click.stop="startEdit(item.id, item.name, item.url)"
-            title="Edit"
-          >
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <button
-            class="action-btn delete"
-            @click.stop="store.removeStream(item.id)"
-            title="Delete"
-          >
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+
+        <!-- End Section -->
+        <div class="relative ml-2 min-w-[70px] flex justify-end">
+          <span
+            v-if="item.bitrate"
+            class="py-0.5 px-2 bg-white/[0.08] rounded-md text-[11px] font-medium text-white/50 transition-opacity duration-150 group-hover:opacity-0 group-hover:pointer-events-none"
+          >{{ item.bitrate }}k</span>
+          <div class="absolute right-0 top-1/2 -translate-y-1/2 flex gap-1 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+            <button
+              @click.stop="startEdit(item.id, item.name, item.url)"
+              title="Edit"
+              class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
+            >
+              <svg class="w-4 h-4 block" viewBox="0 0 24 24" fill="none">
+                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button
+              @click.stop="store.removeStream(item.id)"
+              title="Delete"
+              class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
+            >
+              <svg class="w-4 h-4 block" viewBox="0 0 24 24" fill="none">
+                <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </li>
     </ul>
 
-    <div class="empty" v-if="store.items.length === 0">
-      <div class="empty-icon">
-        <svg viewBox="0 0 24 24" fill="none">
+    <!-- Empty State -->
+    <div v-if="store.items.length === 0" class="text-center py-10 px-5">
+      <div class="mb-3">
+        <svg class="w-10 h-10 text-white/15" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
           <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
-      <span>No stations yet</span>
-      <button class="add-first-btn" @click="openAddForm">Add your first station</button>
+      <span class="block text-sm text-text-muted mb-4">No stations yet</span>
+      <button
+        @click="openAddForm"
+        class="bg-gradient-brand-simple border-none py-2.5 px-5 rounded-[10px] text-[13px] font-medium text-white cursor-pointer transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+      >Add your first station</button>
     </div>
 
-    <div class="playlist-actions">
+    <!-- Playlist Actions -->
+    <div class="flex justify-center gap-4 mt-4 pt-4 border-t border-border">
       <input
         ref="fileInput"
         type="file"
         accept=".json"
-        class="hidden-input"
+        class="hidden"
         @change="handleFileImport"
       />
-      <button class="action-link" @click="store.downloadPlaylist" title="Export playlist">
-        <svg viewBox="0 0 24 24" fill="none">
+      <button
+        @click="store.downloadPlaylist"
+        title="Export playlist"
+        class="flex items-center gap-1.5 bg-transparent border-none text-text-muted text-xs cursor-pointer py-1.5 px-2.5 rounded-md transition-all duration-200 hover:text-white/80 hover:bg-white/5"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         Export
       </button>
-      <button class="action-link" @click="triggerImport" title="Import playlist">
-        <svg viewBox="0 0 24 24" fill="none">
+      <button
+        @click="triggerImport"
+        title="Import playlist"
+        class="flex items-center gap-1.5 bg-transparent border-none text-text-muted text-xs cursor-pointer py-1.5 px-2.5 rounded-md transition-all duration-200 hover:text-white/80 hover:bg-white/5"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         Import
       </button>
     </div>
 
-    <div class="import-error" v-if="importError">
+    <!-- Import Error -->
+    <div v-if="importError" class="mt-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-lg text-error-light text-[13px] text-center">
       {{ importError }}
     </div>
   </div>
 </template>
 
-<style scoped>
-.playlist {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  padding: 0 4px;
-}
-
-.header h2 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.add-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.add-btn svg {
-  width: 14px;
-  height: 14px;
-}
-
-.add-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: #fafafa;
-}
-
-.form {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  margin-bottom: 16px;
-  overflow: hidden;
-}
-
-.form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.form-header span {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.4);
-  transition: color 0.2s;
-}
-
-.close-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.close-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
-.form-body {
-  padding: 16px;
-}
-
-.input-group {
-  margin-bottom: 14px;
-}
-
-.input-group label {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 6px;
-}
-
-.input {
-  width: 100%;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  font-size: 14px;
-  color: #fafafa;
-  transition: all 0.2s;
-}
-
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.input:focus {
-  outline: none;
-  border-color: rgba(240, 47, 0, 0.5);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.save-btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #F02F00 0%, #d42800 100%);
-  border: none;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 4px;
-}
-
-.save-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.stream-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.stream-item {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid transparent;
-  border-radius: 12px;
-  margin-bottom: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.stream-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.stream-item.active {
-  background: rgba(240, 47, 0, 0.1);
-  border-color: rgba(240, 47, 0, 0.2);
-}
-
-.stream-item.dragging {
-  opacity: 0.5;
-}
-
-.stream-item.drag-over {
-  border-color: rgba(240, 47, 0, 0.5);
-  background: rgba(240, 47, 0, 0.05);
-}
-
-.drag-handle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  cursor: grab;
-  color: rgba(255, 255, 255, 0.2);
-  transition: color 0.2s;
-  flex-shrink: 0;
-}
-
-.drag-handle:active {
-  cursor: grabbing;
-}
-
-.drag-handle svg {
-  width: 16px;
-  height: 16px;
-}
-
-.stream-item:hover .drag-handle {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.stream-indicator {
-  margin-right: 12px;
-}
-
-.indicator-dot {
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  transition: all 0.2s;
-}
-
-.indicator-dot.active {
-  background: #F02F00;
-  box-shadow: 0 0 12px rgba(240, 47, 0, 0.5);
-}
-
-.stream-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.stream-name {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.stream-url {
-  display: block;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 2px;
-}
-
-.stream-end {
-  position: relative;
-  margin-left: 8px;
-  min-width: 70px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.bitrate-badge {
-  padding: 3px 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  transition: opacity 0.15s;
-}
-
-.stream-item:hover .bitrate-badge {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.stream-actions {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-
-.stream-item:hover .stream-actions {
-  opacity: 1;
-}
-
-.action-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
-  color: rgba(255, 255, 255, 0.5);
-  transition: all 0.2s;
-}
-
-.action-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.action-btn.delete:hover {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-}
-
-.action-btn svg {
-  width: 16px;
-  height: 16px;
-  display: block;
-}
-
-.empty {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.empty-icon {
-  margin-bottom: 12px;
-}
-
-.empty-icon svg {
-  width: 40px;
-  height: 40px;
-  color: rgba(255, 255, 255, 0.15);
-}
-
-.empty span {
-  display: block;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 16px;
-}
-
-.add-first-btn {
-  background: linear-gradient(135deg, #F02F00 0%, #d42800 100%);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 500;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.add-first-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.playlist-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.hidden-input {
-  display: none;
-}
-
-.action-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 12px;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: all 0.2s;
-}
-
-.action-link:hover {
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.action-link svg {
-  width: 16px;
-  height: 16px;
-}
-
-.import-error {
-  margin-top: 12px;
-  padding: 10px 14px;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 8px;
-  color: #fca5a5;
-  font-size: 13px;
-  text-align: center;
-}
-</style>
