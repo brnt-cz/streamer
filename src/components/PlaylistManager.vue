@@ -10,6 +10,8 @@ const newName = ref('')
 const newUrl = ref('')
 const fileInput = ref<HTMLInputElement | null>(null)
 const importError = ref<string | null>(null)
+const draggedId = ref<string | null>(null)
+const dragOverId = ref<string | null>(null)
 
 function openAddForm() {
   showAddForm.value = true
@@ -47,6 +49,39 @@ function closeForm() {
 
 function selectAndPlay(id: string) {
   store.selectStream(id)
+}
+
+function onDragStart(e: DragEvent, id: string) {
+  draggedId.value = id
+  if (e.dataTransfer) {
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/plain', id)
+  }
+}
+
+function onDragOver(e: DragEvent, id: string) {
+  e.preventDefault()
+  if (draggedId.value && draggedId.value !== id) {
+    dragOverId.value = id
+  }
+}
+
+function onDragLeave() {
+  dragOverId.value = null
+}
+
+function onDrop(e: DragEvent, targetId: string) {
+  e.preventDefault()
+  if (draggedId.value && draggedId.value !== targetId) {
+    store.moveStream(draggedId.value, targetId)
+  }
+  draggedId.value = null
+  dragOverId.value = null
+}
+
+function onDragEnd() {
+  draggedId.value = null
+  dragOverId.value = null
 }
 
 function triggerImport() {
@@ -130,9 +165,20 @@ function handleFileImport(event: Event) {
       <li
         v-for="item in store.items"
         :key="item.id"
-        :class="['stream-item', { active: item.id === store.currentId }]"
+        :class="['stream-item', { active: item.id === store.currentId, dragging: draggedId === item.id, 'drag-over': dragOverId === item.id }]"
+        draggable="true"
         @click="selectAndPlay(item.id)"
+        @dragstart="onDragStart($event, item.id)"
+        @dragover="onDragOver($event, item.id)"
+        @dragleave="onDragLeave"
+        @drop="onDrop($event, item.id)"
+        @dragend="onDragEnd"
       >
+        <div class="drag-handle" @mousedown.stop>
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 6h2M8 12h2M8 18h2M14 6h2M14 12h2M14 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="stream-indicator">
           <div class="indicator-dot" :class="{ active: item.id === store.currentId }"></div>
         </div>
@@ -140,7 +186,9 @@ function handleFileImport(event: Event) {
           <span class="stream-name">{{ item.name }}</span>
           <span class="stream-url">{{ item.url }}</span>
         </div>
-        <div class="stream-actions">
+        <div class="stream-end">
+          <span v-if="item.bitrate" class="bitrate-badge">{{ item.bitrate }}k</span>
+          <div class="stream-actions">
           <button
             class="action-btn"
             @click.stop="startEdit(item.id, item.name, item.url)"
@@ -160,6 +208,7 @@ function handleFileImport(event: Event) {
               <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
+          </div>
         </div>
       </li>
     </ul>
@@ -375,6 +424,41 @@ function handleFileImport(event: Event) {
   border-color: rgba(240, 47, 0, 0.2);
 }
 
+.stream-item.dragging {
+  opacity: 0.5;
+}
+
+.stream-item.drag-over {
+  border-color: rgba(240, 47, 0, 0.5);
+  background: rgba(240, 47, 0, 0.05);
+}
+
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  cursor: grab;
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-handle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.stream-item:hover .drag-handle {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .stream-indicator {
   margin-right: 12px;
 }
@@ -402,24 +486,53 @@ function handleFileImport(event: Event) {
   font-size: 14px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2px;
-}
-
-.stream-url {
-  display: block;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.35);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.stream-url {
+  display: block;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.stream-end {
+  position: relative;
+  margin-left: 8px;
+  min-width: 70px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bitrate-badge {
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.15s;
+}
+
+.stream-item:hover .bitrate-badge {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .stream-actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   gap: 4px;
-  margin-left: 8px;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.15s;
 }
 
 .stream-item:hover .stream-actions {

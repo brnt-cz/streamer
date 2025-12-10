@@ -1,0 +1,310 @@
+[
+  {
+    "id": "bbcworldservice",
+    "name": "BBC World Service",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbcworldservice.jpeg",
+    "categories": ["news", "world"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_world_service.m3u8"
+      }
+    }
+  },
+  {
+    "id": "npr",
+    "name": "NPR 24",
+    "logo": "https://station-images-prod.radio-assets.com/300/npr.jpeg",
+    "categories": ["news", "talk"],
+    "streams": {
+      "mp3": {
+        "128": "https://npr-ice.streamguys1.com/live.mp3"
+      }
+    }
+  },
+  {
+    "id": "foxnewstalk",
+    "name": "FOX News Talk",
+    "logo": "https://station-images-prod.radio-assets.com/300/foxnewstalk.jpeg",
+    "categories": ["news", "talk"],
+    "streams": {
+      "mp3": {
+        "64": "https://live.amperwave.net/direct/foxnewsradio-foxnewstalkAudio-imc"
+      }
+    }
+  },
+  {
+    "id": "talksport",
+    "name": "talkSPORT",
+    "logo": "https://station-images-prod.radio-assets.com/300/talksport.jpeg",
+    "categories": ["sport", "talk"],
+    "streams": {
+      "hls": {
+        "128": "https://radio.talksport.com/stream"
+      }
+    }
+  },
+  {
+    "id": "bbcradio1",
+    "name": "BBC Radio 1",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio1.jpeg",
+    "categories": ["pop", "dance"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_radio_one.m3u8"
+      }
+    }
+  },
+  {
+    "id": "bbcradio2",
+    "name": "BBC Radio 2",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio2.jpeg",
+    "categories": ["pop", "rock"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8"
+      }
+    }
+  },
+  {
+    "id": "bbcradio3",
+    "name": "BBC Radio 3",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio3.jpeg",
+    "categories": ["classic", "jazz"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_radio_three.m3u8"
+      }
+    }
+  },
+  {
+    "id": "bbcradio4",
+    "name": "BBC Radio 4",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio4.jpeg",
+    "categories": ["news", "talk"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_fourfm.m3u8"
+      }
+    }
+  },
+  {
+    "id": "bbcradio5live",
+    "name": "BBC Radio 5 Live",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio5live.jpeg",
+    "categories": ["sport", "news"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_five_live.m3u8"
+      }
+    }
+  },
+  {
+    "id": "bbc6music",
+    "name": "BBC Radio 6 Music",
+    "logo": "https://station-images-prod.radio-assets.com/300/bbc6music.jpeg",
+    "categories": ["alternative", "rock"],
+    "streams": {
+      "hls": {
+        "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_6music.m3u8"
+      }
+    }
+  },
+  {
+    "id": "franceculture",
+    "name": "France Culture",
+    "logo": "https://station-images-prod.radio-assets.com/300/franceculture.jpeg",
+    "categories": ["culture", "talk"],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.radiofrance.fr/franceculture-midfi.mp3"
+      }
+    }
+  },
+  {
+    "id": "franceinfo",
+    "name": "franceinfo",
+    "logo": "https://station-images-prod.radio-assets.com/300/franceinfo.jpeg",
+    "categories": ["news"],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.radiofrance.fr/franceinfo-midfi.mp3"
+      }
+    }
+  },
+  {
+    "id": "franceinter",
+    "name": "France Inter",
+    "logo": "https://station-images-prod.radio-assets.com/300/franceinter.jpeg",
+    "categories": ["talk", "news"],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.radiofrance.fr/franceinter-midfi.mp3"
+      }
+    }
+  },
+  {
+    "id": "francemusique",
+    "name": "France Musique",
+    "logo": "https://station-images-prod.radio-assets.com/300/francemusique.jpeg",
+    "categories": ["classic"],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.radiofrance.fr/francemusique-midfi.mp3"
+      }
+    }
+  },
+  {
+    "id": "wdr2",
+    "name": "WDR 2",
+    "logo": "https://station-images-prod.radio-assets.com/300/wdr2.jpeg",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://wdr-wdr2-rheinland.icecastssl.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "ndr2",
+    "name": "NDR 2",
+    "logo": "https://station-images-prod.radio-assets.com/300/ndr2.jpeg",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.ndr.de/ndr/ndr2/niedersachsen/mp3/128/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "swr3",
+    "name": "SWR3",
+    "logo": "https://station-images-prod.radio-assets.com/300/swr3.jpeg",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://liveradio.swr.de/sw282p3/swr3/play.mp3"
+      }
+    }
+  },
+  {
+    "id": "hr3",
+    "name": "hr3",
+    "logo": "https://station-images-prod.radio-assets.com/300/hr3.jpeg",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://dispatcher.rndfnk.com/hr/hr3/live/mp3/128/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "antenne1",
+    "name": "Hitradio antenne 1",
+    "logo": "https://station-images-prod.radio-assets.com/300/antenne1.jpeg",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://stream.antenne1.de/a1stg/livestream2.mp3"
+      }
+    }
+  },
+  {
+    "id": "nporadio1",
+    "name": "NPO Radio 1",
+    "logo": "https://station-images-prod.radio-assets.com/300/nporadio1.jpeg",
+    "categories": ["news", "talk"],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast.omroep.nl/radio1-bb-mp3"
+      }
+    }
+  },
+  {
+    "id": "nporadio2",
+    "name": "NPO Radio 2",
+    "logo": "https://station-images-prod.radio-assets.com/300/nporadio2.jpeg",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast.omroep.nl/radio2-bb-mp3"
+      }
+    }
+  },
+  {
+    "id": "npo3fm",
+    "name": "NPO 3FM",
+    "logo": "https://station-images-prod.radio-assets.com/300/npo3fm.jpeg",
+    "categories": ["pop", "alternative"],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast.omroep.nl/3fm-bb-mp3"
+      }
+    }
+  },
+  {
+    "id": "rairadio1",
+    "name": "Rai Radio 1",
+    "logo": "https://station-images-prod.radio-assets.com/300/rairadio1.jpeg",
+    "categories": ["news", "talk"],
+    "streams": {
+      "mp3": {
+        "128": "https://icestreaming.rai.it/1.mp3"
+      }
+    }
+  },
+  {
+    "id": "absoluteradio",
+    "name": "Absolute Radio",
+    "logo": "https://station-images-prod.radio-assets.com/300/absoluteradio.jpeg",
+    "categories": ["rock"],
+    "streams": {
+      "mp3": {
+        "128": "https://ais-edge09-live365-dal02.cdnstream.com/a25710"
+      }
+    }
+  },
+  {
+    "id": "classicfm",
+    "name": "Classic FM",
+    "logo": "https://station-images-prod.radio-assets.com/300/classicfm.jpeg",
+    "categories": ["classic"],
+    "streams": {
+      "mp3": {
+        "128": "https://media-ice.musicradio.com/ClassicFMMP3"
+      }
+    }
+  },
+  {
+    "id": "jazzfm",
+    "name": "Jazz FM",
+    "logo": "https://station-images-prod.radio-assets.com/300/jazzfm.jpeg",
+    "categories": ["jazz"],
+    "streams": {
+      "aac": {
+        "64": "https://edge-bauerall-01-gos2.sharp-stream.com/jazzfm.aac"
+      }
+    }
+  },
+  {
+    "id": "smoothradio",
+    "name": "Smooth Radio",
+    "logo": "https://station-images-prod.radio-assets.com/300/smoothradio.jpeg",
+    "categories": ["pop", "oldies"],
+    "streams": {
+      "mp3": {
+        "128": "https://media-ice.musicradio.com/SmoothUKMP3"
+      }
+    }
+  },
+  {
+    "id": "fm4",
+    "name": "FM4",
+    "logo": "https://station-images-prod.radio-assets.com/300/fm4.png",
+    "categories": ["alternative", "indie", "pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://orf-live.ors-shoutcast.at/fm4-q1a"
+      }
+    }
+  }
+]
