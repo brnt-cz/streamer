@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import StreamPlayer from './components/StreamPlayer.vue'
 import PlaylistManager from './components/PlaylistManager.vue'
 import RadioSelector from './components/RadioSelector.vue'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 
 const isPlaylistOpen = ref(false)
 
@@ -30,16 +31,15 @@ function closePlaylist() {
     <!-- Main Layout -->
     <div class="flex-1 flex relative justify-center lg:mr-[380px]">
       <!-- Main Content - centered vertically when content fits -->
-      <main class="flex flex-col gap-4 px-5 lg:px-10 max-w-[520px] lg:max-w-[560px] w-full lg:mx-auto">
+      <main class="flex flex-col gap-4 px-5 lg:px-10 max-w-[480px] w-full lg:mx-auto">
         <StreamPlayer />
-        <RadioSelector />
       </main>
 
       <!-- Playlist Panel - Desktop: fixed right, Mobile: offcanvas -->
       <aside
         class="playlist-panel fixed top-0 h-screen bg-background border-l border-border overflow-y-auto z-50
                w-[85%] max-w-[380px] transition-transform duration-300 ease-out
-               lg:right-0 lg:w-[380px] lg:translate-x-0 lg:pt-24 lg:px-6 lg:pb-6
+               lg:right-0 lg:w-[380px] lg:translate-x-0 lg:pt-7 lg:px-6 lg:pb-6
                right-0 translate-x-full p-5 pt-16"
         :class="{ '!translate-x-0': isPlaylistOpen }"
       >
@@ -55,6 +55,15 @@ function closePlaylist() {
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
+
+        <!-- Top bar with RadioSelector and LanguageSwitcher -->
+        <div class="flex items-center gap-3 mb-7">
+          <div class="flex-1">
+            <RadioSelector />
+          </div>
+          <LanguageSwitcher />
+        </div>
+
         <PlaylistManager />
       </aside>
 

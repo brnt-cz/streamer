@@ -2,9 +2,11 @@
 import { ref, computed, watch } from 'vue'
 import { useRadios, type Radio, type StreamFormat } from '../stores/radios'
 import { usePlaylistStore } from '../stores/playlist'
+import { useI18n } from '../composables/useI18n'
 
 const { categories, formats, getAvailableFormats, getAvailableBitrates, getStreamUrl, filterRadios } = useRadios()
 const store = usePlaylistStore()
+const { t, getCategoryLabel } = useI18n()
 
 const isOpen = ref(false)
 const search = ref('')
@@ -81,50 +83,15 @@ function addToPlaylist() {
       store.selectStream(id)
       closeSelector()
     } else {
-      addError.value = 'Stream not available in this format'
+      addError.value = t.value.streamNotAvailable
     }
-  } catch (e) {
-    addError.value = 'Failed to get stream URL'
+  } catch {
+    addError.value = t.value.failedToGetStream
   } finally {
     isAdding.value = false
   }
 }
 
-function getCategoryLabel(cat: string): string {
-  const labels: Record<string, string> = {
-    pop: 'Pop',
-    rock: 'Rock',
-    metal: 'Metal',
-    jazz: 'Jazz',
-    classic: 'Klasika',
-    dance: 'Dance',
-    country: 'Country',
-    oldies: 'Oldies',
-    '80s': '80\'s',
-    '90s': '90\'s',
-    '00s': '00\'s',
-    news: 'Zprávy',
-    talk: 'Mluvené slovo',
-    folk: 'Folk',
-    indie: 'Indie',
-    hiphop: 'Hip Hop',
-    house: 'House',
-    funk: 'Funky',
-    soul: 'Soul',
-    rnb: 'R\'n\'B',
-    ethno: 'Ethno',
-    alternative: 'Alternative',
-    gothic: 'Gothic',
-    kids: 'Pro děti',
-    bigbit: 'Bigbít',
-    dechovka: 'Dechovka',
-    softac: 'Soft AC',
-    hotac: 'Hot AC',
-    allformat: 'All Format',
-    Trance: 'Trance'
-  }
-  return labels[cat] || cat
-}
 </script>
 
 <template>
@@ -132,7 +99,7 @@ function getCategoryLabel(cat: string): string {
     <!-- Open Button -->
     <button
       @click="openSelector"
-      class="flex items-center gap-2 w-full py-3.5 px-[18px] bg-gradient-surface border border-border-light rounded-[14px] text-white/80 text-sm font-medium cursor-pointer transition-all duration-200 hover:bg-gradient-surface-hover hover:border-border-lighter hover:text-text"
+      class="flex items-center gap-2 w-full py-2.5 px-4 bg-gradient-brand-simple border-none rounded-[12px] text-white text-sm font-medium cursor-pointer transition-all duration-200 shadow-brand hover:opacity-90"
     >
       <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -140,7 +107,7 @@ function getCategoryLabel(cat: string): string {
         <path d="M14 11h4M14 14h4M14 17h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         <path d="M6 6l4-3M18 6l-4-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
-      Browse Radios
+      {{ t.browseRadios }}
     </button>
 
     <!-- Modal -->
@@ -150,7 +117,7 @@ function getCategoryLabel(cat: string): string {
           <div class="modal w-full max-w-[480px] max-h-[85vh] bg-surface border border-white/10 rounded-[20px] flex flex-col overflow-hidden">
             <!-- Modal Header -->
             <div class="flex justify-between items-center py-5 px-6 border-b border-border">
-              <h2 class="text-lg font-semibold text-text m-0">Select Radio</h2>
+              <h2 class="text-lg font-semibold text-text m-0">{{ t.selectRadio }}</h2>
               <button
                 @click="closeSelector"
                 class="bg-transparent border-none p-2 cursor-pointer text-text-muted transition-colors duration-200 rounded-lg hover:text-white/90 hover:bg-white/5"
@@ -172,7 +139,7 @@ function getCategoryLabel(cat: string): string {
                 <input
                   v-model="search"
                   type="text"
-                  placeholder="Search radios..."
+                  :placeholder="t.searchRadios"
                   class="w-full py-3 pl-[42px] pr-3.5 bg-white/[0.04] border border-border-light rounded-xl text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
                 />
               </div>
@@ -183,7 +150,7 @@ function getCategoryLabel(cat: string): string {
                   v-model="selectedCategory"
                   class="flex-1 py-2.5 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
                 >
-                  <option value="" class="bg-surface text-text">All categories</option>
+                  <option value="" class="bg-surface text-text">{{ t.allCategories }}</option>
                   <option v-for="cat in categories" :key="cat" :value="cat" class="bg-surface text-text">
                     {{ getCategoryLabel(cat) }}
                   </option>
@@ -243,7 +210,7 @@ function getCategoryLabel(cat: string): string {
               </ul>
 
               <div v-else class="flex flex-col items-center justify-center gap-3 py-10 px-5 text-text-muted text-sm">
-                <span>No radios found</span>
+                <span>{{ t.noRadiosFound }}</span>
               </div>
             </div>
 
@@ -267,7 +234,7 @@ function getCategoryLabel(cat: string): string {
                 class="py-3 px-6 bg-gradient-brand-simple border-none rounded-xl text-sm font-semibold text-white cursor-pointer transition-all duration-200 whitespace-nowrap shrink-0 hover:opacity-90 hover:-translate-y-px disabled:bg-white/10 disabled:text-white/30 disabled:cursor-not-allowed disabled:transform-none"
               >
                 <span v-if="isAdding" class="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-1.5"></span>
-                {{ isAdding ? 'Adding...' : 'Add to Playlist' }}
+                {{ isAdding ? t.adding : t.addToPlaylist }}
               </button>
             </div>
           </div>

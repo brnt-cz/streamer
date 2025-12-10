@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { usePlaylistStore } from '../stores/playlist'
+import { useI18n } from '../composables/useI18n'
 
 const store = usePlaylistStore()
+const { t } = useI18n()
 
 const showAddForm = ref(false)
 const editingId = ref<string | null>(null)
@@ -119,7 +121,7 @@ function handleFileImport(event: Event) {
   <div class="bg-gradient-surface border border-border-light rounded-[20px] p-5">
     <!-- Header -->
     <div class="flex justify-between items-center mb-4 px-1">
-      <h2 class="text-[15px] font-semibold text-white/90">Your Stations</h2>
+      <h2 class="text-[15px] font-semibold text-white/90">{{ t.yourStations }}</h2>
       <button
         @click="openAddForm"
         class="flex items-center gap-1.5 bg-white/[0.06] text-white/70 border border-border-light px-3.5 py-2 rounded-[10px] text-[13px] font-medium cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text"
@@ -127,14 +129,14 @@ function handleFileImport(event: Event) {
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
           <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        Add
+        {{ t.add }}
       </button>
     </div>
 
     <!-- Add/Edit Form -->
     <div v-if="showAddForm" class="bg-black/30 border border-border-light rounded-2xl mb-4 overflow-hidden">
       <div class="flex justify-between items-center px-4 py-3.5 border-b border-border">
-        <span class="text-sm font-semibold text-white/90">{{ editingId ? 'Edit Station' : 'New Station' }}</span>
+        <span class="text-sm font-semibold text-white/90">{{ editingId ? t.editStation : t.newStation }}</span>
         <button
           @click="closeForm"
           class="bg-transparent border-none p-1 cursor-pointer text-text-muted transition-colors duration-200 hover:text-white/80"
@@ -146,20 +148,20 @@ function handleFileImport(event: Event) {
       </div>
       <div class="p-4">
         <div class="mb-3.5">
-          <label class="block text-xs font-medium text-white/50 mb-1.5">Name</label>
+          <label class="block text-xs font-medium text-white/50 mb-1.5">{{ t.name }}</label>
           <input
             v-model="newName"
             type="text"
-            placeholder="My Radio Station"
+            :placeholder="t.namePlaceholder"
             class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
           />
         </div>
         <div class="mb-3.5">
-          <label class="block text-xs font-medium text-white/50 mb-1.5">Stream URL</label>
+          <label class="block text-xs font-medium text-white/50 mb-1.5">{{ t.streamUrl }}</label>
           <input
             v-model="newUrl"
             type="url"
-            placeholder="https://..."
+            :placeholder="t.urlPlaceholder"
             class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
           />
         </div>
@@ -167,7 +169,7 @@ function handleFileImport(event: Event) {
           @click="saveStream"
           class="w-full py-3 bg-gradient-brand-simple border-none rounded-[10px] text-sm font-semibold text-white cursor-pointer transition-all duration-200 mt-1 hover:opacity-90 hover:-translate-y-px"
         >
-          {{ editingId ? 'Save Changes' : 'Add Station' }}
+          {{ editingId ? t.saveChanges : t.addStation }}
         </button>
       </div>
     </div>
@@ -224,7 +226,7 @@ function handleFileImport(event: Event) {
           <div class="absolute right-0 top-1/2 -translate-y-1/2 flex gap-1 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
             <button
               @click.stop="startEdit(item.id, item.name, item.url)"
-              title="Edit"
+              :title="t.edit"
               class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
             >
               <svg class="w-4 h-4 block" viewBox="0 0 24 24" fill="none">
@@ -234,7 +236,7 @@ function handleFileImport(event: Event) {
             </button>
             <button
               @click.stop="store.removeStream(item.id)"
-              title="Delete"
+              :title="t.delete"
               class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
             >
               <svg class="w-4 h-4 block" viewBox="0 0 24 24" fill="none">
@@ -254,11 +256,11 @@ function handleFileImport(event: Event) {
           <path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
-      <span class="block text-sm text-text-muted mb-4">No stations yet</span>
+      <span class="block text-sm text-text-muted mb-4">{{ t.noStations }}</span>
       <button
         @click="openAddForm"
         class="bg-gradient-brand-simple border-none py-2.5 px-5 rounded-[10px] text-[13px] font-medium text-white cursor-pointer transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
-      >Add your first station</button>
+      >{{ t.addFirstStation }}</button>
     </div>
 
     <!-- Playlist Actions -->
@@ -272,23 +274,23 @@ function handleFileImport(event: Event) {
       />
       <button
         @click="store.downloadPlaylist"
-        title="Export playlist"
+        :title="t.export"
         class="flex items-center gap-1.5 bg-transparent border-none text-text-muted text-xs cursor-pointer py-1.5 px-2.5 rounded-md transition-all duration-200 hover:text-white/80 hover:bg-white/5"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Export
+        {{ t.export }}
       </button>
       <button
         @click="triggerImport"
-        title="Import playlist"
+        :title="t.import"
         class="flex items-center gap-1.5 bg-transparent border-none text-text-muted text-xs cursor-pointer py-1.5 px-2.5 rounded-md transition-all duration-200 hover:text-white/80 hover:bg-white/5"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Import
+        {{ t.import }}
       </button>
     </div>
 
