@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Theme - Custom CSS Variables (Tailwind 4 CSS-first approach)
+   ========================================================================== */
+@theme {
+  /* Brand colors */
+  --color-brand: #F02F00;
+  --color-brand-dark: #d42800;
+  --color-brand-light: #ff4d2a;
+
+  /* Background colors */
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-surface-light: rgba(255, 255, 255, 0.03);
+  --color-surface-lighter: rgba(255, 255, 255, 0.06);
+
+  /* Text colors */
+  --color-text: #fafafa;
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+  --color-text-subtle: rgba(255, 255, 255, 0.25);
+
+  /* Border colors */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-light: rgba(255, 255, 255, 0.08);
+  --color-border-lighter: rgba(255, 255, 255, 0.12);
+
+  /* Error colors */
+  --color-error: #ef4444;
+  --color-error-light: #fca5a5;
+  --color-error-bg: rgba(239, 68, 68, 0.1);
+  --color-error-border: rgba(239, 68, 68, 0.2);
+
+  /* Shadows */
+  --shadow-brand: 0 4px 20px rgba(240, 47, 0, 0.3);
+  --shadow-brand-lg: 0 8px 32px rgba(240, 47, 0, 0.3);
+  --shadow-brand-xl: 0 12px 48px rgba(240, 47, 0, 0.4);
+
+  /* Animation durations */
+  --animate-duration-fast: 150ms;
+  --animate-duration-normal: 200ms;
+  --animate-duration-slow: 300ms;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--color-background);
+    min-height: 100vh;
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ==========================================================================
+   Custom Animations
+   ========================================================================== */
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modal-leave {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+@layer utilities {
+  /* Animation utilities */
+  .animate-wave {
+    animation: wave 1s ease-in-out infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  .animate-spin {
+    animation: spin 0.8s linear infinite;
+  }
+
+  /* Wave animation delays for audio bars */
+  .wave-delay-1 { animation-delay: 0s; }
+  .wave-delay-2 { animation-delay: 0.15s; }
+  .wave-delay-3 { animation-delay: 0.3s; }
+  .wave-delay-4 { animation-delay: 0.45s; }
+  .wave-delay-5 { animation-delay: 0.6s; }
+
+  /* Pulse ring delay */
+  .pulse-delay-1s {
+    animation-delay: 1s;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-light) 50%, var(--color-brand-dark) 100%);
+  }
+
+  .bg-gradient-brand-simple {
+    background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
+  }
+
+  .bg-gradient-surface {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  }
+
+  .bg-gradient-surface-hover {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  }
+
+  .bg-gradient-slider {
+    background: linear-gradient(90deg, var(--color-brand) 0%, var(--color-brand-light) 100%);
+  }
+
+  /* Text gradient */
+  .text-gradient-white {
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Backdrop blur */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(20px);
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* ==========================================================================
+   Component Styles - Volume Slider (browser-specific)
+   ========================================================================== */
+@layer components {
+  .volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    width: 100%;
+    height: 20px;
+  }
+
+  .volume-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    background: transparent;
+  }
+
+  .volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--color-text);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s;
+    margin-top: -5px;
+  }
+
+  .volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+
+  .volume-slider::-moz-range-track {
+    height: 4px;
+    background: transparent;
+  }
+
+  .volume-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--color-text);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================================================
+   Vue Transition Classes
+   ========================================================================== */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-active .modal,
+.modal-leave-active .modal {
+  transition: all 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-from .modal,
+.modal-leave-to .modal {
+  transform: scale(0.95) translateY(20px);
+  opacity: 0;
+}

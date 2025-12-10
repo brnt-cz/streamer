@@ -21,9 +21,10 @@ test.describe('Radio Catalog', () => {
 
     // And I search for a specific radio
     await page.getByPlaceholder('Search radios...').fill('Beat')
+    await page.waitForTimeout(300)
 
-    // And I select "Beat" from the list
-    await page.locator('.radio-list .radio-item').first().click()
+    // And I select "Beat" from the list (first listitem in modal)
+    await page.getByRole('listitem').filter({ hasText: 'Beat' }).first().click()
 
     // Then the "Add to Playlist" button becomes enabled
     await expect(page.getByRole('button', { name: 'Add to Playlist' })).toBeEnabled()
@@ -44,14 +45,16 @@ test.describe('Radio Catalog', () => {
     await page.getByRole('button', { name: 'Browse Radios' }).click()
     await expect(page.getByRole('heading', { name: 'Select Radio' })).toBeVisible()
 
-    // Get initial count of radios
-    const initialCount = await page.locator('.radio-list .radio-item').count()
+    // Get initial count of radios in modal list
+    const modalList = page.locator('.modal ul')
+    const initialCount = await modalList.getByRole('listitem').count()
 
     // When I select "Jazz" category from the dropdown
-    await page.getByRole('combobox').selectOption('Jazz')
+    await page.getByRole('combobox').selectOption('jazz')
+    await page.waitForTimeout(300)
 
     // Then fewer radios are displayed
-    const filteredCount = await page.locator('.radio-list .radio-item').count()
+    const filteredCount = await modalList.getByRole('listitem').count()
     expect(filteredCount).toBeLessThan(initialCount)
     expect(filteredCount).toBeGreaterThan(0)
   })
@@ -69,7 +72,8 @@ test.describe('Radio Catalog', () => {
     await page.waitForTimeout(300) // Wait for filter to apply
 
     // And only radios containing "Impuls" in their name are displayed
-    const radioItems = page.locator('.radio-list .radio-item')
+    const modalList = page.locator('.modal ul')
+    const radioItems = modalList.getByRole('listitem')
     const count = await radioItems.count()
     expect(count).toBeGreaterThan(0)
 
@@ -91,17 +95,13 @@ test.describe('Radio Catalog', () => {
     await page.waitForTimeout(300)
 
     // And I select a radio station
-    await page.locator('.radio-list .radio-item').first().click()
+    const modalList = page.locator('.modal ul')
+    await modalList.getByRole('listitem').first().click()
 
-    // When I click format buttons, they should respond
-    // Format buttons have class format-btn in format-selector container
-    const formatSelector = page.locator('.format-selector')
-    await expect(formatSelector).toBeVisible()
-
-    // The format buttons exist
-    const formatButtons = formatSelector.locator('.format-btn')
-    const buttonCount = await formatButtons.count()
-    expect(buttonCount).toBeGreaterThan(0)
+    // When I look for format buttons, they should be visible
+    // Format buttons are MP3, AAC, HLS, WMA
+    const mp3Button = page.getByRole('button', { name: 'MP3' })
+    await expect(mp3Button).toBeVisible()
 
     // The Add to Playlist button should be enabled
     await expect(page.getByRole('button', { name: 'Add to Playlist' })).toBeEnabled()
@@ -113,8 +113,8 @@ test.describe('Radio Catalog', () => {
     await page.getByRole('button', { name: 'Browse Radios' }).click()
     await expect(page.getByRole('heading', { name: 'Select Radio' })).toBeVisible()
 
-    // And I click the close button
-    await page.locator('.modal-header .close-btn').click()
+    // And I click the close button (button next to the heading)
+    await page.locator('.modal button').filter({ has: page.locator('svg path[d*="M18 6L6 18"]') }).click()
 
     // Then the modal closes
     await expect(page.getByRole('heading', { name: 'Select Radio' })).not.toBeVisible()
