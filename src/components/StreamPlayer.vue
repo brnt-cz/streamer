@@ -2,8 +2,10 @@
 import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { usePlaylistStore } from '../stores/playlist'
 import { useMediaSession } from '../composables/useMediaSession'
+import { useI18n } from '../composables/useI18n'
 
 const store = usePlaylistStore()
+const { t } = useI18n()
 const audioRef = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
 const volume = ref(80)
@@ -16,7 +18,7 @@ function togglePlay() {
     audioRef.value.pause()
   } else {
     audioRef.value.play().catch(e => {
-      error.value = 'Nepodařilo se přehrát stream: ' + e.message
+      error.value = t.value.streamError + ': ' + e.message
     })
   }
 }
@@ -31,7 +33,7 @@ function handlePause() {
 }
 
 function handleError() {
-  error.value = 'Chyba při načítání streamu'
+  error.value = t.value.streamLoadError
   isPlaying.value = false
 }
 
@@ -58,7 +60,7 @@ watch(() => store.currentStream, (newStream, oldStream) => {
       const audio = audioRef.value
       const playWhenReady = () => {
         audio.play().catch(() => {
-          error.value = 'Nepodařilo se přehrát stream'
+          error.value = t.value.streamError
         })
         audio.removeEventListener('canplay', playWhenReady)
       }
@@ -79,7 +81,7 @@ useMediaSession({
   onPlay: () => {
     if (audioRef.value && store.currentStream) {
       audioRef.value.play().catch(e => {
-        error.value = 'Nepodařilo se přehrát stream: ' + e.message
+        error.value = t.value.streamError + ': ' + e.message
       })
     }
   },
@@ -102,19 +104,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-gradient-surface border border-border-light rounded-[20px] p-7 backdrop-blur-glass">
+  <div class="bg-gradient-surface !bg-[#0F0F11] flex flex-col justify-between min-h-[500px] border border-border-light rounded-[20px] p-7 backdrop-blur-glass overflow-visible">
     <audio
       ref="audioRef"
       :src="store.currentStream?.url"
       @play="handlePlay"
       @pause="handlePause"
       @error="handleError"
-    />
+    ></audio>
 
     <!-- Player Visual -->
-    <div class="flex justify-center mb-6">
+    <div class="flex justify-center mb-6 overflow-visible">
       <div
-        class="w-[120px] h-[120px] relative flex items-center justify-center overflow-visible"
+        class="w-[120px] h-[120px] relative flex items-center justify-center"
         :class="{ 'cursor-pointer': store.currentStream }"
         @click="store.currentStream && togglePlay()"
       >
@@ -128,7 +130,7 @@ onUnmounted(() => {
         </div>
         <!-- Artwork Inner Circle -->
         <div
-          class="w-20 h-20 bg-gradient-brand rounded-full flex items-center justify-center relative z-[2] shadow-brand-lg transition-all duration-300"
+          class="w-20 h-20 bg-gradient-brand rounded-full flex items-center justify-center relative z-[2] shadow-brand-lg transition-all duration-300 will-change-transform"
           :class="{ 'scale-105 shadow-brand-xl': isPlaying, 'hover:scale-108 active:scale-95': store.currentStream }"
         >
           <!-- Idle state: radio icon -->
@@ -153,11 +155,11 @@ onUnmounted(() => {
     <!-- Player Info -->
     <div class="text-center mb-6">
       <div v-if="store.currentStream">
-        <span class="block text-[11px] font-medium text-text-muted uppercase tracking-[1.5px] mb-1.5">Now Playing</span>
+        <span class="block text-[11px] font-medium text-text-muted uppercase tracking-[1.5px] mb-1.5">{{ t.nowPlaying }}</span>
         <span class="text-lg font-semibold text-text">{{ store.currentStream.name }}</span>
       </div>
       <div v-else>
-        <span class="text-lg font-semibold text-text-muted">Select a stream</span>
+        <span class="text-lg font-semibold text-text-muted">{{ t.selectStream }}</span>
       </div>
     </div>
 
