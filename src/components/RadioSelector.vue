@@ -77,8 +77,7 @@ function addToPlaylist() {
     )
 
     if (streamUrl) {
-      const name = `${selectedRadio.value.name} (${selectedFormat.value.toUpperCase()} ${selectedBitrate.value}kbps)`
-      const id = store.addStream(name, streamUrl)
+      const id = store.addStream(selectedRadio.value.name, streamUrl, selectedBitrate.value)
       store.selectStream(id)
       closeSelector()
     } else {

@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import radiosData from '../data/radios.json'
+import radiosInternationalData from '../data/radios-international.json'
 
 export interface RadioStreams {
   [format: string]: {
@@ -22,13 +23,15 @@ export interface StreamInfo {
   bitrate: string
 }
 
-export type StreamFormat = 'mp3' | 'aac' | 'wma'
-export type StreamBitrate = '32' | '48' | '64' | '128' | '192' | '256' | '320'
+export type StreamFormat = 'mp3' | 'aac' | 'wma' | 'hls'
+export type StreamBitrate = '32' | '48' | '64' | '96' | '128' | '192' | '256' | '320'
 
-const FORMATS: StreamFormat[] = ['mp3', 'aac', 'wma']
-const BITRATES: StreamBitrate[] = ['320', '256', '192', '128', '64', '48', '32']
+const FORMATS: StreamFormat[] = ['mp3', 'aac', 'hls', 'wma']
+const BITRATES: StreamBitrate[] = ['320', '256', '192', '128', '96', '64', '48', '32']
 
-const radios = ref<Radio[]>(radiosData as unknown as Radio[])
+const czechRadios = ref<Radio[]>(radiosData as unknown as Radio[])
+const internationalRadios = ref<Radio[]>(radiosInternationalData as unknown as Radio[])
+const radios = ref<Radio[]>([...czechRadios.value, ...internationalRadios.value])
 
 export function useRadios() {
   const categories = computed(() => {
@@ -100,6 +103,8 @@ export function useRadios() {
 
   return {
     radios,
+    czechRadios,
+    internationalRadios,
     categories,
     formats: FORMATS,
     bitrates: BITRATES,
