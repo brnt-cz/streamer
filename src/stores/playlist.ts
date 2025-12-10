@@ -5,6 +5,7 @@ export interface StreamItem {
   id: string
   name: string
   url: string
+  bitrate?: string
 }
 
 interface PlaylistData {
@@ -33,12 +34,36 @@ function getCookie(name: string): string | null {
   return null
 }
 
+function extractBitrateFromUrl(url: string): string | undefined {
+  // Match common bitrate patterns in URLs like: -128.mp3, /128/, _128k, color128.mp3, express128mp3
+  const patterns = [
+    /[-_.](\d{2,3})\.(?:mp3|aac|m3u8)/i,  // -128.mp3, _192.aac
+    /[-_?](\d{2,3})k?(?:bps)?[-_.]/i,      // -128kbps-, _64k_
+    /\/(\d{2,3})\//,                       // /128/
+    /(\d{2,3})(?:kbps|k)/i,                // 128kbps, 128k
+    /[a-z](\d{2,3})\.(?:mp3|aac|m3u8)/i,  // color128.mp3, express128.mp3
+    /[a-z](\d{2,3})(?:mp3|aac)/i          // express128mp3 (no dot)
+  ]
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern)
+    if (match && match[1]) {
+      const bitrate = parseInt(match[1])
+      if (bitrate >= 32 && bitrate <= 320) {
+        return match[1]
+      }
+    }
+  }
+  return undefined
+}
+
 function loadPlaylistFromCookie(): StreamItem[] {
   const defaultItems: StreamItem[] = [
     {
       id: '1',
       name: 'Radio 1',
-      url: 'https://icecast6.play.cz/radio1-128.mp3'
+      url: 'https://icecast6.play.cz/radio1-128.mp3',
+      bitrate: '128'
     }
   ]
 
@@ -47,7 +72,11 @@ function loadPlaylistFromCookie(): StreamItem[] {
     if (cookieValue) {
       const data = JSON.parse(cookieValue) as PlaylistData
       if (data.items && Array.isArray(data.items) && data.items.length > 0) {
-        return data.items
+        // Add bitrate if missing
+        return data.items.map(item => ({
+          ...item,
+          bitrate: item.bitrate || extractBitrateFromUrl(item.url)
+        }))
       }
     }
   } catch (e) {
@@ -98,9 +127,9 @@ export const usePlaylistStore = defineStore('playlist', () => {
   watch(items, () => savePlaylistToCookie(items.value), { deep: true })
   watch(currentId, (id) => saveLastStreamToCookie(id))
 
-  function addStream(name: string, url: string) {
+  function addStream(name: string, url: string, bitrate?: string) {
     const id = Date.now().toString()
-    items.value.push({ id, name, url })
+    items.value.push({ id, name, url, bitrate })
     return id
   }
 
@@ -118,11 +147,21 @@ export const usePlaylistStore = defineStore('playlist', () => {
     currentId.value = id
   }
 
-  function updateStream(id: string, name: string, url: string) {
+  function updateStream(id: string, name: string, url: string, bitrate?: string) {
     const item = items.value.find(item => item.id === id)
     if (item) {
       item.name = name
       item.url = url
+      item.bitrate = bitrate
+    }
+  }
+
+  function moveStream(fromId: string, toId: string) {
+    const fromIndex = items.value.findIndex(item => item.id === fromId)
+    const toIndex = items.value.findIndex(item => item.id === toId)
+    if (fromIndex !== -1 && toIndex !== -1) {
+      const [moved] = items.value.splice(fromIndex, 1)
+      items.value.splice(toIndex, 0, moved)
     }
   }
 
@@ -140,7 +179,8 @@ export const usePlaylistStore = defineStore('playlist', () => {
         ).map((item: StreamItem, index: number) => ({
           id: item.id || Date.now().toString() + index,
           name: item.name,
-          url: item.url
+          url: item.url,
+          bitrate: item.bitrate || extractBitrateFromUrl(item.url)
         }))
 
         if (validItems.length > 0) {
@@ -177,6 +217,7 @@ export const usePlaylistStore = defineStore('playlist', () => {
     removeStream,
     selectStream,
     updateStream,
+    moveStream,
     exportPlaylist,
     importPlaylist,
     downloadPlaylist
