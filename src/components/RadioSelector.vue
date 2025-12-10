@@ -128,9 +128,13 @@ function getCategoryLabel(cat: string): string {
 </script>
 
 <template>
-  <div class="radio-selector">
-    <button class="open-btn" @click="openSelector">
-      <svg viewBox="0 0 24 24" fill="none">
+  <div>
+    <!-- Open Button -->
+    <button
+      @click="openSelector"
+      class="flex items-center gap-2 w-full py-3.5 px-[18px] bg-gradient-surface border border-border-light rounded-[14px] text-white/80 text-sm font-medium cursor-pointer transition-all duration-200 hover:bg-gradient-surface-hover hover:border-border-lighter hover:text-text"
+    >
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
         <circle cx="8" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
         <path d="M14 11h4M14 14h4M14 17h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -139,22 +143,29 @@ function getCategoryLabel(cat: string): string {
       Browse Radios
     </button>
 
+    <!-- Modal -->
     <Teleport to="body">
       <Transition name="modal">
-        <div v-if="isOpen" class="modal-overlay" @click.self="closeSelector">
-          <div class="modal">
-            <div class="modal-header">
-              <h2>Select Radio</h2>
-              <button class="close-btn" @click="closeSelector">
-                <svg viewBox="0 0 24 24" fill="none">
+        <div v-if="isOpen" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[1000] p-5" @click.self="closeSelector">
+          <div class="modal w-full max-w-[480px] max-h-[85vh] bg-surface border border-white/10 rounded-[20px] flex flex-col overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center py-5 px-6 border-b border-border">
+              <h2 class="text-lg font-semibold text-text m-0">Select Radio</h2>
+              <button
+                @click="closeSelector"
+                class="bg-transparent border-none p-2 cursor-pointer text-text-muted transition-colors duration-200 rounded-lg hover:text-white/90 hover:bg-white/5"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
                   <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
               </button>
             </div>
 
-            <div class="filters">
-              <div class="search-box">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none">
+            <!-- Filters -->
+            <div class="py-4 px-6 border-b border-border">
+              <!-- Search -->
+              <div class="relative mb-3">
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-white/30" viewBox="0 0 24 24" fill="none">
                   <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
@@ -162,35 +173,43 @@ function getCategoryLabel(cat: string): string {
                   v-model="search"
                   type="text"
                   placeholder="Search radios..."
-                  class="search-input"
+                  class="w-full py-3 pl-[42px] pr-3.5 bg-white/[0.04] border border-border-light rounded-xl text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
                 />
               </div>
 
-              <div class="filter-row">
-                <select v-model="selectedCategory" class="category-select">
-                  <option value="">All categories</option>
-                  <option v-for="cat in categories" :key="cat" :value="cat">
+              <!-- Filter Row -->
+              <div class="flex gap-3">
+                <select
+                  v-model="selectedCategory"
+                  class="flex-1 py-2.5 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
+                >
+                  <option value="" class="bg-surface text-text">All categories</option>
+                  <option v-for="cat in categories" :key="cat" :value="cat" class="bg-surface text-text">
                     {{ getCategoryLabel(cat) }}
                   </option>
                 </select>
 
-                <div class="format-selector">
+                <!-- Format Selector -->
+                <div class="flex gap-1 p-1 bg-white/[0.04] rounded-[10px]">
                   <button
                     v-for="format in availableFormats"
                     :key="format"
-                    :class="['format-btn', { active: selectedFormat === format }]"
                     @click="selectedFormat = format"
+                    class="py-1.5 px-3 bg-transparent border-none rounded-[7px] text-xs font-semibold cursor-pointer transition-all duration-200"
+                    :class="selectedFormat === format ? 'bg-gradient-brand-simple text-white' : 'text-white/50 hover:text-white/80'"
                   >
                     {{ format.toUpperCase() }}
                   </button>
                 </div>
 
-                <div class="bitrate-selector" v-if="selectedRadio && availableBitrates.length > 1">
+                <!-- Bitrate Selector -->
+                <div v-if="selectedRadio && availableBitrates.length > 1" class="flex gap-1 p-1 bg-white/[0.04] rounded-[10px]">
                   <button
                     v-for="bitrate in availableBitrates"
                     :key="bitrate"
-                    :class="['bitrate-btn', { active: selectedBitrate === bitrate }]"
                     @click="selectedBitrate = bitrate"
+                    class="py-1.5 px-2.5 bg-transparent border-none rounded-[7px] text-[11px] font-semibold cursor-pointer transition-all duration-200"
+                    :class="selectedBitrate === bitrate ? 'bg-white/15 text-white' : 'text-white/50 hover:text-white/80'"
                   >
                     {{ bitrate }}k
                   </button>
@@ -198,52 +217,56 @@ function getCategoryLabel(cat: string): string {
               </div>
             </div>
 
-            <div class="radio-list-container">
-              <ul v-if="filteredRadios.length > 0" class="radio-list">
+            <!-- Radio List -->
+            <div class="flex-1 overflow-y-auto py-2 px-4 min-h-[200px] max-h-[350px] scrollbar-thin">
+              <ul v-if="filteredRadios.length > 0" class="list-none p-0 m-0">
                 <li
                   v-for="radio in filteredRadios"
                   :key="radio.id"
-                  :class="['radio-item', { selected: selectedRadio?.id === radio.id }]"
                   @click="selectRadio(radio)"
+                  class="flex items-center gap-3.5 p-3 rounded-xl cursor-pointer transition-all duration-200 mb-1 hover:bg-white/[0.04]"
+                  :class="{ 'bg-[rgba(240,47,0,0.1)] border border-[rgba(240,47,0,0.25)]': selectedRadio?.id === radio.id }"
                 >
-                  <img :src="radio.logo" :alt="radio.name" class="radio-logo" />
-                  <div class="radio-info">
-                    <span class="radio-name">{{ radio.name }}</span>
-                    <span v-if="radio.categories.length" class="radio-cats">
+                  <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-[10px] object-cover bg-white/5" />
+                  <div class="flex-1 min-w-0">
+                    <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis">{{ radio.name }}</span>
+                    <span v-if="radio.categories.length" class="block text-xs text-white/35 whitespace-nowrap overflow-hidden text-ellipsis">
                       {{ radio.categories.map(getCategoryLabel).join(', ') }}
                     </span>
                   </div>
-                  <div v-if="selectedRadio?.id === radio.id" class="check-icon">
-                    <svg viewBox="0 0 24 24" fill="none">
+                  <div v-if="selectedRadio?.id === radio.id" class="w-6 h-6 bg-gradient-brand-simple rounded-full flex items-center justify-center shrink-0">
+                    <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none">
                       <path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </div>
                 </li>
               </ul>
 
-              <div v-else class="empty-state">
+              <div v-else class="flex flex-col items-center justify-center gap-3 py-10 px-5 text-text-muted text-sm">
                 <span>No radios found</span>
               </div>
             </div>
 
-            <div v-if="addError" class="add-error">
+            <!-- Error -->
+            <div v-if="addError" class="mx-6 mb-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-[10px] text-error-light text-[13px] text-center">
               {{ addError }}
             </div>
 
-            <div class="modal-footer">
-              <div v-if="selectedRadio" class="selected-preview">
-                <img :src="selectedRadio.logo" :alt="selectedRadio.name" class="preview-logo" />
-                <div class="preview-info">
-                  <span class="preview-name">{{ selectedRadio.name }}</span>
-                  <span class="preview-format">{{ selectedFormat.toUpperCase() }} {{ selectedBitrate }}kbps</span>
+            <!-- Modal Footer -->
+            <div class="flex items-center gap-4 py-4 px-6 border-t border-border bg-black/20">
+              <div v-if="selectedRadio" class="flex-1 flex items-center gap-3 min-w-0">
+                <img :src="selectedRadio.logo" :alt="selectedRadio.name" class="w-10 h-10 rounded-lg object-cover" />
+                <div class="min-w-0">
+                  <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ selectedRadio.name }}</span>
+                  <span class="block text-xs text-text-muted">{{ selectedFormat.toUpperCase() }} {{ selectedBitrate }}kbps</span>
                 </div>
               </div>
               <button
-                class="add-btn"
                 :disabled="!selectedRadio || isAdding"
                 @click="addToPlaylist"
+                class="py-3 px-6 bg-gradient-brand-simple border-none rounded-xl text-sm font-semibold text-white cursor-pointer transition-all duration-200 whitespace-nowrap shrink-0 hover:opacity-90 hover:-translate-y-px disabled:bg-white/10 disabled:text-white/30 disabled:cursor-not-allowed disabled:transform-none"
               >
-                <span v-if="isAdding" class="btn-spinner"></span>
+                <span v-if="isAdding" class="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-1.5"></span>
                 {{ isAdding ? 'Adding...' : 'Add to Playlist' }}
               </button>
             </div>
@@ -254,427 +277,3 @@ function getCategoryLabel(cat: string): string {
   </div>
 </template>
 
-<style scoped>
-.open-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  padding: 14px 18px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.open-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-.open-btn:hover {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: #fafafa;
-}
-
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-}
-
-.modal {
-  width: 100%;
-  max-width: 480px;
-  max-height: 85vh;
-  background: #18181b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.modal-header h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fafafa;
-  margin: 0;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.4);
-  transition: color 0.2s;
-  border-radius: 8px;
-}
-
-.close-btn:hover {
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.close-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-.filters {
-  padding: 16px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.search-box {
-  position: relative;
-  margin-bottom: 12px;
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.search-input {
-  width: 100%;
-  padding: 12px 14px 12px 42px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  font-size: 14px;
-  color: #fafafa;
-  transition: all 0.2s;
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: rgba(240, 47, 0, 0.5);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.filter-row {
-  display: flex;
-  gap: 12px;
-}
-
-.category-select {
-  flex: 1;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  font-size: 13px;
-  color: #fafafa;
-  cursor: pointer;
-}
-
-.category-select:focus {
-  outline: none;
-  border-color: rgba(240, 47, 0, 0.5);
-}
-
-.category-select option {
-  background: #18181b;
-  color: #fafafa;
-}
-
-.format-selector {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
-}
-
-.format-btn {
-  padding: 6px 12px;
-  background: transparent;
-  border: none;
-  border-radius: 7px;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.format-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.format-btn.active {
-  background: linear-gradient(135deg, #F02F00 0%, #d42800 100%);
-  color: white;
-}
-
-.bitrate-selector {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
-}
-
-.bitrate-btn {
-  padding: 6px 10px;
-  background: transparent;
-  border: none;
-  border-radius: 7px;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.bitrate-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.bitrate-btn.active {
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-}
-
-.radio-list-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 8px 16px;
-  min-height: 200px;
-  max-height: 350px;
-}
-
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 40px 20px;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 14px;
-}
-
-.radio-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.radio-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-bottom: 4px;
-}
-
-.radio-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.radio-item.selected {
-  background: rgba(240, 47, 0, 0.1);
-  border: 1px solid rgba(240, 47, 0, 0.25);
-}
-
-.radio-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  object-fit: cover;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.radio-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.radio-name {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.radio-cats {
-  display: block;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.35);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.check-icon {
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(135deg, #F02F00 0%, #d42800 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.check-icon svg {
-  width: 14px;
-  height: 14px;
-  color: white;
-}
-
-.modal-footer {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.selected-preview {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-
-.preview-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.preview-info {
-  min-width: 0;
-}
-
-.preview-name {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.preview-format {
-  display: block;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.add-btn {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #F02F00 0%, #d42800 100%);
-  border: none;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.add-btn:hover:not(:disabled) {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.add-btn:disabled {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.3);
-  cursor: not-allowed;
-}
-
-.btn-spinner {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin-right: 6px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.add-error {
-  margin: 0 24px 12px;
-  padding: 10px 14px;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: 10px;
-  color: #fca5a5;
-  font-size: 13px;
-  text-align: center;
-}
-
-/* Modal transitions */
-.modal-enter-active,
-.modal-leave-active {
-  transition: all 0.3s ease;
-}
-
-.modal-enter-active .modal,
-.modal-leave-active .modal {
-  transition: all 0.3s ease;
-}
-
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-from .modal,
-.modal-leave-to .modal {
-  transform: scale(0.95) translateY(20px);
-  opacity: 0;
-}
-</style>
