@@ -20,7 +20,7 @@ import RadioSelector from './components/RadioSelector.vue'
     </main>
 
     <footer class="app-footer">
-      <span>Built with Vue 3</span>
+      <img src="/brnt-logo-w.png" alt="brnt.cz" class="footer-logo" />
     </footer>
   </div>
 </template>
@@ -107,8 +107,14 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.app-footer span {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.3);
+.footer-logo {
+  height: 24px;
+  opacity: 0.8;
+  mix-blend-mode: screen;
+  transition: opacity 0.2s;
+}
+
+.footer-logo:hover {
+  opacity: 1;
 }
 </style>
