@@ -114,10 +114,18 @@ onUnmounted(() => {
     <!-- Player Visual -->
     <div class="flex justify-center mb-6">
       <div
-        class="w-[120px] h-[120px] relative flex items-center justify-center"
+        class="w-[120px] h-[120px] relative flex items-center justify-center overflow-visible"
         :class="{ 'cursor-pointer': store.currentStream }"
         @click="store.currentStream && togglePlay()"
       >
+        <!-- Pulse Rings (behind the circle) -->
+        <div
+          class="absolute inset-0 flex items-center justify-center pointer-events-none"
+          :class="isPlaying ? 'opacity-100' : 'opacity-0'"
+        >
+          <div class="absolute w-[100px] h-[100px] border border-[rgba(240,47,0,0.3)] rounded-full animate-pulse-ring"></div>
+          <div class="absolute w-[100px] h-[100px] border border-[rgba(240,47,0,0.3)] rounded-full animate-pulse-ring pulse-delay-1s"></div>
+        </div>
         <!-- Artwork Inner Circle -->
         <div
           class="w-20 h-20 bg-gradient-brand rounded-full flex items-center justify-center relative z-[2] shadow-brand-lg transition-all duration-300"
@@ -139,15 +147,6 @@ onUnmounted(() => {
             <span class="w-1 h-[50%] bg-white rounded-sm animate-wave wave-delay-5"></span>
           </div>
         </div>
-        <!-- Pulse Rings -->
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] border border-[rgba(240,47,0,0.3)] rounded-full transition-opacity duration-300"
-          :class="isPlaying ? 'opacity-100 animate-pulse-ring' : 'opacity-0'"
-        ></div>
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] border border-[rgba(240,47,0,0.3)] rounded-full transition-opacity duration-300"
-          :class="isPlaying ? 'opacity-100 animate-pulse-ring pulse-delay-1s' : 'opacity-0'"
-        ></div>
       </div>
     </div>
 
