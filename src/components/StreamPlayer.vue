@@ -11,15 +11,36 @@ const isPlaying = ref(false)
 const volume = ref(80)
 const error = ref<string | null>(null)
 
+// Flag to ignore pause events during stream loading
+const isLoadingStream = ref(false)
+
 function togglePlay() {
   if (!audioRef.value) return
 
   if (isPlaying.value) {
+    // Stop stream completely to save mobile data (FUP protection)
+    isPlaying.value = false
     audioRef.value.pause()
+    audioRef.value.removeAttribute('src')
+    audioRef.value.load() // Reset the audio element
   } else {
-    audioRef.value.play().catch(e => {
-      error.value = t.value.streamError + ': ' + e.message
-    })
+    // Restore stream URL and play
+    if (store.currentStream) {
+      const audio = audioRef.value
+      isLoadingStream.value = true
+      audio.src = store.currentStream.url
+      audio.load()
+      // Wait for stream to be ready before playing
+      const playWhenReady = () => {
+        audio.play().catch(e => {
+          error.value = t.value.streamError + ': ' + e.message
+          isPlaying.value = false
+        })
+        isLoadingStream.value = false
+        audio.removeEventListener('canplay', playWhenReady)
+      }
+      audio.addEventListener('canplay', playWhenReady)
+    }
   }
 }
 
@@ -29,7 +50,10 @@ function handlePlay() {
 }
 
 function handlePause() {
-  isPlaying.value = false
+  // Ignore pause events during stream loading (load() triggers pause)
+  if (!isLoadingStream.value) {
+    isPlaying.value = false
+  }
 }
 
 function handleError() {
@@ -80,14 +104,24 @@ useMediaSession({
   streamName,
   onPlay: () => {
     if (audioRef.value && store.currentStream) {
-      audioRef.value.play().catch(e => {
-        error.value = t.value.streamError + ': ' + e.message
-      })
+      const audio = audioRef.value
+      audio.src = store.currentStream.url
+      audio.load()
+      const playWhenReady = () => {
+        audio.play().catch(e => {
+          error.value = t.value.streamError + ': ' + e.message
+        })
+        audio.removeEventListener('canplay', playWhenReady)
+      }
+      audio.addEventListener('canplay', playWhenReady)
     }
   },
   onPause: () => {
     if (audioRef.value) {
+      // Stop stream completely to save mobile data (FUP protection)
       audioRef.value.pause()
+      audioRef.value.removeAttribute('src')
+      audioRef.value.load()
     }
   }
 })
@@ -99,6 +133,8 @@ onMounted(() => {
 onUnmounted(() => {
   if (audioRef.value) {
     audioRef.value.pause()
+    audioRef.value.removeAttribute('src')
+    audioRef.value.load()
   }
 })
 </script>
@@ -107,7 +143,6 @@ onUnmounted(() => {
   <div class="bg-gradient-surface !bg-[#0F0F11] flex flex-col justify-between min-h-[500px] border border-border-light rounded-[20px] p-7 backdrop-blur-glass overflow-visible">
     <audio
       ref="audioRef"
-      :src="store.currentStream?.url"
       @play="handlePlay"
       @pause="handlePause"
       @error="handleError"
