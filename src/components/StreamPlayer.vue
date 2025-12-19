@@ -202,12 +202,19 @@ onUnmounted(() => {
     <div class="flex justify-center mb-6">
       <button
         @click="togglePlay"
-        :disabled="!store.currentStream"
+        :disabled="!store.currentStream || isLoadingStream"
         class="w-14 h-14 bg-gradient-brand-simple border-none rounded-full cursor-pointer flex items-center justify-center transition-all duration-200 shadow-brand hover:scale-105 hover:shadow-[0_6px_28px_rgba(240,47,0,0.4)] active:scale-98 disabled:bg-white/10 disabled:shadow-none disabled:cursor-not-allowed"
       >
-        <svg v-if="!isPlaying" class="w-6 h-6 text-white shrink-0" :class="{ 'text-white/30': !store.currentStream }" viewBox="0 0 24 24" fill="none">
+        <!-- Loading spinner -->
+        <svg v-if="isLoadingStream" class="w-6 h-6 text-white shrink-0 animate-spin" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.25"/>
+          <path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <!-- Play icon -->
+        <svg v-else-if="!isPlaying" class="w-6 h-6 text-white shrink-0" :class="{ 'text-white/30': !store.currentStream }" viewBox="0 0 24 24" fill="none">
           <path d="M8 5.14v14.72a1 1 0 001.5.86l11-7.36a1 1 0 000-1.72l-11-7.36a1 1 0 00-1.5.86z" fill="currentColor"/>
         </svg>
+        <!-- Pause icon -->
         <svg v-else class="w-6 h-6 text-white shrink-0" viewBox="0 0 24 24" fill="none">
           <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/>
           <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/>
