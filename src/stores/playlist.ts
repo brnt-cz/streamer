@@ -16,22 +16,38 @@ const COOKIE_PLAYLIST = 'streamer_playlist'
 const COOKIE_LAST_STREAM = 'streamer_last_stream'
 const COOKIE_DAYS = 365
 
-function setCookie(name: string, value: string, days: number) {
+function isSecureContext(): boolean {
+  return window.location.protocol === 'https:'
+}
+
+function setCookie(name: string, value: string, days: number): void {
   const expires = new Date()
   expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
-  document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Lax`
+  const secure = isSecureContext() ? ';Secure' : ''
+  document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Lax${secure}`
 }
 
 function getCookie(name: string): string | null {
   const nameEQ = name + '='
   const cookies = document.cookie.split(';')
-  for (let cookie of cookies) {
-    cookie = cookie.trim()
-    if (cookie.indexOf(nameEQ) === 0) {
-      return decodeURIComponent(cookie.substring(nameEQ.length))
-    }
+  const found = cookies.find(c => c.trim().startsWith(nameEQ))
+  return found ? decodeURIComponent(found.trim().substring(nameEQ.length)) : null
+}
+
+function generateId(): string {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
   }
-  return null
+  return Date.now().toString() + Math.random().toString(36).substring(2, 9)
+}
+
+function isValidUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url)
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+  } catch {
+    return false
+  }
 }
 
 function extractBitrateFromUrl(url: string): string | undefined {
@@ -127,8 +143,8 @@ export const usePlaylistStore = defineStore('playlist', () => {
   watch(items, () => savePlaylistToCookie(items.value), { deep: true })
   watch(currentId, (id) => saveLastStreamToCookie(id))
 
-  function addStream(name: string, url: string, bitrate?: string) {
-    const id = Date.now().toString()
+  function addStream(name: string, url: string, bitrate?: string): string {
+    const id = generateId()
     items.value.push({ id, name, url, bitrate })
     return id
   }
@@ -171,13 +187,18 @@ export const usePlaylistStore = defineStore('playlist', () => {
 
   function importPlaylist(jsonString: string): boolean {
     try {
-      const data = JSON.parse(jsonString)
-      if (data.items && Array.isArray(data.items)) {
-        // Validate items
-        const validItems = data.items.filter((item: StreamItem) =>
-          item && typeof item.name === 'string' && typeof item.url === 'string'
-        ).map((item: StreamItem, index: number) => ({
-          id: item.id || Date.now().toString() + index,
+      const data: unknown = JSON.parse(jsonString)
+      if (data && typeof data === 'object' && 'items' in data && Array.isArray((data as PlaylistData).items)) {
+        const rawItems = (data as PlaylistData).items
+        // Validate items and URL format
+        const validItems = rawItems.filter((item): item is StreamItem =>
+          item !== null &&
+          typeof item === 'object' &&
+          typeof item.name === 'string' &&
+          typeof item.url === 'string' &&
+          isValidUrl(item.url)
+        ).map((item, index) => ({
+          id: item.id || generateId() + index,
           name: item.name,
           url: item.url,
           bitrate: item.bitrate || extractBitrateFromUrl(item.url)
@@ -190,23 +211,26 @@ export const usePlaylistStore = defineStore('playlist', () => {
         }
       }
       return false
-    } catch (e) {
-      console.warn('Failed to import playlist:', e)
+    } catch {
       return false
     }
   }
 
-  function downloadPlaylist() {
-    const json = exportPlaylist()
-    const blob = new Blob([json], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'playlist.json'
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
+  function downloadPlaylist(): void {
+    try {
+      const json = exportPlaylist()
+      const blob = new Blob([json], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'playlist.json'
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    } catch {
+      // Download failed - silently ignore (user can try again)
+    }
   }
 
   return {

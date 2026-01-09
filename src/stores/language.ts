@@ -1,15 +1,31 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 export type Language = 'en' | 'cs'
 
 const STORAGE_KEY = 'streamer-language'
 
+function safeGetItem(key: string): string | null {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+function safeSetItem(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    // Storage quota exceeded or access denied (private mode)
+  }
+}
+
 export const useLanguageStore = defineStore('language', () => {
   const currentLanguage = ref<Language>(loadLanguage())
 
   function loadLanguage(): Language {
-    const saved = localStorage.getItem(STORAGE_KEY)
+    const saved = safeGetItem(STORAGE_KEY)
     if (saved === 'en' || saved === 'cs') {
       return saved
     }
@@ -18,16 +34,11 @@ export const useLanguageStore = defineStore('language', () => {
 
   function setLanguage(lang: Language) {
     currentLanguage.value = lang
-    localStorage.setItem(STORAGE_KEY, lang)
+    safeSetItem(STORAGE_KEY, lang)
   }
-
-  const isEnglish = computed(() => currentLanguage.value === 'en')
-  const isCzech = computed(() => currentLanguage.value === 'cs')
 
   return {
     currentLanguage,
-    setLanguage,
-    isEnglish,
-    isCzech
+    setLanguage
   }
 })

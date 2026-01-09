@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { usePlaylistStore } from '../stores/playlist'
 import { useI18n } from '../composables/useI18n'
 
 const store = usePlaylistStore()
 const { t } = useI18n()
+
+// Constants
+const ERROR_DISMISS_MS = 3000
 
 const showAddForm = ref(false)
 const editingId = ref<string | null>(null)
@@ -15,22 +18,39 @@ const importError = ref<string | null>(null)
 const draggedId = ref<string | null>(null)
 const dragOverId = ref<string | null>(null)
 
-function openAddForm() {
+// URL validation helper
+function isValidStreamUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url)
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
+// Form validation
+const isFormValid = computed(() => {
+  const name = newName.value.trim()
+  const url = newUrl.value.trim()
+  return name.length > 0 && url.length > 0 && isValidStreamUrl(url)
+})
+
+function openAddForm(): void {
   showAddForm.value = true
   newName.value = ''
   newUrl.value = ''
   editingId.value = null
 }
 
-function startEdit(id: string, name: string, url: string) {
+function startEdit(id: string, name: string, url: string): void {
   editingId.value = id
   newName.value = name
   newUrl.value = url
   showAddForm.value = true
 }
 
-function saveStream() {
-  if (!newName.value.trim() || !newUrl.value.trim()) return
+function saveStream(): void {
+  if (!isFormValid.value) return
 
   if (editingId.value) {
     store.updateStream(editingId.value, newName.value.trim(), newUrl.value.trim())
@@ -42,7 +62,7 @@ function saveStream() {
   closeForm()
 }
 
-function closeForm() {
+function closeForm(): void {
   showAddForm.value = false
   editingId.value = null
   newName.value = ''
@@ -90,27 +110,29 @@ function triggerImport() {
   fileInput.value?.click()
 }
 
-function handleFileImport(event: Event) {
-  const target = event.target as HTMLInputElement
-  const file = target.files?.[0]
-  if (!file) return
+function showError(message: string): void {
+  importError.value = message
+  setTimeout(() => {
+    importError.value = null
+  }, ERROR_DISMISS_MS)
+}
+
+async function handleFileImport(event: Event): Promise<void> {
+  const target = event.target as HTMLInputElement | null
+  const file = target?.files?.[0]
+  if (!file || !target) return
 
   importError.value = null
 
-  const reader = new FileReader()
-  reader.onload = (e) => {
-    const content = e.target?.result as string
+  try {
+    const content = await file.text()
     const success = store.importPlaylist(content)
     if (!success) {
-      importError.value = 'Invalid playlist file'
-      setTimeout(() => importError.value = null, 3000)
+      showError('Invalid playlist file')
     }
+  } catch {
+    showError('Failed to read file')
   }
-  reader.onerror = () => {
-    importError.value = 'Failed to read file'
-    setTimeout(() => importError.value = null, 3000)
-  }
-  reader.readAsText(file)
 
   // Reset input
   target.value = ''
