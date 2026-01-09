@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 import { useRadios, type Radio, type StreamFormat } from '../stores/radios'
 import { usePlaylistStore } from '../stores/playlist'
 import { useI18n } from '../composables/useI18n'
@@ -10,6 +10,7 @@ const { t, getCategoryLabel } = useI18n()
 
 const isOpen = ref(false)
 const search = ref('')
+const debouncedSearch = ref('')
 const selectedCategory = ref('')
 const selectedFormat = ref<StreamFormat>('mp3')
 const selectedBitrate = ref('128')
@@ -17,7 +18,27 @@ const selectedRadio = ref<Radio | null>(null)
 const isAdding = ref(false)
 const addError = ref<string | null>(null)
 
-const filteredRadios = computed(() => filterRadios(search.value, selectedCategory.value || undefined))
+// Debounce search input
+const SEARCH_DEBOUNCE_MS = 300
+let searchDebounceTimer: ReturnType<typeof setTimeout> | null = null
+
+watch(search, (newValue) => {
+  if (searchDebounceTimer) {
+    clearTimeout(searchDebounceTimer)
+  }
+  searchDebounceTimer = setTimeout(() => {
+    debouncedSearch.value = newValue
+    searchDebounceTimer = null
+  }, SEARCH_DEBOUNCE_MS)
+})
+
+onUnmounted(() => {
+  if (searchDebounceTimer) {
+    clearTimeout(searchDebounceTimer)
+  }
+})
+
+const filteredRadios = computed(() => filterRadios(debouncedSearch.value, selectedCategory.value || undefined))
 
 const availableFormats = computed(() => {
   if (!selectedRadio.value) return formats
