@@ -14,63 +14,100 @@ const error = ref<string | null>(null)
 // Flag to ignore pause events during stream loading
 const isLoadingStream = ref(false)
 
-function togglePlay() {
+// Track pending canplay listener for cleanup
+let pendingCanplayHandler: (() => void) | null = null
+
+// Throttle helper for volume updates
+const VOLUME_THROTTLE_MS = 50
+let volumeThrottleTimer: ReturnType<typeof setTimeout> | null = null
+
+function throttledUpdateVolume(): void {
+  if (volumeThrottleTimer) return
+  volumeThrottleTimer = setTimeout(() => {
+    if (audioRef.value) {
+      audioRef.value.volume = volume.value / 100
+    }
+    volumeThrottleTimer = null
+  }, VOLUME_THROTTLE_MS)
+}
+
+// Helper: Stop audio and clear source (to save mobile data)
+function stopAudio(): void {
+  if (!audioRef.value) return
+  audioRef.value.pause()
+  audioRef.value.removeAttribute('src')
+  audioRef.value.load()
+}
+
+// Helper: Clean up any pending canplay listener
+function cleanupCanplayListener(): void {
+  if (pendingCanplayHandler && audioRef.value) {
+    audioRef.value.removeEventListener('canplay', pendingCanplayHandler)
+    pendingCanplayHandler = null
+  }
+}
+
+// Helper: Play audio when ready with proper cleanup
+function playWhenReady(audio: HTMLAudioElement, onError?: (e: Error) => void): void {
+  cleanupCanplayListener()
+
+  const handler = () => {
+    audio.play().catch((e: Error) => {
+      if (onError) onError(e)
+      isPlaying.value = false
+    })
+    isLoadingStream.value = false
+    audio.removeEventListener('canplay', handler)
+    pendingCanplayHandler = null
+  }
+
+  pendingCanplayHandler = handler
+  audio.addEventListener('canplay', handler)
+}
+
+function togglePlay(): void {
   if (!audioRef.value) return
 
   if (isPlaying.value) {
-    // Stop stream completely to save mobile data (FUP protection)
     isPlaying.value = false
-    audioRef.value.pause()
-    audioRef.value.removeAttribute('src')
-    audioRef.value.load() // Reset the audio element
+    stopAudio()
   } else {
-    // Restore stream URL and play
     if (store.currentStream) {
       const audio = audioRef.value
       isLoadingStream.value = true
       audio.src = store.currentStream.url
       audio.load()
-      // Wait for stream to be ready before playing
-      const playWhenReady = () => {
-        audio.play().catch(e => {
-          error.value = t.value.streamError + ': ' + e.message
-          isPlaying.value = false
-        })
-        isLoadingStream.value = false
-        audio.removeEventListener('canplay', playWhenReady)
-      }
-      audio.addEventListener('canplay', playWhenReady)
+      playWhenReady(audio, (e) => {
+        error.value = t.value.streamError + ': ' + e.message
+      })
     }
   }
 }
 
-function handlePlay() {
+function handlePlay(): void {
   isPlaying.value = true
   error.value = null
 }
 
-function handlePause() {
+function handlePause(): void {
   // Ignore pause events during stream loading (load() triggers pause)
   if (!isLoadingStream.value) {
     isPlaying.value = false
   }
 }
 
-function handleError() {
+function handleError(): void {
   error.value = t.value.streamLoadError
   isPlaying.value = false
-}
-
-function updateVolume() {
-  if (audioRef.value) {
-    audioRef.value.volume = volume.value / 100
-  }
 }
 
 watch(() => store.currentStream, (newStream, oldStream) => {
   if (audioRef.value && newStream) {
     const shouldAutoPlay = isPlaying.value || (oldStream && oldStream.id !== newStream.id)
     error.value = null
+
+    // Clean up any pending listener before switching
+    cleanupCanplayListener()
 
     // Stop current playback
     audioRef.value.pause()
@@ -81,19 +118,14 @@ watch(() => store.currentStream, (newStream, oldStream) => {
 
     // Auto-play when stream is ready
     if (shouldAutoPlay) {
-      const audio = audioRef.value
-      const playWhenReady = () => {
-        audio.play().catch(() => {
-          error.value = t.value.streamError
-        })
-        audio.removeEventListener('canplay', playWhenReady)
-      }
-      audio.addEventListener('canplay', playWhenReady)
+      playWhenReady(audioRef.value, () => {
+        error.value = t.value.streamError
+      })
     }
   }
 })
 
-watch(volume, updateVolume)
+watch(volume, throttledUpdateVolume)
 
 // Stream name for media session
 const streamName = computed(() => store.currentStream?.name)
@@ -107,35 +139,28 @@ useMediaSession({
       const audio = audioRef.value
       audio.src = store.currentStream.url
       audio.load()
-      const playWhenReady = () => {
-        audio.play().catch(e => {
-          error.value = t.value.streamError + ': ' + e.message
-        })
-        audio.removeEventListener('canplay', playWhenReady)
-      }
-      audio.addEventListener('canplay', playWhenReady)
+      playWhenReady(audio, (e) => {
+        error.value = t.value.streamError + ': ' + e.message
+      })
     }
   },
   onPause: () => {
-    if (audioRef.value) {
-      // Stop stream completely to save mobile data (FUP protection)
-      audioRef.value.pause()
-      audioRef.value.removeAttribute('src')
-      audioRef.value.load()
-    }
+    stopAudio()
   }
 })
 
 onMounted(() => {
-  updateVolume()
+  if (audioRef.value) {
+    audioRef.value.volume = volume.value / 100
+  }
 })
 
 onUnmounted(() => {
-  if (audioRef.value) {
-    audioRef.value.pause()
-    audioRef.value.removeAttribute('src')
-    audioRef.value.load()
+  cleanupCanplayListener()
+  if (volumeThrottleTimer) {
+    clearTimeout(volumeThrottleTimer)
   }
+  stopAudio()
 })
 </script>
 
