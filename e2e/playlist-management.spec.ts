@@ -173,6 +173,10 @@ test.describe('Playlist Management', () => {
     await stationItem.hover()
     await stationItem.getByRole('button', { name: 'Delete' }).click()
 
+    // And confirm the deletion in the dialog
+    await expect(page.getByText('Delete station?')).toBeVisible()
+    await page.getByRole('button', { name: 'Delete' }).last().click()
+
     // Then the station is removed from the playlist
     await expect(page.getByRole('listitem').filter({ hasText: 'To Delete' })).not.toBeVisible()
   })
