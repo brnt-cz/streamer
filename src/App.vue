@@ -31,7 +31,7 @@ function closePlaylist() {
     <!-- Main Layout -->
     <div class="flex-1 flex relative justify-center lg:mr-[380px]">
       <!-- Main Content - centered vertically when content fits -->
-      <main class="flex flex-col gap-4 px-5 lg:px-10 max-w-[480px] w-full lg:mx-auto">
+      <main class="flex flex-col gap-4 px-5 pr-14 lg:pr-10 lg:px-10 max-w-[480px] w-full lg:mx-auto">
         <StreamPlayer />
       </main>
 
@@ -96,7 +96,9 @@ function closePlaylist() {
 
     <!-- Footer -->
     <footer class="mt-10 text-center py-4 border-t border-border px-5 lg:px-10 lg:mr-[380px]">
-      <img src="/brnt-logo-w.png" alt="brnt.cz" class="h-6 opacity-80 mix-blend-screen transition-opacity duration-200 hover:opacity-100 inline-block" />
+      <a href="https://brnt.cz" target="_blank" rel="noopener noreferrer">
+        <img src="/brnt-logo-w.png" alt="brnt.cz" class="h-6 opacity-80 mix-blend-screen transition-opacity duration-200 hover:opacity-100 inline-block" />
+      </a>
     </footer>
   </div>
 </template>
