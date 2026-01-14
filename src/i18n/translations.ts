@@ -28,6 +28,10 @@ export const translations = {
     failedToRead: 'Failed to read file',
     edit: 'Edit',
     delete: 'Delete',
+    deleteConfirmTitle: 'Delete station?',
+    deleteConfirmMessage: 'This action cannot be undone.',
+    cancel: 'Cancel',
+    confirmDelete: 'Delete',
 
     // RadioSelector
     browseRadios: 'Browse Radios',
@@ -103,6 +107,10 @@ export const translations = {
     failedToRead: 'Nepodařilo se přečíst soubor',
     edit: 'Upravit',
     delete: 'Smazat',
+    deleteConfirmTitle: 'Smazat stanici?',
+    deleteConfirmMessage: 'Tuto akci nelze vrátit zpět.',
+    cancel: 'Zrušit',
+    confirmDelete: 'Smazat',
 
     // RadioSelector
     browseRadios: 'Procházet rádia',
