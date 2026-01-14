@@ -17,6 +17,7 @@ const fileInput = ref<HTMLInputElement | null>(null)
 const importError = ref<string | null>(null)
 const draggedId = ref<string | null>(null)
 const dragOverId = ref<string | null>(null)
+const deleteConfirmId = ref<string | null>(null)
 
 // URL validation helper
 function isValidStreamUrl(url: string): boolean {
@@ -108,6 +109,21 @@ function onDragEnd() {
 
 function triggerImport() {
   fileInput.value?.click()
+}
+
+function confirmDelete(id: string): void {
+  deleteConfirmId.value = id
+}
+
+function cancelDelete(): void {
+  deleteConfirmId.value = null
+}
+
+function executeDelete(): void {
+  if (deleteConfirmId.value) {
+    store.removeStream(deleteConfirmId.value)
+    deleteConfirmId.value = null
+  }
 }
 
 function showError(message: string): void {
@@ -243,9 +259,9 @@ async function handleFileImport(event: Event): Promise<void> {
         <div class="relative ml-2 min-w-[70px] flex justify-end">
           <span
             v-if="item.bitrate"
-            class="py-0.5 px-2 bg-white/[0.08] rounded-md text-[11px] font-medium text-white/50 transition-opacity duration-150 group-hover:opacity-0 group-hover:pointer-events-none"
+            class="hidden lg:inline py-0.5 px-2 bg-white/[0.08] rounded-md text-[11px] font-medium text-white/50 transition-opacity duration-150 group-hover:opacity-0 group-hover:pointer-events-none"
           >{{ item.bitrate }}k</span>
-          <div class="absolute right-0 top-1/2 -translate-y-1/2 flex gap-1 opacity-0 transition-opacity duration-150 group-hover:opacity-100">
+          <div class="flex gap-1 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:opacity-0 transition-opacity duration-150 lg:group-hover:opacity-100">
             <button
               @click.stop="startEdit(item.id, item.name, item.url)"
               :title="t.edit"
@@ -257,7 +273,7 @@ async function handleFileImport(event: Event): Promise<void> {
               </svg>
             </button>
             <button
-              @click.stop="store.removeStream(item.id)"
+              @click.stop="confirmDelete(item.id)"
               :title="t.delete"
               class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
             >
@@ -320,6 +336,39 @@ async function handleFileImport(event: Event): Promise<void> {
     <div v-if="importError" class="mt-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-lg text-error-light text-[13px] text-center">
       {{ importError }}
     </div>
+
+    <!-- Delete Confirmation Dialog -->
+    <Teleport to="body">
+      <div
+        v-if="deleteConfirmId"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      >
+        <!-- Backdrop -->
+        <div
+          class="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          @click="cancelDelete"
+        ></div>
+        <!-- Dialog -->
+        <div class="relative bg-[#1a1a1d] border border-border-light rounded-2xl p-5 w-full max-w-[300px] shadow-2xl">
+          <h3 class="text-base font-semibold text-white mb-2">{{ t.deleteConfirmTitle }}</h3>
+          <p class="text-sm text-white/60 mb-5">{{ t.deleteConfirmMessage }}</p>
+          <div class="flex gap-3">
+            <button
+              @click="cancelDelete"
+              class="flex-1 py-2.5 px-4 bg-white/[0.06] border border-border-light rounded-lg text-sm font-medium text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
+            >
+              {{ t.cancel }}
+            </button>
+            <button
+              @click="executeDelete"
+              class="flex-1 py-2.5 px-4 bg-red-600/90 border-none rounded-lg text-sm font-medium text-white transition-all duration-200 hover:bg-red-600"
+            >
+              {{ t.confirmDelete }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
