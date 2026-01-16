@@ -6,14 +6,22 @@ export interface StreamItem {
   name: string
   url: string
   bitrate?: string
+  folderId?: string
+}
+
+export interface PlaylistFolder {
+  id: string
+  name: string
 }
 
 interface PlaylistData {
   items: StreamItem[]
+  folders?: PlaylistFolder[]
 }
 
 const COOKIE_PLAYLIST = 'streamer_playlist'
 const COOKIE_LAST_STREAM = 'streamer_last_stream'
+const COOKIE_FOLDER_COLLAPSED = 'streamer_folder_collapsed'
 const COOKIE_DAYS = 365
 
 function isSecureContext(): boolean {
@@ -73,7 +81,12 @@ function extractBitrateFromUrl(url: string): string | undefined {
   return undefined
 }
 
-function loadPlaylistFromCookie(): StreamItem[] {
+interface LoadedPlaylistData {
+  items: StreamItem[]
+  folders: PlaylistFolder[]
+}
+
+function loadPlaylistFromCookie(): LoadedPlaylistData {
   const defaultItems: StreamItem[] = [
     {
       id: '1',
@@ -89,17 +102,31 @@ function loadPlaylistFromCookie(): StreamItem[] {
       const data = JSON.parse(cookieValue) as PlaylistData
       if (data.items && Array.isArray(data.items) && data.items.length > 0) {
         // Add bitrate if missing
-        return data.items.map(item => ({
+        const items = data.items.map(item => ({
           ...item,
           bitrate: item.bitrate || extractBitrateFromUrl(item.url)
         }))
+        const folders = Array.isArray(data.folders) ? data.folders : []
+        return { items, folders }
       }
     }
   } catch (e) {
     console.warn('Failed to load playlist from cookie:', e)
   }
 
-  return defaultItems
+  return { items: defaultItems, folders: [] }
+}
+
+function loadCollapsedStateFromCookie(): Record<string, boolean> {
+  try {
+    const cookieValue = getCookie(COOKIE_FOLDER_COLLAPSED)
+    if (cookieValue) {
+      return JSON.parse(cookieValue)
+    }
+  } catch (e) {
+    console.warn('Failed to load folder collapsed state from cookie:', e)
+  }
+  return {}
 }
 
 function loadLastStreamFromCookie(items: StreamItem[]): string | null {
@@ -114,11 +141,19 @@ function loadLastStreamFromCookie(items: StreamItem[]): string | null {
   return items[0]?.id || null
 }
 
-function savePlaylistToCookie(items: StreamItem[]) {
+function savePlaylistToCookie(items: StreamItem[], folders: PlaylistFolder[]) {
   try {
-    setCookie(COOKIE_PLAYLIST, JSON.stringify({ items }), COOKIE_DAYS)
+    setCookie(COOKIE_PLAYLIST, JSON.stringify({ items, folders }), COOKIE_DAYS)
   } catch (e) {
     console.warn('Failed to save playlist to cookie:', e)
+  }
+}
+
+function saveCollapsedStateToCookie(collapsedState: Record<string, boolean>) {
+  try {
+    setCookie(COOKIE_FOLDER_COLLAPSED, JSON.stringify(collapsedState), COOKIE_DAYS)
+  } catch (e) {
+    console.warn('Failed to save folder collapsed state to cookie:', e)
   }
 }
 
@@ -133,14 +168,28 @@ function saveLastStreamToCookie(id: string | null) {
 }
 
 export const usePlaylistStore = defineStore('playlist', () => {
-  const items = ref<StreamItem[]>(loadPlaylistFromCookie())
+  const loadedData = loadPlaylistFromCookie()
+  const items = ref<StreamItem[]>(loadedData.items)
+  const folders = ref<PlaylistFolder[]>(loadedData.folders)
+  const folderCollapsedState = ref<Record<string, boolean>>(loadCollapsedStateFromCookie())
   const currentId = ref<string | null>(loadLastStreamFromCookie(items.value))
 
   const currentStream = computed(() => {
     return items.value.find(item => item.id === currentId.value) || null
   })
 
-  watch(items, () => savePlaylistToCookie(items.value), { deep: true })
+  // Get items that are not in any folder
+  const rootItems = computed(() => {
+    return items.value.filter(item => !item.folderId)
+  })
+
+  // Get items for a specific folder
+  function getItemsByFolder(folderId: string): StreamItem[] {
+    return items.value.filter(item => item.folderId === folderId)
+  }
+
+  watch([items, folders], () => savePlaylistToCookie(items.value, folders.value), { deep: true })
+  watch(folderCollapsedState, () => saveCollapsedStateToCookie(folderCollapsedState.value), { deep: true })
   watch(currentId, (id) => saveLastStreamToCookie(id))
 
   function addStream(name: string, url: string, bitrate?: string): string {
@@ -181,8 +230,60 @@ export const usePlaylistStore = defineStore('playlist', () => {
     }
   }
 
+  // Folder management
+  function addFolder(name: string): string {
+    const id = generateId()
+    folders.value.push({ id, name })
+    return id
+  }
+
+  function removeFolder(folderId: string) {
+    const index = folders.value.findIndex(f => f.id === folderId)
+    if (index !== -1) {
+      // Move all items from this folder to root
+      items.value.forEach(item => {
+        if (item.folderId === folderId) {
+          item.folderId = undefined
+        }
+      })
+      folders.value.splice(index, 1)
+      delete folderCollapsedState.value[folderId]
+    }
+  }
+
+  function renameFolder(folderId: string, newName: string) {
+    const folder = folders.value.find(f => f.id === folderId)
+    if (folder) {
+      folder.name = newName
+    }
+  }
+
+  function moveStreamToFolder(streamId: string, folderId: string | undefined) {
+    const item = items.value.find(i => i.id === streamId)
+    if (item) {
+      item.folderId = folderId
+    }
+  }
+
+  function toggleFolderCollapsed(folderId: string) {
+    folderCollapsedState.value[folderId] = !folderCollapsedState.value[folderId]
+  }
+
+  function isFolderCollapsed(folderId: string): boolean {
+    return folderCollapsedState.value[folderId] ?? false
+  }
+
+  function moveFolder(fromId: string, toId: string) {
+    const fromIndex = folders.value.findIndex(f => f.id === fromId)
+    const toIndex = folders.value.findIndex(f => f.id === toId)
+    if (fromIndex !== -1 && toIndex !== -1) {
+      const [moved] = folders.value.splice(fromIndex, 1)
+      folders.value.splice(toIndex, 0, moved)
+    }
+  }
+
   function exportPlaylist(): string {
-    return JSON.stringify({ items: items.value }, null, 2)
+    return JSON.stringify({ items: items.value, folders: folders.value }, null, 2)
   }
 
   function importPlaylist(jsonString: string): boolean {
@@ -201,11 +302,24 @@ export const usePlaylistStore = defineStore('playlist', () => {
           id: item.id || generateId() + index,
           name: item.name,
           url: item.url,
-          bitrate: item.bitrate || extractBitrateFromUrl(item.url)
+          bitrate: item.bitrate || extractBitrateFromUrl(item.url),
+          folderId: item.folderId
         }))
+
+        // Import folders if present
+        const rawFolders = (data as PlaylistData).folders
+        const validFolders: PlaylistFolder[] = Array.isArray(rawFolders)
+          ? rawFolders.filter((f): f is PlaylistFolder =>
+              f !== null &&
+              typeof f === 'object' &&
+              typeof f.id === 'string' &&
+              typeof f.name === 'string'
+            )
+          : []
 
         if (validItems.length > 0) {
           items.value = validItems
+          folders.value = validFolders
           currentId.value = validItems[0].id
           return true
         }
@@ -235,13 +349,24 @@ export const usePlaylistStore = defineStore('playlist', () => {
 
   return {
     items,
+    folders,
+    folderCollapsedState,
     currentId,
     currentStream,
+    rootItems,
+    getItemsByFolder,
     addStream,
     removeStream,
     selectStream,
     updateStream,
     moveStream,
+    addFolder,
+    removeFolder,
+    renameFolder,
+    moveStreamToFolder,
+    toggleFolderCollapsed,
+    isFolderCollapsed,
+    moveFolder,
     exportPlaylist,
     importPlaylist,
     downloadPlaylist
