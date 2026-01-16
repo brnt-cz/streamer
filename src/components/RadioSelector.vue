@@ -113,6 +113,10 @@ function addToPlaylist() {
   }
 }
 
+// Expose modal state for parent component
+defineExpose({
+  isOpen
+})
 </script>
 
 <template>

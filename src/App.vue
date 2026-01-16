@@ -1,11 +1,86 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, onUnmounted, type ComponentPublicInstance } from 'vue'
 import StreamPlayer from './components/StreamPlayer.vue'
 import PlaylistManager from './components/PlaylistManager.vue'
 import RadioSelector from './components/RadioSelector.vue'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
 
 const isPlaylistOpen = ref(false)
+
+// Template refs for child components
+const playlistManagerRef = ref<ComponentPublicInstance<{
+  showAddForm: boolean
+  showFolderForm: boolean
+  deleteConfirmId: string | null
+  deleteFolderConfirmId: string | null
+  draggedId: string | null
+}> | null>(null)
+
+const radioSelectorRef = ref<ComponentPublicInstance<{
+  isOpen: boolean
+}> | null>(null)
+
+// Auto-close timer for mobile
+const AUTO_CLOSE_MS = 10000
+const MOBILE_BREAKPOINT = 1024
+let autoCloseTimer: ReturnType<typeof setTimeout> | null = null
+
+function isMobile(): boolean {
+  return window.innerWidth < MOBILE_BREAKPOINT
+}
+
+function hasOpenModal(): boolean {
+  const playlist = playlistManagerRef.value
+  const radio = radioSelectorRef.value
+
+  return !!(
+    playlist?.showAddForm ||
+    playlist?.showFolderForm ||
+    playlist?.deleteConfirmId ||
+    playlist?.deleteFolderConfirmId ||
+    playlist?.draggedId ||
+    radio?.isOpen
+  )
+}
+
+function clearAutoCloseTimer() {
+  if (autoCloseTimer) {
+    clearTimeout(autoCloseTimer)
+    autoCloseTimer = null
+  }
+}
+
+function startAutoCloseTimer() {
+  clearAutoCloseTimer()
+
+  if (!isMobile() || !isPlaylistOpen.value) return
+
+  autoCloseTimer = setTimeout(() => {
+    if (isPlaylistOpen.value && !hasOpenModal() && isMobile()) {
+      isPlaylistOpen.value = false
+    }
+  }, AUTO_CLOSE_MS)
+}
+
+function resetAutoCloseTimer() {
+  if (isPlaylistOpen.value && isMobile()) {
+    startAutoCloseTimer()
+  }
+}
+
+// Watch for panel open/close
+watch(isPlaylistOpen, (open) => {
+  if (open && isMobile()) {
+    startAutoCloseTimer()
+  } else {
+    clearAutoCloseTimer()
+  }
+})
+
+// Cleanup on unmount
+onUnmounted(() => {
+  clearAutoCloseTimer()
+})
 
 function togglePlaylist() {
   isPlaylistOpen.value = !isPlaylistOpen.value
@@ -42,6 +117,12 @@ function closePlaylist() {
                lg:right-0 lg:w-[380px] lg:translate-x-0 lg:pt-7 lg:px-6 lg:pb-6
                right-0 translate-x-full p-5 pt-16"
         :class="{ '!translate-x-0': isPlaylistOpen }"
+        @click="resetAutoCloseTimer"
+        @touchstart="resetAutoCloseTimer"
+        @scroll="resetAutoCloseTimer"
+        @dragstart="clearAutoCloseTimer"
+        @drag="clearAutoCloseTimer"
+        @dragend="resetAutoCloseTimer"
       >
         <!-- Close button (mobile only) -->
         <button
@@ -59,12 +140,12 @@ function closePlaylist() {
         <!-- Top bar with RadioSelector and LanguageSwitcher -->
         <div class="flex items-center gap-3 mb-7">
           <div class="flex-1">
-            <RadioSelector />
+            <RadioSelector ref="radioSelectorRef" />
           </div>
           <LanguageSwitcher />
         </div>
 
-        <PlaylistManager />
+        <PlaylistManager ref="playlistManagerRef" />
       </aside>
 
       <!-- Mobile overlay -->

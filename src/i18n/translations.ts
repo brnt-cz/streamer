@@ -32,6 +32,17 @@ export const translations = {
     deleteConfirmMessage: 'This action cannot be undone.',
     cancel: 'Cancel',
     confirmDelete: 'Delete',
+    // Folders
+    createFolder: 'Create folder',
+    newFolder: 'New Folder',
+    folderName: 'Folder name',
+    folderNamePlaceholder: 'My folder',
+    renameFolder: 'Rename folder',
+    deleteFolder: 'Delete folder',
+    deleteFolderConfirmTitle: 'Delete folder?',
+    deleteFolderConfirmMessage: 'Stations in this folder will be moved to the root level.',
+    emptyFolder: 'Empty folder',
+    dragHereToAdd: 'Drag stations here',
 
     // RadioSelector
     browseRadios: 'Browse Radios',
@@ -111,6 +122,17 @@ export const translations = {
     deleteConfirmMessage: 'Tuto akci nelze vrátit zpět.',
     cancel: 'Zrušit',
     confirmDelete: 'Smazat',
+    // Folders
+    createFolder: 'Vytvořit složku',
+    newFolder: 'Nová složka',
+    folderName: 'Název složky',
+    folderNamePlaceholder: 'Moje složka',
+    renameFolder: 'Přejmenovat složku',
+    deleteFolder: 'Smazat složku',
+    deleteFolderConfirmTitle: 'Smazat složku?',
+    deleteFolderConfirmMessage: 'Stanice v této složce budou přesunuty do kořenové úrovně.',
+    emptyFolder: 'Prázdná složka',
+    dragHereToAdd: 'Přetáhněte stanice sem',
 
     // RadioSelector
     browseRadios: 'Procházet rádia',
