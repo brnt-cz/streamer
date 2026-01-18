@@ -378,6 +378,7 @@ defineExpose({
         <!-- Folder Header -->
         <div
           draggable="true"
+          @click="store.toggleFolderCollapsed(folder.id)"
           @dragstart="onDragStart($event, folder.id, 'folder')"
           @dragover="onDragOver($event, folder.id, 'folder')"
           @dragleave="onDragLeave"
@@ -393,6 +394,7 @@ defineExpose({
           <!-- Drag Handle -->
           <div
             @mousedown.stop
+            @click.stop
             class="flex items-center justify-center w-5 h-5 mr-2 cursor-grab active:cursor-grabbing text-white/20 transition-colors duration-200 shrink-0 group-hover:text-white/50"
           >
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
