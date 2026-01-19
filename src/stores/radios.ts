@@ -107,11 +107,15 @@ export function useRadios() {
     return null
   }
 
-  function filterRadios(search: string, category?: string): Radio[] {
+  function filterRadios(search: string, category?: string, format?: StreamFormat): Radio[] {
     let filtered = radios.value
 
     if (category) {
       filtered = filtered.filter(r => r.categories.includes(category))
+    }
+
+    if (format) {
+      filtered = filtered.filter(r => r.streams && r.streams[format])
     }
 
     if (search.trim()) {
