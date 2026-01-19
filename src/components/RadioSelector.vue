@@ -12,7 +12,7 @@ const isOpen = ref(false)
 const search = ref('')
 const debouncedSearch = ref('')
 const selectedCategory = ref('')
-const selectedFormat = ref<StreamFormat>('mp3')
+const selectedFormat = ref<StreamFormat | ''>('')
 const selectedBitrate = ref('128')
 const selectedRadio = ref<Radio | null>(null)
 const isAdding = ref(false)
@@ -38,24 +38,44 @@ onUnmounted(() => {
   }
 })
 
-const filteredRadios = computed(() => filterRadios(debouncedSearch.value, selectedCategory.value || undefined))
+const filteredRadios = computed(() => filterRadios(debouncedSearch.value, selectedCategory.value || undefined, selectedFormat.value || undefined))
 
+// Only show formats that have at least one radio (considering search and category)
 const availableFormats = computed(() => {
-  if (!selectedRadio.value) return formats
-  const radioFormats = getAvailableFormats(selectedRadio.value.id)
-  return radioFormats.length > 0 ? radioFormats : formats
+  return formats.filter(format =>
+    filterRadios(debouncedSearch.value, selectedCategory.value || undefined, format).length > 0
+  )
 })
 
 const availableBitrates = computed(() => {
   if (!selectedRadio.value) return ['128']
-  const bitrates = getAvailableBitrates(selectedRadio.value.id, selectedFormat.value)
+  // If "all formats", use first available format of selected radio
+  const format = selectedFormat.value || getAvailableFormats(selectedRadio.value.id)[0]
+  if (!format) return ['128']
+  const bitrates = getAvailableBitrates(selectedRadio.value.id, format)
   return bitrates.length > 0 ? bitrates : ['128']
 })
 
 watch(selectedFormat, () => {
+  // Reset selected radio if it doesn't have the new format (skip if "all formats")
+  if (selectedRadio.value && selectedFormat.value) {
+    const radioFormats = getAvailableFormats(selectedRadio.value.id)
+    if (!radioFormats.includes(selectedFormat.value)) {
+      selectedRadio.value = null
+    }
+  }
+  // Update bitrate
   const bitrates = availableBitrates.value
   if (!bitrates.includes(selectedBitrate.value)) {
     selectedBitrate.value = bitrates[0] || '128'
+  }
+})
+
+// Reset format if it becomes unavailable (e.g. after category change)
+// Skip if "all formats" is selected (empty string)
+watch(availableFormats, (newFormats) => {
+  if (selectedFormat.value && !newFormats.includes(selectedFormat.value) && newFormats.length > 0) {
+    selectedFormat.value = newFormats[0]
   }
 })
 
@@ -93,9 +113,16 @@ function addToPlaylist() {
   addError.value = null
 
   try {
+    // If "all formats", use first available format
+    const format = selectedFormat.value || getAvailableFormats(selectedRadio.value.id)[0]
+    if (!format) {
+      addError.value = t.value.streamNotAvailable
+      return
+    }
+
     const streamUrl = getStreamUrl(
       selectedRadio.value.id,
-      selectedFormat.value,
+      format,
       selectedBitrate.value
     )
 
@@ -173,7 +200,7 @@ defineExpose({
               <div class="flex gap-3">
                 <select
                   v-model="selectedCategory"
-                  class="flex-1 py-2.5 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
+                  class="select-custom flex-1 py-2.5 pl-3.5 pr-9 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
                 >
                   <option value="" class="bg-surface text-text">{{ t.allCategories }}</option>
                   <option v-for="cat in categories" :key="cat" :value="cat" class="bg-surface text-text">
@@ -182,30 +209,15 @@ defineExpose({
                 </select>
 
                 <!-- Format Selector -->
-                <div class="flex gap-1 p-1 bg-white/[0.04] rounded-[10px]">
-                  <button
-                    v-for="format in availableFormats"
-                    :key="format"
-                    @click="selectedFormat = format"
-                    class="py-1.5 px-3 bg-transparent border-none rounded-[7px] text-xs font-semibold cursor-pointer transition-all duration-200"
-                    :class="selectedFormat === format ? 'bg-gradient-brand-simple text-white' : 'text-white/50 hover:text-white/80'"
-                  >
+                <select
+                  v-model="selectedFormat"
+                  class="select-custom py-2.5 pl-3.5 pr-9 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
+                >
+                  <option value="" class="bg-surface text-text">{{ t.allFormats }}</option>
+                  <option v-for="format in availableFormats" :key="format" :value="format" class="bg-surface text-text">
                     {{ format.toUpperCase() }}
-                  </button>
-                </div>
-
-                <!-- Bitrate Selector -->
-                <div v-if="selectedRadio && availableBitrates.length > 1" class="flex gap-1 p-1 bg-white/[0.04] rounded-[10px]">
-                  <button
-                    v-for="bitrate in availableBitrates"
-                    :key="bitrate"
-                    @click="selectedBitrate = bitrate"
-                    class="py-1.5 px-2.5 bg-transparent border-none rounded-[7px] text-[11px] font-semibold cursor-pointer transition-all duration-200"
-                    :class="selectedBitrate === bitrate ? 'bg-white/15 text-white' : 'text-white/50 hover:text-white/80'"
-                  >
-                    {{ bitrate }}k
-                  </button>
-                </div>
+                  </option>
+                </select>
               </div>
             </div>
 
@@ -250,7 +262,19 @@ defineExpose({
                 <img :src="selectedRadio.logo" :alt="selectedRadio.name" class="w-10 h-10 rounded-lg object-cover" />
                 <div class="min-w-0">
                   <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ selectedRadio.name }}</span>
-                  <span class="block text-xs text-text-muted">{{ selectedFormat.toUpperCase() }} {{ selectedBitrate }}kbps</span>
+                  <span class="block text-xs text-text-muted">{{ (selectedFormat || getAvailableFormats(selectedRadio.id)[0] || '').toUpperCase() }} {{ selectedBitrate }}kbps</span>
+                </div>
+                <!-- Bitrate Selector -->
+                <div v-if="availableBitrates.length > 1" class="flex gap-1 p-1 bg-white/[0.04] rounded-[10px] shrink-0">
+                  <button
+                    v-for="bitrate in availableBitrates"
+                    :key="bitrate"
+                    @click="selectedBitrate = bitrate"
+                    class="py-1.5 px-2.5 bg-transparent border-none rounded-[7px] text-[11px] font-semibold cursor-pointer transition-all duration-200"
+                    :class="selectedBitrate === bitrate ? 'bg-white/15 text-white' : 'text-white/50 hover:text-white/80'"
+                  >
+                    {{ bitrate }}k
+                  </button>
                 </div>
               </div>
               <button
@@ -269,3 +293,11 @@ defineExpose({
   </div>
 </template>
 
+<style scoped>
+.select-custom {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+</style>
