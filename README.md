@@ -2,77 +2,83 @@
 
 Minimalistický webový přehrávač českých internetových rádií postavený na Vue 3.
 
-![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4FC08D?logo=vue.js)
+![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?logo=vue.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?logo=vite)
+![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?logo=tailwindcss)
 
 ## Funkce
 
 - **81 českých rádií** - předem načtená databáze stanic z play.cz
 - **Více formátů** - podpora MP3, AAC a WMA streamů
 - **Výběr kvality** - různé bitrate varianty (32-320 kbps)
-- **Playlist** - ukládání oblíbených stanic do localStorage
-- **Vyhledávání** - rychlé filtrování podle názvu
-- **Kategorie** - filtrování podle žánru (rock, pop, jazz, klasika...)
-- **Responzivní design** - funguje na desktopu i mobilu
-- **Offline databáze** - žádné API volání za běhu, vše je v bundlu
+- **Playlist s složkami** - organizace stanic do složek s drag & drop řazením
+- **Vlastní stanice** - možnost přidat vlastní stream URL
+- **Import/Export** - záloha a obnova playlistu (JSON)
+- **Vícejazyčné rozhraní** - čeština a angličtina
+- **Media Session API** - ovládání z lock screen a media keys
+- **Responzivní design** - desktop i mobilní offcanvas panel
+- **Úspora dat** - automatické zastavení streamu při pauze na mobilu
+- **Offline databáze** - žádné API volání za běhu
 
 ## Instalace
 
 ```bash
-# Klonování repozitáře
 git clone https://github.com/brnt-cz/streamer.git
 cd streamer
-
-# Instalace závislostí
 npm install
-
-# Spuštění dev serveru
 npm run dev
 ```
 
 Aplikace poběží na `http://localhost:5173`
 
-## Použití
+## Skripty
 
-1. Klikni na **Browse Radios** pro otevření seznamu stanic
-2. Vyber kategorii nebo vyhledej rádio podle názvu
-3. Klikni na rádio a zvol formát/kvalitu streamu
-4. Přidej do playlistu tlačítkem **Add to Playlist**
-5. Ovládej přehrávání tlačítkem play/pause a hlasitostí
+```bash
+npm run dev        # Vývojový server
+npm run build      # Produkční build
+npm run preview    # Náhled produkčního buildu
+npm run typecheck  # Kontrola TypeScript typů
+npm run lint       # ESLint kontrola
+npm run lint:fix   # ESLint oprava
+npm run test       # E2E testy (Playwright)
+npm run test:ui    # E2E testy s UI
+```
 
 ## Struktura projektu
 
 ```
 src/
 ├── components/
-│   ├── StreamPlayer.vue    # Hlavní přehrávač
-│   ├── RadioSelector.vue   # Modal pro výběr rádia
-│   └── PlaylistManager.vue # Správa playlistu
+│   ├── StreamPlayer.vue      # Hlavní přehrávač s Media Session
+│   ├── RadioSelector.vue     # Modal pro výběr rádia
+│   ├── PlaylistManager.vue   # Správa playlistu se složkami
+│   └── LanguageSwitcher.vue  # Přepínač jazyků
 ├── stores/
-│   ├── radios.ts          # Store s daty rádií
-│   └── playlist.ts        # Store pro playlist
+│   ├── radios.ts             # Store s daty rádií
+│   ├── playlist.ts           # Store pro playlist a složky
+│   └── language.ts           # Store pro jazyk
+├── i18n/
+│   └── translations.ts       # Překlady (EN/CZ)
 ├── data/
-│   └── radios.json        # Databáze 81 rádií s URL streamy
+│   └── radios.json           # Databáze 81 rádií
 └── App.vue
 ```
 
 ## Aktualizace databáze rádií
 
-Pro stažení aktuálních dat z play.cz:
-
 ```bash
 node scripts/fetch-radios.cjs
 ```
 
-Skript projde všechna rádia a uloží jejich stream URL do `src/data/radios.json`.
-
 ## Tech stack
 
-- **Vue 3** - Composition API
-- **TypeScript** - typová bezpečnost
-- **Vite** - rychlý dev server a build
-- **HTML5 Audio API** - přehrávání streamů
+- **Vue 3** - Composition API + Pinia
+- **TypeScript 5** - typová bezpečnost
+- **Vite 7** - dev server a build
+- **Tailwind CSS 4** - styling
+- **Playwright** - E2E testování
+- **ESLint** - linting
 
 ## License
 
