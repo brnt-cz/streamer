@@ -49,8 +49,8 @@ test.describe('Radio Catalog', () => {
     const modalList = page.locator('.modal ul')
     const initialCount = await modalList.getByRole('listitem').count()
 
-    // When I select "Jazz" category from the dropdown
-    await page.getByRole('combobox').selectOption('jazz')
+    // When I select "Jazz" category from the first dropdown (category)
+    await page.getByRole('combobox').first().selectOption('jazz')
     await page.waitForTimeout(300)
 
     // Then fewer radios are displayed
@@ -84,7 +84,7 @@ test.describe('Radio Catalog', () => {
     }
   })
 
-  // Scenario 8: Select stream format and bitrate
+  // Scenario 8: Select stream format
   test('should select format for stream', async ({ page }) => {
     // Given I am in the radio selection modal
     await page.getByRole('button', { name: 'Browse Radios' }).click()
@@ -98,10 +98,9 @@ test.describe('Radio Catalog', () => {
     const modalList = page.locator('.modal ul')
     await modalList.getByRole('listitem').first().click()
 
-    // When I look for format buttons, they should be visible
-    // Format buttons are MP3, AAC, HLS, WMA
-    const mp3Button = page.getByRole('button', { name: 'MP3' })
-    await expect(mp3Button).toBeVisible()
+    // When I look for format dropdown (second combobox), it should be visible
+    const formatDropdown = page.getByRole('combobox').nth(1)
+    await expect(formatDropdown).toBeVisible()
 
     // The Add to Playlist button should be enabled
     await expect(page.getByRole('button', { name: 'Add to Playlist' })).toBeEnabled()
