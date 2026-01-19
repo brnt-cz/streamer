@@ -127,7 +127,7 @@ function addToPlaylist() {
     )
 
     if (streamUrl) {
-      const id = store.addStream(selectedRadio.value.name, streamUrl, selectedBitrate.value)
+      const id = store.addStream(selectedRadio.value.name, streamUrl, selectedBitrate.value, selectedRadio.value.logo)
       store.selectStream(id)
       closeSelector()
     } else {
@@ -231,7 +231,7 @@ defineExpose({
                   class="flex items-center gap-3.5 p-3 rounded-xl cursor-pointer transition-all duration-200 mb-1 hover:bg-white/[0.04]"
                   :class="{ 'bg-[rgba(240,47,0,0.1)] border border-[rgba(240,47,0,0.25)]': selectedRadio?.id === radio.id }"
                 >
-                  <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-[10px] object-cover bg-white/5" />
+                  <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-[10px] object-cover bg-white/10" />
                   <div class="flex-1 min-w-0">
                     <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis">{{ radio.name }}</span>
                     <span v-if="radio.categories.length" class="block text-xs text-white/35 whitespace-nowrap overflow-hidden text-ellipsis">
@@ -257,10 +257,10 @@ defineExpose({
             </div>
 
             <!-- Modal Footer -->
-            <div class="flex items-center gap-4 py-4 px-6 border-t border-border bg-black/20">
-              <div v-if="selectedRadio" class="flex-1 flex items-center gap-3 min-w-0">
-                <img :src="selectedRadio.logo" :alt="selectedRadio.name" class="w-10 h-10 rounded-lg object-cover" />
-                <div class="min-w-0">
+            <div class="flex flex-col gap-3 py-4 px-6 border-t border-border bg-black/20">
+              <div v-if="selectedRadio" class="flex items-center gap-3">
+                <img :src="selectedRadio.logo" :alt="selectedRadio.name" class="w-10 h-10 rounded-lg object-cover bg-white/10 shrink-0" />
+                <div class="flex-1 min-w-0">
                   <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ selectedRadio.name }}</span>
                   <span class="block text-xs text-text-muted">{{ (selectedFormat || getAvailableFormats(selectedRadio.id)[0] || '').toUpperCase() }} {{ selectedBitrate }}kbps</span>
                 </div>
@@ -280,7 +280,7 @@ defineExpose({
               <button
                 :disabled="!selectedRadio || isAdding"
                 @click="addToPlaylist"
-                class="py-3 px-6 bg-gradient-brand-simple border-none rounded-xl text-sm font-semibold text-white cursor-pointer transition-all duration-200 whitespace-nowrap shrink-0 hover:opacity-90 hover:-translate-y-px disabled:bg-white/10 disabled:text-white/30 disabled:cursor-not-allowed disabled:transform-none"
+                class="w-full py-3 px-6 bg-gradient-brand-simple border-none rounded-xl text-sm font-semibold text-white cursor-pointer transition-all duration-200 whitespace-nowrap hover:opacity-90 hover:-translate-y-px disabled:bg-white/10 disabled:text-white/30 disabled:cursor-not-allowed disabled:transform-none"
               >
                 <span v-if="isAdding" class="inline-block w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-1.5"></span>
                 {{ isAdding ? t.adding : t.addToPlaylist }}
