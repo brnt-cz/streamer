@@ -2,7 +2,7 @@
   {
     "id": "radio-americana",
     "name": "Americana Radio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-americana.png",
+    "logo": "/logos/radio-americana.png",
     "categories": [],
     "streams": {
       "aac": {
@@ -16,7 +16,7 @@
   {
     "id": "beat",
     "name": "Beat",
-    "logo": "https://api.play.cz/static/radio_logo/t200/beat.png",
+    "logo": "/logos/beat.png",
     "categories": [
       "rock",
       "metal"
@@ -31,7 +31,7 @@
   {
     "id": "bhradio",
     "name": "BlackFM Radio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/bhradio.png",
+    "logo": "/logos/bhradio.png",
     "categories": [
       "rock",
       "metal"
@@ -49,7 +49,7 @@
   {
     "id": "bikersradiodoupe",
     "name": "BIKERS RADIO DOUPE",
-    "logo": "https://api.play.cz/static/radio_logo/t200/bikersradiodoupe.png",
+    "logo": "/logos/bikersradiodoupe.png",
     "categories": [
       "oldies",
       "metal",
@@ -71,7 +71,7 @@
   {
     "id": "cesky-impuls",
     "name": "Český Impuls",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cesky-impuls.png",
+    "logo": "/logos/cesky-impuls.png",
     "categories": [
       "pop",
       "oldies"
@@ -85,7 +85,7 @@
   {
     "id": "classic",
     "name": "Classic Praha",
-    "logo": "https://api.play.cz/static/radio_logo/t200/classic.png",
+    "logo": "/logos/classic.png",
     "categories": [
       "classic"
     ],
@@ -100,7 +100,7 @@
   {
     "id": "clubradio",
     "name": "ClubRadio.cz",
-    "logo": "https://api.play.cz/static/radio_logo/t200/clubradio.png",
+    "logo": "/logos/clubradio.png",
     "categories": [
       "Trance",
       "rnb",
@@ -117,7 +117,7 @@
   {
     "id": "ethno",
     "name": "COLOR Music Radio | The Best Music in The Town",
-    "logo": "https://api.play.cz/static/radio_logo/t200/ethno.png",
+    "logo": "/logos/ethno.png",
     "categories": [
       "rnb",
       "jazz",
@@ -137,7 +137,7 @@
   {
     "id": "country",
     "name": "COUNTRY RADIO",
-    "logo": "https://api.play.cz/static/radio_logo/t200/country.png",
+    "logo": "/logos/country.png",
     "categories": [
       "country"
     ],
@@ -151,7 +151,7 @@
   {
     "id": "cropohoda",
     "name": "Český rozhlas Pohoda",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cropohoda.png",
+    "logo": "/logos/cropohoda.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -165,7 +165,7 @@
   {
     "id": "cro1",
     "name": "Český rozhlas Radiožurnál",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cro1.png",
+    "logo": "/logos/cro1.png",
     "categories": [
       "news",
       "pop"
@@ -182,7 +182,7 @@
   {
     "id": "crosport",
     "name": "Radiožurnál Sport",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crosport.png",
+    "logo": "/logos/crosport.png",
     "categories": [
       "news",
       "rock"
@@ -199,7 +199,7 @@
   {
     "id": "cro2",
     "name": "Český rozhlas Dvojka",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cro2.png",
+    "logo": "/logos/cro2.png",
     "categories": [
       "pop",
       "oldies"
@@ -216,7 +216,7 @@
   {
     "id": "cro3",
     "name": "Český rozhlas Vltava",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cro3.png",
+    "logo": "/logos/cro3.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -230,7 +230,7 @@
   {
     "id": "croplus",
     "name": "Český rozhlas Plus",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croplus.png",
+    "logo": "/logos/croplus.png",
     "categories": [
       "allformat"
     ],
@@ -246,7 +246,7 @@
   {
     "id": "cro7",
     "name": "Radio Prague International",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cro7.png",
+    "logo": "/logos/cro7.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -260,7 +260,7 @@
   {
     "id": "crowave",
     "name": "Český rozhlas Radio Wave",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crowave.png",
+    "logo": "/logos/crowave.png",
     "categories": [
       "rock",
       "pop",
@@ -280,7 +280,7 @@
   {
     "id": "croddur",
     "name": "Český rozhlas D-dur",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croddur.png",
+    "logo": "/logos/croddur.png",
     "categories": [
       "classic"
     ],
@@ -296,7 +296,7 @@
   {
     "id": "crojazz",
     "name": "Český rozhlas Jazz",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crojazz.png",
+    "logo": "/logos/crojazz.png",
     "categories": [
       "jazz",
       "alternative"
@@ -313,7 +313,7 @@
   {
     "id": "crojuniormaxi",
     "name": "Český rozhlas Rádio Junior",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crojuniormaxi.png",
+    "logo": "/logos/crojuniormaxi.png",
     "categories": [
       "kids",
       "pop",
@@ -331,7 +331,7 @@
   {
     "id": "crobrno",
     "name": "Český rozhlas Brno",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crobrno.png",
+    "logo": "/logos/crobrno.png",
     "categories": [
       "news",
       "allformat"
@@ -348,7 +348,7 @@
   {
     "id": "crocb",
     "name": "Český rozhlas České Budějovice",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crocb.png",
+    "logo": "/logos/crocb.png",
     "categories": [
       "pop",
       "allformat"
@@ -365,7 +365,7 @@
   {
     "id": "crohk",
     "name": "Český rozhlas Hradec Králové",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crohk.png",
+    "logo": "/logos/crohk.png",
     "categories": [
       "pop",
       "allformat"
@@ -382,7 +382,7 @@
   {
     "id": "crool",
     "name": "Český rozhlas Olomouc",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crool.png",
+    "logo": "/logos/crool.png",
     "categories": [
       "oldies",
       "allformat"
@@ -399,7 +399,7 @@
   {
     "id": "croov",
     "name": "Český rozhlas Ostrava",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croov.png",
+    "logo": "/logos/croov.png",
     "categories": [
       "news",
       "allformat"
@@ -416,7 +416,7 @@
   {
     "id": "cropardubice",
     "name": "Český rozhlas Pardubice",
-    "logo": "https://api.play.cz/static/radio_logo/t200/cropardubice.png",
+    "logo": "/logos/cropardubice.png",
     "categories": [
       "pop",
       "allformat"
@@ -433,7 +433,7 @@
   {
     "id": "croplzen",
     "name": "Český rozhlas Plzeň",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croplzen.png",
+    "logo": "/logos/croplzen.png",
     "categories": [
       "oldies",
       "allformat"
@@ -450,7 +450,7 @@
   {
     "id": "crokv",
     "name": "Český rozhlas Karlovy Vary",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crokv.png",
+    "logo": "/logos/crokv.png",
     "categories": [
       "oldies",
       "allformat"
@@ -467,7 +467,7 @@
   {
     "id": "croregina",
     "name": "Český rozhlas Rádio DAB Praha",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croregina.png",
+    "logo": "/logos/croregina.png",
     "categories": [
       "pop"
     ],
@@ -483,7 +483,7 @@
   {
     "id": "croregion",
     "name": "Český rozhlas Střední Čechy",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croregion.png",
+    "logo": "/logos/croregion.png",
     "categories": [
       "pop"
     ],
@@ -499,7 +499,7 @@
   {
     "id": "croregionvysocina",
     "name": "Český rozhlas Vysočina",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croregionvysocina.png",
+    "logo": "/logos/croregionvysocina.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -513,7 +513,7 @@
   {
     "id": "crosever",
     "name": "Český rozhlas Sever",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crosever.png",
+    "logo": "/logos/crosever.png",
     "categories": [
       "pop",
       "country",
@@ -531,7 +531,7 @@
   {
     "id": "croliberec",
     "name": "Český rozhlas Liberec ",
-    "logo": "https://api.play.cz/static/radio_logo/t200/croliberec.png",
+    "logo": "/logos/croliberec.png",
     "categories": [
       "news",
       "pop",
@@ -552,7 +552,7 @@
   {
     "id": "crozlin",
     "name": "Český rozhlas Zlín",
-    "logo": "https://api.play.cz/static/radio_logo/t200/crozlin.png",
+    "logo": "/logos/crozlin.png",
     "categories": [
       "allformat"
     ],
@@ -568,7 +568,7 @@
   {
     "id": "dabplus-top40",
     "name": "DAB Plus Top 40",
-    "logo": "https://api.play.cz/static/radio_logo/t200/dabplus-top40.png",
+    "logo": "/logos/dabplus-top40.png",
     "categories": [
       "rnb",
       "pop",
@@ -583,7 +583,7 @@
   {
     "id": "radio-energic",
     "name": "ENERGIC",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-energic.png",
+    "logo": "/logos/radio-energic.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -594,7 +594,7 @@
   {
     "id": "expres",
     "name": "Expres FM",
-    "logo": "https://api.play.cz/static/radio_logo/t200/expres.png",
+    "logo": "/logos/expres.png",
     "categories": [
       "rock",
       "rnb",
@@ -614,7 +614,7 @@
   {
     "id": "freeradio",
     "name": "Free Rádio 107,0 FM Brno",
-    "logo": "https://api.play.cz/static/radio_logo/t200/freeradio.png",
+    "logo": "/logos/freeradio.png",
     "categories": [
       "Trance",
       "rnb",
@@ -635,7 +635,7 @@
   {
     "id": "hana",
     "name": "Rádio Haná",
-    "logo": "https://api.play.cz/static/radio_logo/t200/hana.png",
+    "logo": "/logos/hana.png",
     "categories": [
       "pop"
     ],
@@ -649,7 +649,7 @@
   {
     "id": "hardradiofm",
     "name": "hardradio.fm",
-    "logo": "https://api.play.cz/static/radio_logo/t200/hardradiofm.png",
+    "logo": "/logos/hardradiofm.png",
     "categories": [
       "rnb",
       "hiphop",
@@ -665,7 +665,7 @@
   {
     "id": "hey-radio",
     "name": "HEY Radio | The Power Of ROCK!",
-    "logo": "https://api.play.cz/static/radio_logo/t200/hey-radio.png",
+    "logo": "/logos/hey-radio.png",
     "categories": [
       "oldies",
       "bigbit",
@@ -683,7 +683,7 @@
   {
     "id": "impuls",
     "name": "Impuls Ráááádio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/impuls.png",
+    "logo": "/logos/impuls.png",
     "categories": [
       "allformat"
     ],
@@ -697,7 +697,7 @@
   {
     "id": "jih",
     "name": "JIH - Rádio jižní Moravy",
-    "logo": "https://api.play.cz/static/radio_logo/t200/jih.png",
+    "logo": "/logos/jih.png",
     "categories": [
       "rock",
       "rnb",
@@ -719,7 +719,7 @@
   {
     "id": "krokodyl",
     "name": "Krokodýl",
-    "logo": "https://api.play.cz/static/radio_logo/t200/krokodyl.png",
+    "logo": "/logos/krokodyl.png",
     "categories": [
       "rock",
       "pop",
@@ -738,7 +738,7 @@
   {
     "id": "joeradioi",
     "name": "Limonádový JOE",
-    "logo": "https://api.play.cz/static/radio_logo/t200/joeradioi.png",
+    "logo": "/logos/joeradioi.png",
     "categories": [
       "allformat"
     ],
@@ -751,7 +751,7 @@
   {
     "id": "music-dreamer",
     "name": "Music Dreamer",
-    "logo": "https://api.play.cz/static/radio_logo/t200/music-dreamer.png",
+    "logo": "/logos/music-dreamer.png",
     "categories": [
       "rock",
       "pop",
@@ -766,7 +766,7 @@
   {
     "id": "netro-life-radio",
     "name": "Netro Life radio 100,8 FM",
-    "logo": "https://api.play.cz/static/radio_logo/t200/netro-life-radio.png",
+    "logo": "/logos/netro-life-radio.png",
     "categories": [
       "dance",
       "90s",
@@ -782,7 +782,7 @@
   {
     "id": "radio-o106",
     "name": "O 106",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-o106.png",
+    "logo": "/logos/radio-o106.png",
     "categories": [
       "pop",
       "90s",
@@ -798,7 +798,7 @@
   {
     "id": "proglas",
     "name": "Radio Proglas",
-    "logo": "https://api.play.cz/static/radio_logo/t200/proglas.png",
+    "logo": "/logos/proglas.png",
     "categories": [
       "allformat"
     ],
@@ -812,7 +812,7 @@
   {
     "id": "radio1",
     "name": "Radio 1",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio1.png",
+    "logo": "/logos/radio1.png",
     "categories": [
       "alternative"
     ],
@@ -827,7 +827,7 @@
   {
     "id": "radio7",
     "name": "Rádio 7",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio7.png",
+    "logo": "/logos/radio7.png",
     "categories": [
       "talk"
     ],
@@ -841,7 +841,7 @@
   {
     "id": "casrock",
     "name": "Rádio Čas Rock",
-    "logo": "https://api.play.cz/static/radio_logo/t200/casrock.png",
+    "logo": "/logos/casrock.png",
     "categories": [
       "rock"
     ],
@@ -857,7 +857,7 @@
   {
     "id": "casradio",
     "name": "Rádio Čas",
-    "logo": "https://api.play.cz/static/radio_logo/t200/casradio.png",
+    "logo": "/logos/casradio.png",
     "categories": [
       "pop"
     ],
@@ -873,7 +873,7 @@
   {
     "id": "radiodixie",
     "name": "RADIO DIXIE",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radiodixie.png",
+    "logo": "/logos/radiodixie.png",
     "categories": [
       "rock",
       "country"
@@ -888,7 +888,7 @@
   {
     "id": "radiodechovka",
     "name": "Radio Dechovka",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radiodechovka.png",
+    "logo": "/logos/radiodechovka.png",
     "categories": [
       "dechovka"
     ],
@@ -903,7 +903,7 @@
   {
     "id": "fajnrockmusic",
     "name": "Radio Fajn Rock Music",
-    "logo": "https://api.play.cz/static/radio_logo/t200/fajnrockmusic.png",
+    "logo": "/logos/fajnrockmusic.png",
     "categories": [
       "rock"
     ],
@@ -918,7 +918,7 @@
   {
     "id": "jihcimbalka",
     "name": "JIH - Vánoční Rádio Jih",
-    "logo": "https://api.play.cz/static/radio_logo/t200/jihcimbalka.png",
+    "logo": "/logos/jihcimbalka.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -931,7 +931,7 @@
   {
     "id": "jihlava",
     "name": "Rádio Jihlava",
-    "logo": "https://api.play.cz/static/radio_logo/t200/jihlava.png",
+    "logo": "/logos/jihlava.png",
     "categories": [
       "pop"
     ],
@@ -946,7 +946,7 @@
   {
     "id": "kiss",
     "name": "Radio Kiss",
-    "logo": "https://api.play.cz/static/radio_logo/t200/kiss.png",
+    "logo": "/logos/kiss.png",
     "categories": [
       "pop",
       "dance",
@@ -963,7 +963,7 @@
   {
     "id": "radio-kromeriz",
     "name": "Radio Kroměříž",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-kromeriz.png",
+    "logo": "/logos/radio-kromeriz.png",
     "categories": [
       "news",
       "rock",
@@ -985,7 +985,7 @@
   {
     "id": "radiomb",
     "name": "Rádio MB",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radiomb.png",
+    "logo": "/logos/radiomb.png",
     "categories": [
       "rock",
       "pop",
@@ -1002,7 +1002,7 @@
   {
     "id": "metropole",
     "name": "Radio Metropole",
-    "logo": "https://api.play.cz/static/radio_logo/t200/metropole.png",
+    "logo": "/logos/metropole.png",
     "categories": [],
     "streams": {
       "mp3": {
@@ -1014,7 +1014,7 @@
   {
     "id": "radio-nostalgie",
     "name": "RADIO NOSTALGIE",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-nostalgie.png",
+    "logo": "/logos/radio-nostalgie.png",
     "categories": [
       "pop",
       "oldies",
@@ -1032,7 +1032,7 @@
   {
     "id": "radio-ostravan",
     "name": "Rádio Ostravan",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-ostravan.png",
+    "logo": "/logos/radio-ostravan.png",
     "categories": [
       "bigbit",
       "alternative",
@@ -1053,7 +1053,7 @@
   {
     "id": "radio-relax",
     "name": "RELAX Radio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-relax.png",
+    "logo": "/logos/radio-relax.png",
     "categories": [
       "rock",
       "pop"
@@ -1068,7 +1068,7 @@
   {
     "id": "samsonfm",
     "name": "Rádio Samson Digital",
-    "logo": "https://api.play.cz/static/radio_logo/t200/samsonfm.png",
+    "logo": "/logos/samsonfm.png",
     "categories": [
       "rock",
       "oldies",
@@ -1084,7 +1084,7 @@
   {
     "id": "sazava",
     "name": "Rádio SÁZAVA | Vaše laskavé rádio!",
-    "logo": "https://api.play.cz/static/radio_logo/t200/sazava.png",
+    "logo": "/logos/sazava.png",
     "categories": [
       "rock",
       "oldies",
@@ -1106,7 +1106,7 @@
   {
     "id": "spin",
     "name": "Rádio Spin",
-    "logo": "https://api.play.cz/static/radio_logo/t200/spin.png",
+    "logo": "/logos/spin.png",
     "categories": [
       "rnb",
       "hiphop",
@@ -1122,7 +1122,7 @@
   {
     "id": "radio-trojka",
     "name": "Rádio Trojka",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-trojka.png",
+    "logo": "/logos/radio-trojka.png",
     "categories": [
       "news",
       "rock",
@@ -1148,7 +1148,7 @@
   {
     "id": "radio-xaver",
     "name": "Radio Xaver",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-xaver.png",
+    "logo": "/logos/radio-xaver.png",
     "categories": [
       "rock",
       "talk",
@@ -1169,7 +1169,7 @@
   {
     "id": "rock-natvrdo",
     "name": "Rádio Čas Rock NATVRDO",
-    "logo": "https://api.play.cz/static/radio_logo/t200/rock-natvrdo.png",
+    "logo": "/logos/rock-natvrdo.png",
     "categories": [
       "rock"
     ],
@@ -1182,7 +1182,7 @@
   {
     "id": "rockarena",
     "name": "Rock Arena",
-    "logo": "https://api.play.cz/static/radio_logo/t200/rockarena.png",
+    "logo": "/logos/rockarena.png",
     "categories": [
       "rock",
       "metal"
@@ -1196,7 +1196,7 @@
   {
     "id": "rockzone",
     "name": "RockZone 105,9",
-    "logo": "https://api.play.cz/static/radio_logo/t200/rockzone.png",
+    "logo": "/logos/rockzone.png",
     "categories": [
       "rock"
     ],
@@ -1210,7 +1210,7 @@
   {
     "id": "seejay-radio",
     "name": "SeeJay Radio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/seejay-radio.png",
+    "logo": "/logos/seejay-radio.png",
     "categories": [
       "Trance",
       "pop",
@@ -1226,7 +1226,7 @@
   {
     "id": "signal-brno",
     "name": "Signál Rádio Brno",
-    "logo": "https://api.play.cz/static/radio_logo/t200/signal-brno.png",
+    "logo": "/logos/signal-brno.png",
     "categories": [
       "oldies",
       "pop"
@@ -1242,7 +1242,7 @@
   {
     "id": "signal",
     "name": "Signál Rádio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/signal.png",
+    "logo": "/logos/signal.png",
     "categories": [
       "pop",
       "oldies"
@@ -1258,7 +1258,7 @@
   {
     "id": "skyrock",
     "name": "SKYROCK",
-    "logo": "https://api.play.cz/static/radio_logo/t200/skyrock.png",
+    "logo": "/logos/skyrock.png",
     "categories": [
       "rock"
     ],
@@ -1272,7 +1272,7 @@
   {
     "id": "radio-slowdown",
     "name": "Slow Down Radio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/radio-slowdown.png",
+    "logo": "/logos/radio-slowdown.png",
     "categories": [
       "rnb",
       "soul",
@@ -1293,7 +1293,7 @@
   {
     "id": "streetradio",
     "name": "StreetCulture",
-    "logo": "https://api.play.cz/static/radio_logo/t200/streetradio.png",
+    "logo": "/logos/streetradio.png",
     "categories": [
       "talk",
       "metal",
@@ -1312,7 +1312,7 @@
   {
     "id": "underground",
     "name": "Undergroundradio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/underground.png",
+    "logo": "/logos/underground.png",
     "categories": [
       "rock",
       "folk",
@@ -1327,7 +1327,7 @@
   {
     "id": "zun-radio",
     "name": "ZUN rádio",
-    "logo": "https://api.play.cz/static/radio_logo/t200/zun-radio.png",
+    "logo": "/logos/zun-radio.png",
     "categories": [
       "soul",
       "rnb",
