@@ -2,7 +2,7 @@
   {
     "id": "bbcworldservice",
     "name": "BBC World Service",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbcworldservice.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s50646/images/logod.png",
     "categories": ["news", "world"],
     "streams": {
       "hls": {
@@ -13,7 +13,7 @@
   {
     "id": "npr",
     "name": "NPR 24",
-    "logo": "https://station-images-prod.radio-assets.com/300/npr.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s21809/images/logod.png",
     "categories": ["news", "talk"],
     "streams": {
       "mp3": {
@@ -24,7 +24,7 @@
   {
     "id": "foxnewstalk",
     "name": "FOX News Talk",
-    "logo": "https://station-images-prod.radio-assets.com/300/foxnewstalk.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s20431/images/logod.png",
     "categories": ["news", "talk"],
     "streams": {
       "mp3": {
@@ -35,7 +35,7 @@
   {
     "id": "talksport",
     "name": "talkSPORT",
-    "logo": "https://station-images-prod.radio-assets.com/300/talksport.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s17077/images/logod.png",
     "categories": ["sport", "talk"],
     "streams": {
       "hls": {
@@ -46,7 +46,7 @@
   {
     "id": "bbcradio1",
     "name": "BBC Radio 1",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio1.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s24939/images/logod.png",
     "categories": ["pop", "dance"],
     "streams": {
       "hls": {
@@ -57,7 +57,7 @@
   {
     "id": "bbcradio2",
     "name": "BBC Radio 2",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio2.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s24940/images/logod.png",
     "categories": ["pop", "rock"],
     "streams": {
       "hls": {
@@ -68,7 +68,7 @@
   {
     "id": "bbcradio3",
     "name": "BBC Radio 3",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio3.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s24941/images/logod.png",
     "categories": ["classic", "jazz"],
     "streams": {
       "hls": {
@@ -79,7 +79,7 @@
   {
     "id": "bbcradio4",
     "name": "BBC Radio 4",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio4.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s25419/images/logod.png",
     "categories": ["news", "talk"],
     "streams": {
       "hls": {
@@ -90,7 +90,7 @@
   {
     "id": "bbcradio5live",
     "name": "BBC Radio 5 Live",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbcradio5live.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s24943/images/logod.png",
     "categories": ["sport", "news"],
     "streams": {
       "hls": {
@@ -101,7 +101,7 @@
   {
     "id": "bbc6music",
     "name": "BBC Radio 6 Music",
-    "logo": "https://station-images-prod.radio-assets.com/300/bbc6music.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s44491/images/logod.png",
     "categories": ["alternative", "rock"],
     "streams": {
       "hls": {
@@ -112,7 +112,7 @@
   {
     "id": "franceculture",
     "name": "France Culture",
-    "logo": "https://station-images-prod.radio-assets.com/300/franceculture.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s50567/images/logod.png",
     "categories": ["culture", "talk"],
     "streams": {
       "mp3": {
@@ -123,7 +123,7 @@
   {
     "id": "franceinfo",
     "name": "franceinfo",
-    "logo": "https://station-images-prod.radio-assets.com/300/franceinfo.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s50514/images/logod.png",
     "categories": ["news"],
     "streams": {
       "mp3": {
@@ -134,7 +134,7 @@
   {
     "id": "franceinter",
     "name": "France Inter",
-    "logo": "https://station-images-prod.radio-assets.com/300/franceinter.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s50526/images/logod.png",
     "categories": ["talk", "news"],
     "streams": {
       "mp3": {
@@ -145,7 +145,7 @@
   {
     "id": "francemusique",
     "name": "France Musique",
-    "logo": "https://station-images-prod.radio-assets.com/300/francemusique.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s50496/images/logod.png",
     "categories": ["classic"],
     "streams": {
       "mp3": {
@@ -156,7 +156,7 @@
   {
     "id": "wdr2",
     "name": "WDR 2",
-    "logo": "https://station-images-prod.radio-assets.com/300/wdr2.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s339616/images/logod.png",
     "categories": ["pop"],
     "streams": {
       "mp3": {
@@ -167,7 +167,7 @@
   {
     "id": "ndr2",
     "name": "NDR 2",
-    "logo": "https://station-images-prod.radio-assets.com/300/ndr2.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s56857/images/logod.png",
     "categories": ["pop"],
     "streams": {
       "mp3": {
@@ -178,7 +178,7 @@
   {
     "id": "swr3",
     "name": "SWR3",
-    "logo": "https://station-images-prod.radio-assets.com/300/swr3.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s24896/images/logod.png",
     "categories": ["pop"],
     "streams": {
       "mp3": {
@@ -189,7 +189,7 @@
   {
     "id": "hr3",
     "name": "hr3",
-    "logo": "https://station-images-prod.radio-assets.com/300/hr3.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s57109/images/logod.png",
     "categories": ["pop"],
     "streams": {
       "mp3": {
@@ -200,7 +200,7 @@
   {
     "id": "antenne1",
     "name": "Hitradio antenne 1",
-    "logo": "https://station-images-prod.radio-assets.com/300/antenne1.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s25770/images/logod.png",
     "categories": ["pop"],
     "streams": {
       "mp3": {
@@ -211,7 +211,7 @@
   {
     "id": "nporadio1",
     "name": "NPO Radio 1",
-    "logo": "https://station-images-prod.radio-assets.com/300/nporadio1.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s17523/images/logod.png",
     "categories": ["news", "talk"],
     "streams": {
       "mp3": {
@@ -222,7 +222,7 @@
   {
     "id": "nporadio2",
     "name": "NPO Radio 2",
-    "logo": "https://station-images-prod.radio-assets.com/300/nporadio2.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s9483/images/logod.png",
     "categories": ["pop"],
     "streams": {
       "mp3": {
@@ -233,7 +233,7 @@
   {
     "id": "npo3fm",
     "name": "NPO 3FM",
-    "logo": "https://station-images-prod.radio-assets.com/300/npo3fm.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s6707/images/logod.png",
     "categories": ["pop", "alternative"],
     "streams": {
       "mp3": {
@@ -244,7 +244,7 @@
   {
     "id": "rairadio1",
     "name": "Rai Radio 1",
-    "logo": "https://station-images-prod.radio-assets.com/300/rairadio1.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s25212/images/logod.png",
     "categories": ["news", "talk"],
     "streams": {
       "mp3": {
@@ -255,7 +255,7 @@
   {
     "id": "absoluteradio",
     "name": "Absolute Radio",
-    "logo": "https://station-images-prod.radio-assets.com/300/absoluteradio.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s16679/images/logod.png",
     "categories": ["rock"],
     "streams": {
       "mp3": {
@@ -266,7 +266,7 @@
   {
     "id": "classicfm",
     "name": "Classic FM",
-    "logo": "https://station-images-prod.radio-assets.com/300/classicfm.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s8439/images/logod.png",
     "categories": ["classic"],
     "streams": {
       "mp3": {
@@ -277,7 +277,7 @@
   {
     "id": "jazzfm",
     "name": "Jazz FM",
-    "logo": "https://station-images-prod.radio-assets.com/300/jazzfm.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s45300/images/logod.png",
     "categories": ["jazz"],
     "streams": {
       "aac": {
@@ -288,7 +288,7 @@
   {
     "id": "smoothradio",
     "name": "Smooth Radio",
-    "logo": "https://station-images-prod.radio-assets.com/300/smoothradio.jpeg",
+    "logo": "https://cdn-profiles.tunein.com/s221117/images/logod.png",
     "categories": ["pop", "oldies"],
     "streams": {
       "mp3": {
@@ -299,11 +299,55 @@
   {
     "id": "fm4",
     "name": "FM4",
-    "logo": "https://station-images-prod.radio-assets.com/300/fm4.png",
+    "logo": "https://cdn-profiles.tunein.com/s8235/images/logod.png",
     "categories": ["alternative", "indie", "pop"],
     "streams": {
       "mp3": {
         "128": "https://orf-live.ors-shoutcast.at/fm4-q1a"
+      }
+    }
+  },
+  {
+    "id": "radiozet",
+    "name": "Radio ZET",
+    "logo": "https://cdn-profiles.tunein.com/s87827/images/logod.png",
+    "categories": ["pop"],
+    "streams": {
+      "mp3": {
+        "128": "https://zt01.cdn.eurozet.pl/zet-net.mp3"
+      }
+    }
+  },
+  {
+    "id": "antyradio",
+    "name": "Antyradio",
+    "logo": "https://cdn-profiles.tunein.com/s120498/images/logod.png",
+    "categories": ["rock"],
+    "streams": {
+      "mp3": {
+        "128": "https://an04.cdn.eurozet.pl/ant-web.mp3"
+      }
+    }
+  },
+  {
+    "id": "chillizet",
+    "name": "ChilliZET",
+    "logo": "https://cdn-profiles.tunein.com/s87828/images/logod.png",
+    "categories": ["chillout", "jazz"],
+    "streams": {
+      "mp3": {
+        "128": "https://ch.cdn.eurozet.pl/chi-net.mp3"
+      }
+    }
+  },
+  {
+    "id": "meloradio",
+    "name": "Meloradio",
+    "logo": "https://cdn-profiles.tunein.com/s163182/images/logod.png",
+    "categories": ["pop", "oldies"],
+    "streams": {
+      "aac": {
+        "128": "https://22713.live.streamtheworld.com/MELORADIOAAC.aac"
       }
     }
   }

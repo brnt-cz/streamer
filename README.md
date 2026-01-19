@@ -1,6 +1,6 @@
 # Streamer
 
-Minimalistický webový přehrávač českých internetových rádií postavený na Vue 3.
+Minimalistický webový přehrávač českých a zahraničních internetových rádií postavený na Vue 3.
 
 ![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?logo=vue.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)
@@ -9,7 +9,7 @@ Minimalistický webový přehrávač českých internetových rádií postavený
 
 ## Funkce
 
-- **81 českých rádií** - předem načtená databáze stanic z play.cz
+- **113 rádií** - 81 českých + 32 zahraničních (BBC, NPR, France Radio, Radio ZET, aj.)
 - **Více formátů** - podpora MP3, AAC a WMA streamů
 - **Výběr kvality** - různé bitrate varianty (32-320 kbps)
 - **Playlist s složkami** - organizace stanic do složek s drag & drop řazením
