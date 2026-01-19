@@ -6,6 +6,7 @@ export interface StreamItem {
   name: string
   url: string
   bitrate?: string
+  logo?: string
   folderId?: string
 }
 
@@ -192,9 +193,9 @@ export const usePlaylistStore = defineStore('playlist', () => {
   watch(folderCollapsedState, () => saveCollapsedStateToCookie(folderCollapsedState.value), { deep: true })
   watch(currentId, (id) => saveLastStreamToCookie(id))
 
-  function addStream(name: string, url: string, bitrate?: string): string {
+  function addStream(name: string, url: string, bitrate?: string, logo?: string): string {
     const id = generateId()
-    items.value.push({ id, name, url, bitrate })
+    items.value.push({ id, name, url, bitrate, logo })
     return id
   }
 
@@ -212,12 +213,13 @@ export const usePlaylistStore = defineStore('playlist', () => {
     currentId.value = id
   }
 
-  function updateStream(id: string, name: string, url: string, bitrate?: string) {
+  function updateStream(id: string, name: string, url: string, bitrate?: string, logo?: string) {
     const item = items.value.find(item => item.id === id)
     if (item) {
       item.name = name
       item.url = url
       item.bitrate = bitrate
+      item.logo = logo
     }
   }
 
@@ -303,6 +305,7 @@ export const usePlaylistStore = defineStore('playlist', () => {
           name: item.name,
           url: item.url,
           bitrate: item.bitrate || extractBitrateFromUrl(item.url),
+          logo: item.logo,
           folderId: item.folderId
         }))
 

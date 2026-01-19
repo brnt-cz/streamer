@@ -3,9 +3,11 @@ import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { usePlaylistStore } from '../stores/playlist'
 import { useMediaSession } from '../composables/useMediaSession'
 import { useI18n } from '../composables/useI18n'
+import { useRadios } from '../stores/radios'
 
 const store = usePlaylistStore()
 const { t } = useI18n()
+const { radios } = useRadios()
 const audioRef = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
 const volume = ref(80)
@@ -130,6 +132,29 @@ watch(volume, throttledUpdateVolume)
 // Stream name for media session
 const streamName = computed(() => store.currentStream?.name)
 
+// Try to find logo - either from stream or by matching to known radio
+const currentLogo = computed(() => {
+  if (!store.currentStream) return null
+  // Use stored logo if available
+  if (store.currentStream.logo) return store.currentStream.logo
+  // Try to match by URL - check if stream URL contains radio's stream URL
+  const streamUrl = store.currentStream.url.toLowerCase()
+  for (const radio of radios.value) {
+    for (const format in radio.streams) {
+      for (const bitrate in radio.streams[format]) {
+        if (streamUrl === radio.streams[format][bitrate].toLowerCase()) {
+          return radio.logo
+        }
+      }
+    }
+  }
+  // Try to match by name
+  const streamName = store.currentStream.name.toLowerCase()
+  const matchedRadio = radios.value.find(r => r.name.toLowerCase() === streamName)
+  if (matchedRadio) return matchedRadio.logo
+  return null
+})
+
 // Media Session API for browser/OS playback controls
 useMediaSession({
   isPlaying,
@@ -213,13 +238,21 @@ onUnmounted(() => {
     </div>
 
     <!-- Player Info -->
-    <div class="text-center mb-6">
-      <div v-if="store.currentStream">
-        <span class="block text-[11px] font-medium text-text-muted uppercase tracking-[1.5px] mb-1.5">{{ t.nowPlaying }}</span>
-        <span class="text-lg font-semibold text-text">{{ store.currentStream.name }}</span>
-      </div>
-      <div v-else>
-        <span class="text-lg font-semibold text-text-muted">{{ t.selectStream }}</span>
+    <div class="flex items-center justify-center gap-4 mb-6">
+      <img
+        v-if="currentLogo && store.currentStream"
+        :src="currentLogo"
+        :alt="store.currentStream.name"
+        class="w-14 h-14 rounded-xl object-cover bg-white/10 shrink-0"
+      />
+      <div class="text-center">
+        <div v-if="store.currentStream">
+          <span class="block text-[11px] font-medium text-text-muted uppercase tracking-[1.5px] mb-1.5">{{ t.nowPlaying }}</span>
+          <span class="text-lg font-semibold text-text">{{ store.currentStream.name }}</span>
+        </div>
+        <div v-else>
+          <span class="text-lg font-semibold text-text-muted">{{ t.selectStream }}</span>
+        </div>
       </div>
     </div>
 
