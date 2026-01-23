@@ -10,13 +10,15 @@ Minimalistický webový přehrávač českých a zahraničních internetových r
 ## Funkce
 
 - **113 rádií** - 81 českých + 32 zahraničních (BBC, NPR, France Radio, Radio ZET, aj.)
-- **Více formátů** - podpora MP3, AAC a WMA streamů
+- **Více formátů** - podpora MP3, AAC a WMA streamů s filtrováním ve výběru
 - **Výběr kvality** - různé bitrate varianty (32-320 kbps)
 - **Playlist s složkami** - organizace stanic do složek s drag & drop řazením
 - **Vlastní stanice** - možnost přidat vlastní stream URL
 - **Import/Export** - záloha a obnova playlistu (JSON)
 - **Vícejazyčné rozhraní** - čeština a angličtina
-- **Media Session API** - ovládání z lock screen a media keys
+- **Media Session API** - ovládání z lock screen a media keys s artwork
+- **Přehrávání na pozadí** - funguje i při vypnuté obrazovce na mobilu
+- **Loga stanic** - optimalizovaná loga 100x100 zobrazená v přehrávači
 - **Responzivní design** - desktop i mobilní offcanvas panel
 - **Úspora dat** - automatické zastavení streamu při pauze na mobilu
 - **Offline databáze** - žádné API volání za běhu
@@ -61,8 +63,14 @@ src/
 ├── i18n/
 │   └── translations.ts       # Překlady (EN/CZ)
 ├── data/
-│   └── radios.json           # Databáze 81 rádií
+│   ├── radios.json           # Databáze 81 českých rádií
+│   └── radios-international.json  # Databáze 32 zahraničních rádií
+├── composables/
+│   └── useMediaSession.ts    # Media Session API s artwork
 └── App.vue
+
+public/
+└── logos/                    # 113 optimalizovaných log (100x100 PNG)
 ```
 
 ## Aktualizace databáze rádií
@@ -83,3 +91,12 @@ node scripts/fetch-radios.cjs
 ## License
 
 MIT
+
+feat: Add mobile background playback support
+
+- Add playsinline attributes for iOS audio playback
+- Handle visibility change to resume playback after screen unlock
+- Add keep-alive interval to detect silent browser pauses
+- Handle stalled event to auto-reload interrupted streams
+- Add artwork (station logo) to Media Session metadata
+- Update README with new features
