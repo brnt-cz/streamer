@@ -89,18 +89,62 @@ function togglePlay(): void {
 function handlePlay(): void {
   isPlaying.value = true
   error.value = null
+  startKeepAlive()
 }
 
 function handlePause(): void {
   // Ignore pause events during stream loading (load() triggers pause)
   if (!isLoadingStream.value) {
     isPlaying.value = false
+    stopKeepAlive()
   }
 }
 
 function handleError(): void {
   error.value = t.value.streamLoadError
   isPlaying.value = false
+}
+
+// Handle stalled stream - try to resume
+function handleStalled(): void {
+  if (isPlaying.value && audioRef.value && store.currentStream) {
+    // Try to resume by reloading the stream
+    const audio = audioRef.value
+    const currentTime = audio.currentTime
+    audio.src = store.currentStream.url
+    audio.load()
+    audio.currentTime = currentTime
+    audio.play().catch(() => {
+      // Silent catch - will be handled by error event if persistent
+    })
+  }
+}
+
+// Keep-alive interval to detect silent browser pauses
+let keepAliveInterval: ReturnType<typeof setInterval> | null = null
+
+function startKeepAlive(): void {
+  if (keepAliveInterval) return
+  keepAliveInterval = setInterval(() => {
+    if (isPlaying.value && audioRef.value && audioRef.value.paused && !isLoadingStream.value) {
+      // Browser silently paused - try to resume
+      audioRef.value.play().catch(() => {
+        // If can't resume, reload stream
+        if (store.currentStream) {
+          audioRef.value!.src = store.currentStream.url
+          audioRef.value!.load()
+          playWhenReady(audioRef.value!, () => {})
+        }
+      })
+    }
+  }, 5000) // Check every 5 seconds
+}
+
+function stopKeepAlive(): void {
+  if (keepAliveInterval) {
+    clearInterval(keepAliveInterval)
+    keepAliveInterval = null
+  }
 }
 
 watch(() => store.currentStream, (newStream, oldStream) => {
@@ -159,6 +203,7 @@ const currentLogo = computed(() => {
 useMediaSession({
   isPlaying,
   streamName,
+  artwork: currentLogo,
   onPlay: () => {
     if (audioRef.value && store.currentStream) {
       const audio = audioRef.value
@@ -174,17 +219,40 @@ useMediaSession({
   }
 })
 
+// Handle visibility change - resume playback if browser paused it in background
+function handleVisibilityChange(): void {
+  if (document.visibilityState === 'visible' && isPlaying.value && audioRef.value) {
+    // Check if audio was paused by browser
+    if (audioRef.value.paused && audioRef.value.src) {
+      audioRef.value.play().catch(() => {
+        // If play fails, try reloading the stream
+        if (store.currentStream) {
+          audioRef.value!.src = store.currentStream.url
+          audioRef.value!.load()
+          playWhenReady(audioRef.value!, () => {
+            error.value = t.value.streamError
+          })
+        }
+      })
+    }
+  }
+}
+
 onMounted(() => {
   if (audioRef.value) {
     audioRef.value.volume = volume.value / 100
   }
+  // Listen for visibility changes to resume playback
+  document.addEventListener('visibilitychange', handleVisibilityChange)
 })
 
 onUnmounted(() => {
   cleanupCanplayListener()
+  stopKeepAlive()
   if (volumeThrottleTimer) {
     clearTimeout(volumeThrottleTimer)
   }
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
   stopAudio()
 })
 </script>
@@ -193,9 +261,13 @@ onUnmounted(() => {
   <div class="bg-gradient-surface !bg-[#0F0F11] flex flex-col justify-between min-h-[500px] border border-border-light rounded-[20px] p-7 backdrop-blur-glass overflow-visible">
     <audio
       ref="audioRef"
+      playsinline
+      webkit-playsinline
+      x-webkit-airplay="allow"
       @play="handlePlay"
       @pause="handlePause"
       @error="handleError"
+      @stalled="handleStalled"
     ></audio>
 
     <!-- Player Visual -->
