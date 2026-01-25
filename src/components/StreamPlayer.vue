@@ -16,6 +16,72 @@ const error = ref<string | null>(null)
 // Flag to ignore pause events during stream loading
 const isLoadingStream = ref(false)
 
+// Sleep Timer
+const sleepTimerMinutes = ref(0) // 0 = off, otherwise minutes until stop
+const sleepTimerRemaining = ref(0) // Seconds remaining
+const showSleepTimerMenu = ref(false)
+let sleepTimerInterval: ReturnType<typeof setInterval> | null = null
+
+const sleepTimerOptions = [
+  { value: 0, label: 'sleepTimerOff' },
+  { value: 15, label: 'sleepTimer15' },
+  { value: 30, label: 'sleepTimer30' },
+  { value: 45, label: 'sleepTimer45' },
+  { value: 60, label: 'sleepTimer60' },
+  { value: 90, label: 'sleepTimer90' },
+  { value: 120, label: 'sleepTimer120' }
+] as const
+
+function setSleepTimer(minutes: number): void {
+  sleepTimerMinutes.value = minutes
+  sleepTimerRemaining.value = minutes * 60
+  showSleepTimerMenu.value = false
+
+  if (sleepTimerInterval) {
+    clearInterval(sleepTimerInterval)
+    sleepTimerInterval = null
+  }
+
+  if (minutes > 0) {
+    sleepTimerInterval = setInterval(() => {
+      if (sleepTimerRemaining.value > 0) {
+        sleepTimerRemaining.value--
+        if (sleepTimerRemaining.value <= 0) {
+          // Time's up - stop playback
+          if (isPlaying.value) {
+            isPlaying.value = false
+            stopAudio()
+          }
+          sleepTimerMinutes.value = 0
+          if (sleepTimerInterval) {
+            clearInterval(sleepTimerInterval)
+            sleepTimerInterval = null
+          }
+        }
+      }
+    }, 1000)
+  }
+}
+
+const formattedSleepTime = computed(() => {
+  if (sleepTimerRemaining.value <= 0) return ''
+  const minutes = Math.floor(sleepTimerRemaining.value / 60)
+  const seconds = sleepTimerRemaining.value % 60
+  if (minutes >= 60) {
+    const hours = Math.floor(minutes / 60)
+    const mins = minutes % 60
+    return `${hours}:${mins.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+  }
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`
+})
+
+function closeSleepTimerMenu(event: MouseEvent): void {
+  const target = event.target as HTMLElement
+  if (!target.closest('.sleep-timer-container')) {
+    showSleepTimerMenu.value = false
+  }
+}
+
 // Track pending canplay listener for cleanup
 let pendingCanplayHandler: (() => void) | null = null
 
@@ -244,6 +310,8 @@ onMounted(() => {
   }
   // Listen for visibility changes to resume playback
   document.addEventListener('visibilitychange', handleVisibilityChange)
+  // Close sleep timer menu when clicking outside
+  document.addEventListener('click', closeSleepTimerMenu)
 })
 
 onUnmounted(() => {
@@ -252,7 +320,11 @@ onUnmounted(() => {
   if (volumeThrottleTimer) {
     clearTimeout(volumeThrottleTimer)
   }
+  if (sleepTimerInterval) {
+    clearInterval(sleepTimerInterval)
+  }
   document.removeEventListener('visibilitychange', handleVisibilityChange)
+  document.removeEventListener('click', closeSleepTimerMenu)
   stopAudio()
 })
 </script>
@@ -373,6 +445,53 @@ onUnmounted(() => {
           />
         </div>
         <span class="text-xs font-medium text-text-muted min-w-6 text-right">{{ volume }}</span>
+      </div>
+    </div>
+
+    <!-- Sleep Timer -->
+    <div class="pt-4 border-t border-border">
+      <div class="flex items-center gap-3 sleep-timer-container relative">
+        <!-- Timer Icon -->
+        <svg class="w-5 h-5 shrink-0" :class="sleepTimerMinutes > 0 ? 'text-primary' : 'text-white/50'" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+          <path d="M12 9v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+          <path d="M9 2h6M12 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Timer Button/Display -->
+        <button
+          @click.stop="showSleepTimerMenu = !showSleepTimerMenu"
+          class="flex-1 flex items-center justify-between px-3 py-2 bg-white/5 hover:bg-white/10 rounded-lg transition-colors text-left"
+        >
+          <span class="text-sm text-text-muted">{{ t.sleepTimer }}</span>
+          <span v-if="sleepTimerMinutes > 0" class="text-sm font-medium text-primary">
+            {{ formattedSleepTime }}
+          </span>
+          <span v-else class="text-sm text-text-muted">
+            {{ t.sleepTimerOff }}
+          </span>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <Transition name="dropdown">
+          <div
+            v-if="showSleepTimerMenu"
+            class="absolute bottom-full left-0 right-0 mb-2 bg-surface border border-border-light rounded-xl shadow-lg overflow-hidden z-10"
+          >
+            <button
+              v-for="option in sleepTimerOptions"
+              :key="option.value"
+              @click.stop="setSleepTimer(option.value)"
+              class="w-full px-4 py-2.5 text-left text-sm transition-colors flex items-center justify-between"
+              :class="sleepTimerMinutes === option.value ? 'bg-primary/20 text-primary' : 'text-text hover:bg-white/5'"
+            >
+              <span>{{ t[option.label] }}</span>
+              <svg v-if="sleepTimerMinutes === option.value" class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </Transition>
       </div>
     </div>
 
