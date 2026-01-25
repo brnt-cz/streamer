@@ -8,6 +8,7 @@
   --color-brand: #F02F00;
   --color-brand-dark: #d42800;
   --color-brand-light: #ff4d2a;
+  --color-primary: #F02F00;
 
   /* Background colors */
   --color-background: #09090b;
@@ -266,4 +267,16 @@
 .modal-leave-to .modal {
   transform: scale(0.95) translateY(20px);
   opacity: 0;
+}
+
+/* Dropdown transitions */
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.2s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
 }

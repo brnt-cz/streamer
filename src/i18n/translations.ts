@@ -9,6 +9,20 @@ export const translations = {
     streamError: 'Failed to play stream',
     streamLoadError: 'Error loading stream',
 
+    // Sleep Timer
+    sleepTimer: 'Sleep Timer',
+    sleepTimerOff: 'Off',
+    sleepTimerActive: 'Sleep in',
+    sleepTimerMinutes: 'min',
+    sleepTimerHour: 'hour',
+    sleepTimerHours: 'hours',
+    sleepTimer15: '15 min',
+    sleepTimer30: '30 min',
+    sleepTimer45: '45 min',
+    sleepTimer60: '1 hour',
+    sleepTimer90: '1.5 hours',
+    sleepTimer120: '2 hours',
+
     // PlaylistManager
     yourStations: 'Your Stations',
     add: 'Add stream',
@@ -99,6 +113,20 @@ export const translations = {
     selectStream: 'Vyberte stream',
     streamError: 'Nepodařilo se přehrát stream',
     streamLoadError: 'Chyba při načítání streamu',
+
+    // Sleep Timer
+    sleepTimer: 'Časovač vypnutí',
+    sleepTimerOff: 'Vypnuto',
+    sleepTimerActive: 'Vypnutí za',
+    sleepTimerMinutes: 'min',
+    sleepTimerHour: 'hod',
+    sleepTimerHours: 'hod',
+    sleepTimer15: '15 min',
+    sleepTimer30: '30 min',
+    sleepTimer45: '45 min',
+    sleepTimer60: '1 hodina',
+    sleepTimer90: '1,5 hodiny',
+    sleepTimer120: '2 hodiny',
 
     // PlaylistManager
     yourStations: 'Vaše stanice',
