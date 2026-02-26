@@ -91,12 +91,3 @@ node scripts/fetch-radios.cjs
 ## License
 
 MIT
-
-feat: Add mobile background playback support
-
-- Add playsinline attributes for iOS audio playback
-- Handle visibility change to resume playback after screen unlock
-- Add keep-alive interval to detect silent browser pauses
-- Handle stalled event to auto-reload interrupted streams
-- Add artwork (station logo) to Media Session metadata
-- Update README with new features
