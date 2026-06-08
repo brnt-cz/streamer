@@ -479,7 +479,7 @@ test.describe('Folder Management', () => {
     // Collapse the folder
     await folderHeader.locator('button').first().click()
 
-    // Then the folder header should have the active styling (orange border)
-    await expect(folderHeader).toHaveCSS('border-color', 'rgba(240, 47, 0, 0.2)')
+    // Then the folder header should have the active styling (brand color border at 20% opacity)
+    await expect(folderHeader).toHaveCSS('border-color', /oklab\(.+ \/ 0\.2\)/)
   })
 })
