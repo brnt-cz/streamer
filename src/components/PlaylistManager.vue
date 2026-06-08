@@ -264,14 +264,14 @@ defineExpose({
 </script>
 
 <template>
-  <div class="bg-gradient-surface border border-border-light rounded-[20px] p-5">
+  <div class="bg-gradient-surface border border-border-light rounded-modal p-5">
     <!-- Header -->
     <div class="mb-4 px-1">
-      <h2 class="text-[15px] font-semibold text-white/90 mb-3">{{ t.yourStations }}</h2>
+      <h2 class="text-md font-semibold text-white/90 mb-3">{{ t.yourStations }}</h2>
       <div class="flex gap-2">
         <button
           @click="openFolderForm"
-          class="flex items-center gap-2 bg-white/[0.06] text-white/70 border border-border-light px-3.5 py-2.5 rounded-[10px] text-[13px] font-medium cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text whitespace-nowrap"
+          class="flex items-center gap-2 bg-white/6 text-white/70 border border-border-light px-3.5 py-2.5 rounded-input text-tiny font-medium cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text whitespace-nowrap"
           :title="t.createFolder"
         >
           <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
@@ -282,7 +282,7 @@ defineExpose({
         </button>
         <button
           @click="openAddForm"
-          class="flex items-center gap-2 bg-white/[0.06] text-white/70 border border-border-light px-3.5 py-2.5 rounded-[10px] text-[13px] font-medium cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text whitespace-nowrap"
+          class="flex items-center gap-2 bg-white/6 text-white/70 border border-border-light px-3.5 py-2.5 rounded-input text-tiny font-medium cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text whitespace-nowrap"
         >
           <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
             <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -300,7 +300,7 @@ defineExpose({
           @click="closeFolderForm"
           class="bg-transparent border-none p-1 cursor-pointer text-text-muted transition-colors duration-200 hover:text-white/80"
         >
-          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
@@ -312,14 +312,14 @@ defineExpose({
             v-model="newFolderName"
             type="text"
             :placeholder="t.folderNamePlaceholder"
-            class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
+            class="w-full py-3 px-3.5 bg-white/4 border border-border-light rounded-input text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-brand/50 focus:bg-white/6"
             @keyup.enter="saveFolder"
           />
         </div>
         <button
           @click="saveFolder"
           :disabled="!isFolderFormValid"
-          class="w-full py-3 bg-gradient-brand-simple border-none rounded-[10px] text-sm font-semibold text-white cursor-pointer transition-all duration-200 mt-1 hover:opacity-90 hover:-translate-y-px disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          class="w-full py-3 bg-gradient-brand-simple border-none rounded-input text-sm font-semibold text-white cursor-pointer transition-all duration-200 mt-1 hover:opacity-90 hover:-translate-y-px disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         >
           {{ editingFolderId ? t.saveChanges : t.createFolder }}
         </button>
@@ -334,7 +334,7 @@ defineExpose({
           @click="closeForm"
           class="bg-transparent border-none p-1 cursor-pointer text-text-muted transition-colors duration-200 hover:text-white/80"
         >
-          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
@@ -346,7 +346,7 @@ defineExpose({
             v-model="newName"
             type="text"
             :placeholder="t.namePlaceholder"
-            class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
+            class="w-full py-3 px-3.5 bg-white/4 border border-border-light rounded-input text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-brand/50 focus:bg-white/6"
           />
         </div>
         <div class="mb-3.5">
@@ -355,12 +355,12 @@ defineExpose({
             v-model="newUrl"
             type="url"
             :placeholder="t.urlPlaceholder"
-            class="w-full py-3 px-3.5 bg-white/[0.04] border border-border-light rounded-[10px] text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
+            class="w-full py-3 px-3.5 bg-white/4 border border-border-light rounded-input text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-brand/50 focus:bg-white/6"
           />
         </div>
         <button
           @click="saveStream"
-          class="w-full py-3 bg-gradient-brand-simple border-none rounded-[10px] text-sm font-semibold text-white cursor-pointer transition-all duration-200 mt-1 hover:opacity-90 hover:-translate-y-px"
+          class="w-full py-3 bg-gradient-brand-simple border-none rounded-input text-sm font-semibold text-white cursor-pointer transition-all duration-200 mt-1 hover:opacity-90 hover:-translate-y-px"
         >
           {{ editingId ? t.saveChanges : t.addStation }}
         </button>
@@ -384,11 +384,11 @@ defineExpose({
           @dragleave="onDragLeave"
           @drop="onDrop($event, folder.id, 'folder')"
           @dragend="onDragEnd"
-          class="group flex items-center p-2.5 bg-white/[0.04] border border-border-light rounded-xl cursor-pointer transition-all duration-200 hover:bg-white/[0.06]"
+          class="group flex items-center p-2.5 bg-white/4 border border-border-light rounded-xl cursor-pointer transition-all duration-200 hover:bg-white/6"
           :class="{
             'opacity-50': draggedId === folder.id && draggedType === 'folder',
-            '!border-[rgba(240,47,0,0.5)] !bg-[rgba(240,47,0,0.05)]': dragOverId === folder.id && dragOverType === 'folder' && (draggedType === 'folder' || draggedType === 'stream'),
-            '!bg-[rgba(240,47,0,0.1)] !border-[rgba(240,47,0,0.2)]': store.isFolderCollapsed(folder.id) && folderHasActiveStream(folder.id)
+            'border-brand/50! bg-brand/5!': dragOverId === folder.id && dragOverType === 'folder' && (draggedType === 'folder' || draggedType === 'stream'),
+            'bg-brand/10! border-brand/20!': store.isFolderCollapsed(folder.id) && folderHasActiveStream(folder.id)
           }"
         >
           <!-- Drag Handle -->
@@ -432,7 +432,7 @@ defineExpose({
             <button
               @click.stop="startEditFolder(folder)"
               :title="t.renameFolder"
-              class="bg-white/[0.06] border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
+              class="bg-white/6 border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
             >
               <svg class="w-3.5 h-3.5 block" viewBox="0 0 24 24" fill="none">
                 <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -442,7 +442,7 @@ defineExpose({
             <button
               @click.stop="confirmDeleteFolder(folder.id)"
               :title="t.deleteFolder"
-              class="bg-white/[0.06] border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
+              class="bg-white/6 border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
             >
               <svg class="w-3.5 h-3.5 block" viewBox="0 0 24 24" fill="none">
                 <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -461,9 +461,9 @@ defineExpose({
             @dragover.prevent="onDragOver($event, folder.id, 'folder-drop-zone')"
             @dragleave="onDragLeave"
             @drop="onDrop($event, folder.id, 'folder-drop-zone')"
-            class="min-h-[40px] rounded-lg transition-all duration-200 mb-1"
+            class="min-h-10 rounded-lg transition-all duration-200 mb-1"
             :class="{
-              'bg-[rgba(240,47,0,0.1)] border-2 border-dashed border-[rgba(240,47,0,0.3)]': dragOverId === folder.id && dragOverType === 'folder-drop-zone' && draggedType === 'stream',
+              'bg-brand/10 border-2 border-dashed border-brand/30': dragOverId === folder.id && dragOverType === 'folder-drop-zone' && draggedType === 'stream',
               'border-2 border-dashed border-transparent': !(dragOverId === folder.id && dragOverType === 'folder-drop-zone')
             }"
           >
@@ -479,11 +479,11 @@ defineExpose({
                 @dragleave="onDragLeave"
                 @drop="onDrop($event, item.id, 'stream')"
                 @dragend="onDragEnd"
-                class="group flex items-center p-2.5 bg-white/[0.02] border border-transparent rounded-xl mb-1 cursor-pointer transition-all duration-200 hover:bg-white/[0.04]"
+                class="group flex items-center p-2.5 bg-white/2 border border-transparent rounded-xl mb-1 cursor-pointer transition-all duration-200 hover:bg-white/4"
                 :class="{
-                  '!bg-[rgba(240,47,0,0.1)] !border-[rgba(240,47,0,0.2)]': item.id === store.currentId,
+                  'bg-brand/10! border-brand/20!': item.id === store.currentId,
                   'opacity-50': draggedId === item.id,
-                  '!border-[rgba(240,47,0,0.5)] !bg-[rgba(240,47,0,0.05)]': dragOverId === item.id && dragOverType === 'stream'
+                  'border-brand/50! bg-brand/5!': dragOverId === item.id && dragOverType === 'stream'
                 }"
               >
                 <!-- Drag Handle -->
@@ -500,13 +500,13 @@ defineExpose({
                 <div class="mr-2.5">
                   <div
                     class="w-1.5 h-1.5 rounded-full transition-all duration-200"
-                    :class="item.id === store.currentId ? 'bg-[#F02F00] shadow-[0_0_12px_rgba(240,47,0,0.5)]' : 'bg-white/15'"
+                    :class="item.id === store.currentId ? 'bg-primary shadow-brand-glow' : 'bg-white/15'"
                   ></div>
                 </div>
 
                 <!-- Info -->
                 <div class="flex-1 min-w-0">
-                  <span class="block text-[13px] font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ item.name }}</span>
+                  <span class="block text-tiny font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ item.name }}</span>
                 </div>
 
                 <!-- Actions -->
@@ -514,7 +514,7 @@ defineExpose({
                   <button
                     @click.stop="startEdit(item.id, item.name, item.url)"
                     :title="t.edit"
-                    class="bg-white/[0.06] border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
+                    class="bg-white/6 border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
                   >
                     <svg class="w-3.5 h-3.5 block" viewBox="0 0 24 24" fill="none">
                       <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -524,7 +524,7 @@ defineExpose({
                   <button
                     @click.stop="confirmDelete(item.id)"
                     :title="t.delete"
-                    class="bg-white/[0.06] border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
+                    class="bg-white/6 border-none cursor-pointer p-1.5 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
                   >
                     <svg class="w-3.5 h-3.5 block" viewBox="0 0 24 24" fill="none">
                       <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -556,11 +556,11 @@ defineExpose({
         @dragleave="onDragLeave"
         @drop="onDrop($event, item.id, 'stream')"
         @dragend="onDragEnd"
-        class="group flex items-center p-3 bg-white/[0.02] border border-transparent rounded-xl mb-1.5 cursor-pointer transition-all duration-200 hover:bg-white/[0.04]"
+        class="group flex items-center p-3 bg-white/2 border border-transparent rounded-xl mb-1.5 cursor-pointer transition-all duration-200 hover:bg-white/4"
         :class="{
-          '!bg-[rgba(240,47,0,0.1)] !border-[rgba(240,47,0,0.2)]': item.id === store.currentId,
+          'bg-brand/10! border-brand/20!': item.id === store.currentId,
           'opacity-50': draggedId === item.id,
-          '!border-[rgba(240,47,0,0.5)] !bg-[rgba(240,47,0,0.05)]': dragOverId === item.id && dragOverType === 'stream'
+          'border-brand/50! bg-brand/5!': dragOverId === item.id && dragOverType === 'stream'
         }"
       >
         <!-- Drag Handle -->
@@ -577,27 +577,27 @@ defineExpose({
         <div class="mr-3">
           <div
             class="w-2 h-2 rounded-full transition-all duration-200"
-            :class="item.id === store.currentId ? 'bg-[#F02F00] shadow-[0_0_12px_rgba(240,47,0,0.5)]' : 'bg-white/15'"
+            :class="item.id === store.currentId ? 'bg-primary shadow-brand-glow' : 'bg-white/15'"
           ></div>
         </div>
 
         <!-- Info -->
         <div class="flex-1 min-w-0">
           <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ item.name }}</span>
-          <span class="block text-[11px] text-white/30 whitespace-nowrap overflow-hidden text-ellipsis mt-0.5">{{ item.url }}</span>
+          <span class="block text-2xs text-white/30 whitespace-nowrap overflow-hidden text-ellipsis mt-0.5">{{ item.url }}</span>
         </div>
 
         <!-- End Section -->
-        <div class="relative ml-2 min-w-[70px] flex justify-end">
+        <div class="relative ml-2 min-w-17.5 flex justify-end">
           <span
             v-if="item.bitrate"
-            class="hidden lg:inline py-0.5 px-2 bg-white/[0.08] rounded-md text-[11px] font-medium text-white/50 transition-opacity duration-150 group-hover:opacity-0 group-hover:pointer-events-none"
+            class="hidden lg:inline py-0.5 px-2 bg-white/8 rounded-md text-2xs font-medium text-white/50 transition-opacity duration-150 group-hover:opacity-0 group-hover:pointer-events-none"
           >{{ item.bitrate }}k</span>
           <div class="flex gap-1 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:opacity-0 transition-opacity duration-150 lg:group-hover:opacity-100">
             <button
               @click.stop="startEdit(item.id, item.name, item.url)"
               :title="t.edit"
-              class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
+              class="bg-white/6 border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-white/10 hover:text-white/90"
             >
               <svg class="w-4 h-4 block" viewBox="0 0 24 24" fill="none">
                 <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -607,7 +607,7 @@ defineExpose({
             <button
               @click.stop="confirmDelete(item.id)"
               :title="t.delete"
-              class="bg-white/[0.06] border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
+              class="bg-white/6 border-none cursor-pointer p-2 rounded-lg text-white/50 transition-all duration-200 hover:bg-error/15 hover:text-red-400"
             >
               <svg class="w-4 h-4 block" viewBox="0 0 24 24" fill="none">
                 <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -626,7 +626,7 @@ defineExpose({
       @drop="onDropToRoot"
       class="mt-2 py-4 border-2 border-dashed border-white/10 rounded-xl text-center text-xs text-white/30 transition-all duration-200"
       :class="{
-        '!border-[rgba(240,47,0,0.3)] !bg-[rgba(240,47,0,0.05)] !text-white/50': dragOverType === 'stream' && !dragOverId
+        'border-brand/30! bg-brand/5! text-white/50!': dragOverType === 'stream' && !dragOverId
       }"
     >
       {{ t.dragHereToAdd }}
@@ -643,7 +643,7 @@ defineExpose({
       <span class="block text-sm text-text-muted mb-4">{{ t.noStations }}</span>
       <button
         @click="openAddForm"
-        class="bg-gradient-brand-simple border-none py-2.5 px-5 rounded-[10px] text-[13px] font-medium text-white cursor-pointer transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+        class="bg-gradient-brand-simple border-none py-2.5 px-5 rounded-input text-tiny font-medium text-white cursor-pointer transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
       >{{ t.addFirstStation }}</button>
     </div>
 
@@ -679,7 +679,7 @@ defineExpose({
     </div>
 
     <!-- Import Error -->
-    <div v-if="importError" class="mt-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-lg text-error-light text-[13px] text-center">
+    <div v-if="importError" class="mt-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-lg text-error-light text-tiny text-center">
       {{ importError }}
     </div>
 
@@ -687,7 +687,7 @@ defineExpose({
     <Teleport to="body">
       <div
         v-if="deleteConfirmId"
-        class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        class="fixed inset-0 z-100 flex items-center justify-center p-4"
       >
         <!-- Backdrop -->
         <div
@@ -695,13 +695,13 @@ defineExpose({
           @click="cancelDelete"
         ></div>
         <!-- Dialog -->
-        <div class="relative bg-[#1a1a1d] border border-border-light rounded-2xl p-5 w-full max-w-[300px] shadow-2xl">
+        <div class="relative bg-surface-dialog border border-border-light rounded-2xl p-5 w-full max-w-75 shadow-2xl">
           <h3 class="text-base font-semibold text-white mb-2">{{ t.deleteConfirmTitle }}</h3>
           <p class="text-sm text-white/60 mb-5">{{ t.deleteConfirmMessage }}</p>
           <div class="flex gap-3">
             <button
               @click="cancelDelete"
-              class="flex-1 py-2.5 px-4 bg-white/[0.06] border border-border-light rounded-lg text-sm font-medium text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
+              class="flex-1 py-2.5 px-4 bg-white/6 border border-border-light rounded-lg text-sm font-medium text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
             >
               {{ t.cancel }}
             </button>
@@ -720,7 +720,7 @@ defineExpose({
     <Teleport to="body">
       <div
         v-if="deleteFolderConfirmId"
-        class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        class="fixed inset-0 z-100 flex items-center justify-center p-4"
       >
         <!-- Backdrop -->
         <div
@@ -728,13 +728,13 @@ defineExpose({
           @click="cancelDeleteFolder"
         ></div>
         <!-- Dialog -->
-        <div class="relative bg-[#1a1a1d] border border-border-light rounded-2xl p-5 w-full max-w-[300px] shadow-2xl">
+        <div class="relative bg-surface-dialog border border-border-light rounded-2xl p-5 w-full max-w-75 shadow-2xl">
           <h3 class="text-base font-semibold text-white mb-2">{{ t.deleteFolderConfirmTitle }}</h3>
           <p class="text-sm text-white/60 mb-5">{{ t.deleteFolderConfirmMessage }}</p>
           <div class="flex gap-3">
             <button
               @click="cancelDeleteFolder"
-              class="flex-1 py-2.5 px-4 bg-white/[0.06] border border-border-light rounded-lg text-sm font-medium text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
+              class="flex-1 py-2.5 px-4 bg-white/6 border border-border-light rounded-lg text-sm font-medium text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
             >
               {{ t.cancel }}
             </button>

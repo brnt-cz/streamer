@@ -44,7 +44,7 @@ onUnmounted(() => {
     <!-- Trigger Button -->
     <button
       @click="toggleDropdown"
-      class="flex items-center gap-2 px-4 py-2.5 bg-white/[0.06] border border-border-light rounded-[12px] text-sm font-medium text-white/70 cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text"
+      class="flex items-center gap-2 px-4 py-2.5 bg-white/6 border border-border-light rounded-xl text-sm font-medium text-white/70 cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-border-lighter hover:text-text"
     >
       <span class="text-base leading-none">{{ getCurrentFlag() }}</span>
       <span class="hidden sm:inline">{{ languageStore.currentLanguage.toUpperCase() }}</span>
@@ -69,21 +69,21 @@ onUnmounted(() => {
     >
       <div
         v-if="isOpen"
-        class="absolute right-0 top-full mt-1.5 min-w-[140px] bg-surface border border-border-light rounded-xl shadow-lg overflow-hidden z-50"
+        class="absolute right-0 top-full mt-1.5 min-w-35 bg-surface border border-border-light rounded-xl shadow-lg overflow-hidden z-50"
       >
         <ul class="list-none p-1 m-0">
           <li
             v-for="lang in languages"
             :key="lang.code"
             @click="selectLanguage(lang.code)"
-            class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg cursor-pointer transition-all duration-150 hover:bg-white/[0.06]"
-            :class="{ 'bg-[rgba(240,47,0,0.1)]': languageStore.currentLanguage === lang.code }"
+            class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg cursor-pointer transition-all duration-150 hover:bg-white/6"
+            :class="{ 'bg-brand/10': languageStore.currentLanguage === lang.code }"
           >
             <span class="text-lg leading-none">{{ lang.flag }}</span>
             <span class="text-sm text-white/80">{{ lang.label }}</span>
             <svg
               v-if="languageStore.currentLanguage === lang.code"
-              class="w-4 h-4 ml-auto text-[#F02F00]"
+              class="w-4 h-4 ml-auto text-primary"
               viewBox="0 0 24 24"
               fill="none"
             >

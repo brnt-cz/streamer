@@ -151,7 +151,7 @@ defineExpose({
     <!-- Open Button -->
     <button
       @click="openSelector"
-      class="flex items-center gap-2 w-full py-2.5 px-4 bg-gradient-brand-simple border-none rounded-[12px] text-white text-sm font-medium cursor-pointer transition-all duration-200 shadow-brand hover:opacity-90"
+      class="flex items-center gap-2 w-full py-2.5 px-4 bg-gradient-brand-simple border-none rounded-xl text-white text-sm font-medium cursor-pointer transition-all duration-200 shadow-brand hover:opacity-90"
     >
       <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -165,8 +165,8 @@ defineExpose({
     <!-- Modal -->
     <Teleport to="body">
       <Transition name="modal">
-        <div v-if="isOpen" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[1000] p-5" @click.self="closeSelector">
-          <div class="modal w-full max-w-[480px] max-h-[85vh] bg-surface border border-white/10 rounded-[20px] flex flex-col overflow-hidden">
+        <div v-if="isOpen" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-modal p-5" @click.self="closeSelector">
+          <div class="modal w-full max-w-120 max-h-modal bg-surface border border-white/10 rounded-modal flex flex-col overflow-hidden">
             <!-- Modal Header -->
             <div class="flex justify-between items-center py-5 px-6 border-b border-border">
               <h2 class="text-lg font-semibold text-text m-0">{{ t.selectRadio }}</h2>
@@ -184,7 +184,7 @@ defineExpose({
             <div class="py-4 px-6 border-b border-border">
               <!-- Search -->
               <div class="relative mb-3">
-                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-white/30" viewBox="0 0 24 24" fill="none">
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-white/30" viewBox="0 0 24 24" fill="none">
                   <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
                   <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
@@ -192,7 +192,7 @@ defineExpose({
                   v-model="search"
                   type="text"
                   :placeholder="t.searchRadios"
-                  class="w-full py-3 pl-[42px] pr-3.5 bg-white/[0.04] border border-border-light rounded-xl text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-[rgba(240,47,0,0.5)] focus:bg-white/[0.06]"
+                  class="w-full py-3 pl-10.5 pr-3.5 bg-white/4 border border-border-light rounded-xl text-sm text-text transition-all duration-200 placeholder:text-text-subtle focus:outline-none focus:border-brand/50 focus:bg-white/6"
                 />
               </div>
 
@@ -200,7 +200,7 @@ defineExpose({
               <div class="flex gap-3">
                 <select
                   v-model="selectedCategory"
-                  class="select-custom flex-1 py-2.5 pl-3.5 pr-9 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
+                  class="select-custom flex-1 py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
                 >
                   <option value="" class="bg-surface text-text">{{ t.allCategories }}</option>
                   <option v-for="cat in categories" :key="cat" :value="cat" class="bg-surface text-text">
@@ -211,7 +211,7 @@ defineExpose({
                 <!-- Format Selector -->
                 <select
                   v-model="selectedFormat"
-                  class="select-custom py-2.5 pl-3.5 pr-9 bg-white/[0.04] border border-border-light rounded-[10px] text-[13px] text-text cursor-pointer focus:outline-none focus:border-[rgba(240,47,0,0.5)]"
+                  class="select-custom py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
                 >
                   <option value="" class="bg-surface text-text">{{ t.allFormats }}</option>
                   <option v-for="format in availableFormats" :key="format" :value="format" class="bg-surface text-text">
@@ -222,16 +222,16 @@ defineExpose({
             </div>
 
             <!-- Radio List -->
-            <div class="flex-1 overflow-y-auto py-2 px-4 min-h-[200px] max-h-[350px] scrollbar-thin">
+            <div class="flex-1 overflow-y-auto py-2 px-4 min-h-50 max-h-87.5 scrollbar-thin">
               <ul v-if="filteredRadios.length > 0" class="list-none p-0 m-0">
                 <li
                   v-for="radio in filteredRadios"
                   :key="radio.id"
                   @click="selectRadio(radio)"
-                  class="flex items-center gap-3.5 p-3 rounded-xl cursor-pointer transition-all duration-200 mb-1 hover:bg-white/[0.04]"
-                  :class="{ 'bg-[rgba(240,47,0,0.1)] border border-[rgba(240,47,0,0.25)]': selectedRadio?.id === radio.id }"
+                  class="flex items-center gap-3.5 p-3 rounded-xl cursor-pointer transition-all duration-200 mb-1 hover:bg-white/4"
+                  :class="{ 'bg-brand/10 border border-brand/25': selectedRadio?.id === radio.id }"
                 >
-                  <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-[10px] object-cover bg-white/10" />
+                  <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-input object-cover bg-white/10" />
                   <div class="flex-1 min-w-0">
                     <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis">{{ radio.name }}</span>
                     <span v-if="radio.categories.length" class="block text-xs text-white/35 whitespace-nowrap overflow-hidden text-ellipsis">
@@ -252,7 +252,7 @@ defineExpose({
             </div>
 
             <!-- Error -->
-            <div v-if="addError" class="mx-6 mb-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-[10px] text-error-light text-[13px] text-center">
+            <div v-if="addError" class="mx-6 mb-3 py-2.5 px-3.5 bg-error-bg border border-error-border rounded-input text-error-light text-tiny text-center">
               {{ addError }}
             </div>
 
@@ -265,12 +265,12 @@ defineExpose({
                   <span class="block text-xs text-text-muted">{{ (selectedFormat || getAvailableFormats(selectedRadio.id)[0] || '').toUpperCase() }} {{ selectedBitrate }}kbps</span>
                 </div>
                 <!-- Bitrate Selector -->
-                <div v-if="availableBitrates.length > 1" class="flex gap-1 p-1 bg-white/[0.04] rounded-[10px] shrink-0">
+                <div v-if="availableBitrates.length > 1" class="flex gap-1 p-1 bg-white/4 rounded-input shrink-0">
                   <button
                     v-for="bitrate in availableBitrates"
                     :key="bitrate"
                     @click="selectedBitrate = bitrate"
-                    class="py-1.5 px-2.5 bg-transparent border-none rounded-[7px] text-[11px] font-semibold cursor-pointer transition-all duration-200"
+                    class="py-1.5 px-2.5 bg-transparent border-none rounded-pill text-2xs font-semibold cursor-pointer transition-all duration-200"
                     :class="selectedBitrate === bitrate ? 'bg-white/15 text-white' : 'text-white/50 hover:text-white/80'"
                   >
                     {{ bitrate }}k
