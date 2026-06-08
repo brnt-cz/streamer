@@ -15,6 +15,8 @@
   --color-surface: #18181b;
   --color-surface-light: rgba(255, 255, 255, 0.03);
   --color-surface-lighter: rgba(255, 255, 255, 0.06);
+  --color-surface-darker: #0F0F11;
+  --color-surface-dialog: #1a1a1d;
 
   /* Text colors */
   --color-text: #fafafa;
@@ -36,6 +38,27 @@
   --shadow-brand: 0 4px 20px rgba(240, 47, 0, 0.3);
   --shadow-brand-lg: 0 8px 32px rgba(240, 47, 0, 0.3);
   --shadow-brand-xl: 0 12px 48px rgba(240, 47, 0, 0.4);
+  --shadow-brand-hover: 0 6px 28px rgba(240, 47, 0, 0.4);
+  --shadow-brand-glow: 0 0 12px rgba(240, 47, 0, 0.5);
+  --shadow-glow-white: 0 0 20px rgba(255, 255, 255, 0.5);
+  --shadow-tab: -4px 0 20px rgba(0, 0, 0, 0.3);
+
+  /* Font sizes */
+  --text-2xs: 0.6875rem;  /* 11px */
+  --text-tiny: 0.8125rem; /* 13px */
+  --text-md: 0.9375rem;   /* 15px */
+  --text-display: 1.375rem; /* 22px */
+
+  /* Border radius */
+  --radius-pill: 0.4375rem; /* 7px */
+  --radius-input: 0.625rem; /* 10px */
+  --radius-modal: 1.25rem;  /* 20px */
+
+  /* Letter spacing */
+  --tracking-caps: 0.136em; /* ≈1.5px on 11px text */
+
+  /* Z-index */
+  --z-modal: 1000;
 
   /* Animation durations */
   --animate-duration-fast: 150ms;
@@ -171,6 +194,16 @@
   /* Backdrop blur */
   .backdrop-blur-glass {
     backdrop-filter: blur(20px);
+  }
+
+  /* Vertical writing mode for sideways labels */
+  .writing-vertical {
+    writing-mode: vertical-rl;
+  }
+
+  /* Modal max height - 85% of viewport */
+  .max-h-modal {
+    max-height: 85vh;
   }
 
   /* Custom scrollbar */

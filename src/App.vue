@@ -94,29 +94,29 @@ function closePlaylist() {
 <template>
   <div class="min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="px-5 py-7 lg:px-10 lg:mr-[380px]">
+    <header class="px-5 py-7 lg:px-10 lg:mr-95">
       <div class="flex justify-center items-center gap-3">
         <div class="w-10 h-10 bg-gradient-brand rounded-xl relative overflow-hidden">
-          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/90 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)]"></span>
+          <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/90 rounded-full shadow-glow-white"></span>
         </div>
-        <span class="text-[22px] font-bold text-gradient-white">Streamer</span>
+        <span class="text-display font-bold text-gradient-white">Streamer</span>
       </div>
     </header>
 
     <!-- Main Layout -->
-    <div class="flex-1 flex relative justify-center lg:mr-[380px]">
+    <div class="flex-1 flex relative justify-center lg:mr-95">
       <!-- Main Content - centered vertically when content fits -->
-      <main class="flex flex-col gap-4 px-5 pr-14 lg:pr-10 lg:px-10 max-w-[480px] w-full lg:mx-auto">
+      <main class="flex flex-col gap-4 px-5 pr-14 lg:pr-10 lg:px-10 max-w-120 w-full lg:mx-auto">
         <StreamPlayer />
       </main>
 
       <!-- Playlist Panel - Desktop: fixed right, Mobile: offcanvas -->
       <aside
         class="playlist-panel fixed top-0 h-screen bg-background border-l border-border overflow-y-auto z-50
-               w-[85%] max-w-[380px] transition-transform duration-300 ease-out
-               lg:right-0 lg:w-[380px] lg:translate-x-0 lg:pt-7 lg:px-6 lg:pb-6
+               w-17/20 max-w-95 transition-transform duration-300 ease-out
+               lg:right-0 lg:w-95 lg:translate-x-0 lg:pt-7 lg:px-6 lg:pb-6
                right-0 translate-x-full p-5 pt-16"
-        :class="{ '!translate-x-0': isPlaylistOpen }"
+        :class="{ 'translate-x-0!': isPlaylistOpen }"
         @click="resetAutoCloseTimer"
         @touchstart="resetAutoCloseTimer"
         @scroll="resetAutoCloseTimer"
@@ -128,11 +128,11 @@ function closePlaylist() {
         <button
           @click="closePlaylist"
           class="absolute top-4 right-4 w-9 h-9 flex items-center justify-center
-                 bg-surface-lighter border border-border-light rounded-[10px]
+                 bg-surface-lighter border border-border-light rounded-input
                  text-text-muted hover:bg-white/10 hover:text-text transition-all
                  lg:hidden"
         >
-          <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
+          <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none">
             <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </button>
@@ -162,21 +162,21 @@ function closePlaylist() {
         class="fixed right-0 top-24 z-30
                bg-gradient-brand-simple rounded-l-xl px-2 py-4
                text-white flex flex-col items-center gap-2
-               shadow-[-4px_0_20px_rgba(0,0,0,0.3)] transition-all duration-300
+               shadow-tab transition-all duration-300
                hover:pr-3 lg:hidden"
-        :class="{ 'translate-x-[60px]': isPlaylistOpen }"
+        :class="{ 'translate-x-15': isPlaylistOpen }"
       >
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none">
           <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
           <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
         </svg>
-        <span class="text-xs font-semibold tracking-wide [writing-mode:vertical-rl]">Playlist</span>
+        <span class="text-xs font-semibold tracking-wide writing-vertical">Playlist</span>
       </button>
     </div>
 
     <!-- Footer -->
-    <footer class="mt-10 text-center py-4 border-t border-border px-5 lg:px-10 lg:mr-[380px]">
+    <footer class="mt-10 text-center py-4 border-t border-border px-5 lg:px-10 lg:mr-95">
       <a href="https://brnt.cz" target="_blank" rel="noopener noreferrer">
         <img src="/brnt-logo-w.png" alt="brnt.cz" class="h-6 opacity-80 mix-blend-screen transition-opacity duration-200 hover:opacity-100 inline-block" />
       </a>

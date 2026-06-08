@@ -330,7 +330,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-gradient-surface !bg-[#0F0F11] flex flex-col justify-between min-h-[500px] border border-border-light rounded-[20px] p-7 backdrop-blur-glass overflow-visible">
+  <div class="bg-gradient-surface bg-surface-darker! flex flex-col justify-between min-h-125 border border-border-light rounded-modal p-7 backdrop-blur-glass overflow-visible">
     <audio
       ref="audioRef"
       playsinline
@@ -345,7 +345,7 @@ onUnmounted(() => {
     <!-- Player Visual -->
     <div class="flex justify-center mb-6 overflow-visible">
       <div
-        class="w-[120px] h-[120px] relative flex items-center justify-center"
+        class="w-30 h-30 relative flex items-center justify-center"
         :class="{ 'cursor-pointer': store.currentStream }"
         @click="store.currentStream && togglePlay()"
       >
@@ -354,12 +354,12 @@ onUnmounted(() => {
           class="absolute inset-0 flex items-center justify-center pointer-events-none"
           :class="isPlaying ? 'opacity-100' : 'opacity-0'"
         >
-          <div class="absolute w-[100px] h-[100px] border border-[rgba(240,47,0,0.3)] rounded-full animate-pulse-ring"></div>
-          <div class="absolute w-[100px] h-[100px] border border-[rgba(240,47,0,0.3)] rounded-full animate-pulse-ring pulse-delay-1s"></div>
+          <div class="absolute w-25 h-25 border border-brand/30 rounded-full animate-pulse-ring"></div>
+          <div class="absolute w-25 h-25 border border-brand/30 rounded-full animate-pulse-ring pulse-delay-1s"></div>
         </div>
         <!-- Artwork Inner Circle -->
         <div
-          class="w-20 h-20 bg-gradient-brand rounded-full flex items-center justify-center relative z-[2] shadow-brand-lg transition-all duration-300 will-change-transform"
+          class="w-20 h-20 bg-gradient-brand rounded-full flex items-center justify-center relative z-2 shadow-brand-lg transition-all duration-300 will-change-transform"
           :class="{ 'scale-105 shadow-brand-xl': isPlaying, 'hover:scale-108 active:scale-95': store.currentStream }"
         >
           <!-- Idle state: radio icon -->
@@ -371,11 +371,11 @@ onUnmounted(() => {
           </svg>
           <!-- Playing state: audio wave animation -->
           <div v-else class="flex items-center justify-center gap-1 h-8">
-            <span class="w-1 h-[60%] bg-white rounded-sm animate-wave wave-delay-1"></span>
+            <span class="w-1 h-3/5 bg-white rounded-sm animate-wave wave-delay-1"></span>
             <span class="w-1 h-full bg-white rounded-sm animate-wave wave-delay-2"></span>
-            <span class="w-1 h-[75%] bg-white rounded-sm animate-wave wave-delay-3"></span>
-            <span class="w-1 h-[90%] bg-white rounded-sm animate-wave wave-delay-4"></span>
-            <span class="w-1 h-[50%] bg-white rounded-sm animate-wave wave-delay-5"></span>
+            <span class="w-1 h-3/4 bg-white rounded-sm animate-wave wave-delay-3"></span>
+            <span class="w-1 h-9/10 bg-white rounded-sm animate-wave wave-delay-4"></span>
+            <span class="w-1 h-1/2 bg-white rounded-sm animate-wave wave-delay-5"></span>
           </div>
         </div>
       </div>
@@ -391,7 +391,7 @@ onUnmounted(() => {
       />
       <div class="text-center">
         <div v-if="store.currentStream">
-          <span class="block text-[11px] font-medium text-text-muted uppercase tracking-[1.5px] mb-1.5">{{ t.nowPlaying }}</span>
+          <span class="block text-2xs font-medium text-text-muted uppercase tracking-caps mb-1.5">{{ t.nowPlaying }}</span>
           <span class="text-lg font-semibold text-text">{{ store.currentStream.name }}</span>
         </div>
         <div v-else>
@@ -405,7 +405,7 @@ onUnmounted(() => {
       <button
         @click="togglePlay"
         :disabled="!store.currentStream || isLoadingStream"
-        class="w-14 h-14 bg-gradient-brand-simple border-none rounded-full cursor-pointer flex items-center justify-center transition-all duration-200 shadow-brand hover:scale-105 hover:shadow-[0_6px_28px_rgba(240,47,0,0.4)] active:scale-98 disabled:bg-white/10 disabled:shadow-none disabled:cursor-not-allowed"
+        class="w-14 h-14 bg-gradient-brand-simple border-none rounded-full cursor-pointer flex items-center justify-center transition-all duration-200 shadow-brand hover:scale-105 hover:shadow-brand-hover active:scale-98 disabled:bg-white/10 disabled:shadow-none disabled:cursor-not-allowed"
       >
         <!-- Loading spinner -->
         <svg v-if="isLoadingStream" class="w-6 h-6 text-white shrink-0 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -496,8 +496,8 @@ onUnmounted(() => {
     </div>
 
     <!-- Error Message -->
-    <div v-if="error" class="mt-4 p-3 px-4 bg-error-bg border border-error-border rounded-xl text-error-light text-[13px] flex items-center gap-2.5">
-      <svg class="w-[18px] h-[18px] shrink-0" viewBox="0 0 24 24" fill="none">
+    <div v-if="error" class="mt-4 p-3 px-4 bg-error-bg border border-error-border rounded-xl text-error-light text-tiny flex items-center gap-2.5">
+      <svg class="w-4.5 h-4.5 shrink-0" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
         <path d="M12 7v6M12 16v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
