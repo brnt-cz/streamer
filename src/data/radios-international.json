@@ -434,5 +434,1439 @@
         "128": "https://22713.live.streamtheworld.com/MELORADIOAAC.aac"
       }
     }
+  },
+  {
+    "id": "einslive",
+    "name": "1LIVE",
+    "logo": "/logos/einslive.png",
+    "categories": [
+      "pop",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "bayern2",
+    "name": "Bayern 2",
+    "logo": "/logos/bayern2.png",
+    "categories": [
+      "culture",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://dispatcher.rndfnk.com/br/br2/live/mp3/mid"
+      }
+    }
+  },
+  {
+    "id": "bayern3",
+    "name": "BAYERN 3",
+    "logo": "/logos/bayern3.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://dispatcher.rndfnk.com/br/br3/live/mp3/mid"
+      }
+    }
+  },
+  {
+    "id": "brklassik",
+    "name": "BR-KLASSIK",
+    "logo": "/logos/brklassik.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://dispatcher.rndfnk.com/br/brklassik/live/mp3/high"
+      }
+    }
+  },
+  {
+    "id": "cadenaser",
+    "name": "Cadena SER Madrid",
+    "logo": "/logos/cadenaser.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MAS_MADRID.mp3"
+      }
+    }
+  },
+  {
+    "id": "capitalfm",
+    "name": "Capital FM London",
+    "logo": "/logos/capitalfm.png",
+    "categories": [
+      "pop",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://media-ssl.musicradio.com/CapitalMP3"
+      }
+    }
+  },
+  {
+    "id": "cbcradioone",
+    "name": "CBC Radio One Toronto",
+    "logo": "/logos/cbcradioone.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://26733.live.streamtheworld.com/CBLAFM_CBC_SC"
+      }
+    }
+  },
+  {
+    "id": "ckua",
+    "name": "CKUA",
+    "logo": "/logos/ckua.png",
+    "categories": [
+      "folk",
+      "jazz"
+    ],
+    "streams": {
+      "mp3": {
+        "69": "https://ais-sa1.streamon.fm/7000_64k.mp3"
+      }
+    }
+  },
+  {
+    "id": "class95",
+    "name": "Class 95",
+    "logo": "/logos/class95.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://playerservices.streamtheworld.com/api/livestream-redirect/CLASS95_PREM.aac"
+      }
+    }
+  },
+  {
+    "id": "deutschlandfunk",
+    "name": "Deutschlandfunk",
+    "logo": "/logos/deutschlandfunk.png",
+    "categories": [
+      "news",
+      "culture"
+    ],
+    "streams": {
+      "aac": {
+        "96": "https://st01.sslstream.dlf.de/dlf/01/mid/aac/stream.aac?aggregator=web",
+        "256": "https://st01.sslstream.dlf.de/dlf/01/high/aac/stream.aac?aggregator=web"
+      },
+      "mp3": {
+        "128": "https://st01.sslstream.dlf.de/dlf/01/128/mp3/stream.mp3?aggregator=web"
+      }
+    }
+  },
+  {
+    "id": "dlfkultur",
+    "name": "Deutschlandfunk Kultur",
+    "logo": "/logos/dlfkultur.png",
+    "categories": [
+      "culture"
+    ],
+    "streams": {
+      "aac": {
+        "96": "https://st02.sslstream.dlf.de/dlf/02/mid/aac/stream.aac?aggregator=web",
+        "192": "https://st02.sslstream.dlf.de/dlf/02/high/aac/stream.aac?aggregator=web"
+      },
+      "mp3": {
+        "128": "https://st02.sslstream.dlf.de/dlf/02/128/mp3/stream.mp3?aggregator=web"
+      }
+    }
+  },
+  {
+    "id": "europe1",
+    "name": "Europe 1",
+    "logo": "/logos/europe1.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://stream.europe1.fr/europe1.aac"
+      },
+      "mp3": {
+        "128": "https://europe1.lmn.fm/europe1.mp3"
+      }
+    }
+  },
+  {
+    "id": "fip",
+    "name": "FIP",
+    "logo": "/logos/fip.png",
+    "categories": [
+      "jazz",
+      "world"
+    ],
+    "streams": {
+      "aac": {
+        "192": "https://icecast.radiofrance.fr/fip-hifi.aac"
+      }
+    }
+  },
+  {
+    "id": "fritz",
+    "name": "Fritz",
+    "logo": "/logos/fritz.png",
+    "categories": [
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://dispatcher.rndfnk.com/rbb/fritz/live/mp3/mid"
+      }
+    }
+  },
+  {
+    "id": "funradio",
+    "name": "Fun Radio",
+    "logo": "/logos/funradio.png",
+    "categories": [
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.funradio.fr/fun-1-44-128"
+      }
+    }
+  },
+  {
+    "id": "georgefm",
+    "name": "George FM",
+    "logo": "/logos/georgefm.png",
+    "categories": [
+      "dance"
+    ],
+    "streams": {
+      "aac": {
+        "131": "https://mediaworks.streamguys1.com/george_net_icy"
+      }
+    }
+  },
+  {
+    "id": "heart80s",
+    "name": "Heart 80s",
+    "logo": "/logos/heart80s.png",
+    "categories": [
+      "80s",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://media-ssl.musicradio.com/Heart80sMP3"
+      }
+    }
+  },
+  {
+    "id": "heartdance",
+    "name": "Heart Dance",
+    "logo": "/logos/heartdance.png",
+    "categories": [
+      "dance",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://media-ssl.musicradio.com/HeartDanceMP3"
+      }
+    }
+  },
+  {
+    "id": "oe3",
+    "name": "Hitradio Ö3",
+    "logo": "/logos/oe3.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ors-sn03.ors-shoutcast.at/oe3-q1a",
+        "192": "https://orf-live.ors-shoutcast.at/oe3-q2a"
+      }
+    }
+  },
+  {
+    "id": "cheriefm",
+    "name": "Chérie FM",
+    "logo": "/logos/cheriefm.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://cdnradio.streamakaci.com/cheriefm1.mp3"
+      }
+    }
+  },
+  {
+    "id": "jazzradiofr",
+    "name": "Jazz Radio",
+    "logo": "/logos/jazzradiofr.png",
+    "categories": [
+      "jazz"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://jazzradio.ice.infomaniak.ch/jazzradio-high.aac?i=65443"
+      }
+    }
+  },
+  {
+    "id": "jazz24",
+    "name": "Jazz24",
+    "logo": "/logos/jazz24.png",
+    "categories": [
+      "jazz"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://knkx-live-a.edge.audiocdn.com/6285_64k",
+        "256": "https://knkx-live-a.edge.audiocdn.com/6285_256k"
+      },
+      "mp3": {
+        "128": "https://knkx-live-a.edge.audiocdn.com/6285_128k?aw_0_1st.playerid=jazz24.org&uuid=2kjxxims"
+      }
+    }
+  },
+  {
+    "id": "joefm",
+    "name": "Joe",
+    "logo": "/logos/joefm.png",
+    "categories": [
+      "pop",
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast-qmusicbe-cdp.triple-it.nl/joe.mp3"
+      },
+      "aac": {
+        "95": "https://streams.radio.dpgmedia.cloud/redirect/joe_fm/aac"
+      }
+    }
+  },
+  {
+    "id": "kcrw",
+    "name": "KCRW Eclectic 24",
+    "logo": "/logos/kcrw.png",
+    "categories": [
+      "alternative",
+      "news"
+    ],
+    "streams": {
+      "aac": {
+        "256": "https://streams.kcrw.com/e24_aac"
+      },
+      "mp3": {
+        "192": "https://streams.kcrw.com/e24_mp3"
+      }
+    }
+  },
+  {
+    "id": "kexp",
+    "name": "KEXP",
+    "logo": "/logos/kexp.png",
+    "categories": [
+      "alternative",
+      "indie"
+    ],
+    "streams": {
+      "aac": {
+        "162": "https://kexp.streamguys1.com/kexp160.aac?listenerid=f4bcb5c771d830fbdd4195088a946ea6&awparams=companionAds%3Atrue"
+      },
+      "mp3": {
+        "128": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3"
+      }
+    }
+  },
+  {
+    "id": "kink",
+    "name": "KINK",
+    "logo": "/logos/kink.png",
+    "categories": [
+      "rock",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://playerservices.streamtheworld.com/api/livestream-redirect/KINK.mp3"
+      },
+      "aac": {
+        "128": "https://22553.live.streamtheworld.com/KINKAAC_SC"
+      }
+    }
+  },
+  {
+    "id": "kissfmes",
+    "name": "Kiss FM España",
+    "logo": "/logos/kissfmes.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://frontend.streamonkey.net/fhn-gong971/stream/mp3"
+      }
+    }
+  },
+  {
+    "id": "kissfmuk",
+    "name": "KISS UK",
+    "logo": "/logos/kissfmuk.png",
+    "categories": [
+      "dance",
+      "hiphop"
+    ],
+    "streams": {
+      "mp3": {
+        "112": "https://live-kiss.sharp-stream.com/kiss100.mp3"
+      }
+    }
+  },
+  {
+    "id": "klubradio",
+    "name": "Klubrádió",
+    "logo": "/logos/klubradio.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "96": "https://hu-stream03.klubradio.hu:8443/bpstream"
+      }
+    }
+  },
+  {
+    "id": "kossuth",
+    "name": "Kossuth Rádió",
+    "logo": "/logos/kossuth.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "64": "https://icast.connectmedia.hu/4736/mr1.mp3"
+      }
+    }
+  },
+  {
+    "id": "kutx",
+    "name": "KUTX",
+    "logo": "/logos/kutx.png",
+    "categories": [
+      "indie",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://streams.kut.org/4428_192.mp3"
+      }
+    }
+  },
+  {
+    "id": "magicradio",
+    "name": "Magic Radio",
+    "logo": "/logos/magicradio.png",
+    "categories": [
+      "pop",
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "112": "https://stream-mz.hellorayo.co.uk/magicnational.mp3?direct=true&aw_0_1st.playerid=BMUK_TuneIn&aw_0_1st.skey=7374499933&stationCode=mag"
+      }
+    }
+  },
+  {
+    "id": "rmcdoualiya",
+    "name": "Monte Carlo Doualiya",
+    "logo": "/logos/rmcdoualiya.png",
+    "categories": [
+      "world",
+      "news"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://montecarlodoualiya128k.ice.infomaniak.ch/mc-doualiya.mp3"
+      }
+    }
+  },
+  {
+    "id": "njoy",
+    "name": "N-JOY",
+    "logo": "/logos/njoy.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.ndr.de/ndr/njoy/live/mp3/128/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "ndrkultur",
+    "name": "NDR Kultur",
+    "logo": "/logos/ndrkultur.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "aac": {
+        "256": "https://f131.rndfnk.com/ard/ndr/ndrkultur/live/aac/192/stream.aac?aggregator=web&cid=01FBQ2EJ6T7QK3WENQ5KT9S2FB&sid=2aWrl15TtQvWg6RQ9hvrVfdh99E&token=cgylLQKukz6c0ajNCSHCboafG1Q474A1QN0WA3_K3Hg&tvf=4vGFz6J7pxdmMTMxLnJuZGZuay5jb20"
+      },
+      "mp3": {
+        "128": "https://icecast.ndr.de/ndr/ndrkultur/live/mp3/128/stream.mp3?1728425224079&aggregator=web"
+      }
+    }
+  },
+  {
+    "id": "newstalk",
+    "name": "Newstalk",
+    "logo": "/logos/newstalk.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://live-bauerie.sharp-stream.com/NTAAC"
+      }
+    }
+  },
+  {
+    "id": "nostalgie",
+    "name": "Nostalgie",
+    "logo": "/logos/nostalgie.png",
+    "categories": [
+      "oldies"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://streaming.nrjaudio.fm/ouwgwqsk6j4d",
+        "576": "https://streaming.nrjaudio.fm/oua8a3w2dqao?origine=playernostalgie&aw_0_req.userConsentV2=&aw_0_1st.station="
+      }
+    }
+  },
+  {
+    "id": "nporadio4",
+    "name": "NPO Radio 4",
+    "logo": "/logos/nporadio4.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast.omroep.nl:80/radio4-bb-mp3"
+      },
+      "aac": {
+        "64": "https://icecast.omroep.nl/radio4-bb-aac"
+      }
+    }
+  },
+  {
+    "id": "nporadio5",
+    "name": "NPO Radio 5",
+    "logo": "/logos/nporadio5.png",
+    "categories": [
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://icecast.omroep.nl/radio5-bb-mp3"
+      },
+      "aac": {
+        "64": "https://icecast.omroep.nl/radio5-bb-aac"
+      }
+    }
+  },
+  {
+    "id": "nrjfrance",
+    "name": "NRJ Hits",
+    "logo": "/logos/nrjfrance.png",
+    "categories": [
+      "pop",
+      "dance"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://streaming.nrjaudio.fm/ou7xugf3s5gi?origine=playernrj&aw_0_req.userConsentV2=&aw_0_1st.station=NRJ-Hits"
+      }
+    }
+  },
+  {
+    "id": "nrkfolkemusikk",
+    "name": "NRK Folkemusikk",
+    "logo": "/logos/nrkfolkemusikk.png",
+    "categories": [
+      "folk"
+    ],
+    "streams": {
+      "aac": {
+        "159": "https://lyd.nrk.no/icecast/aac/high/s0w7hwn47m/folkemusikk"
+      }
+    }
+  },
+  {
+    "id": "nrkp3",
+    "name": "NRK P3",
+    "logo": "/logos/nrkp3.png",
+    "categories": [
+      "pop",
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p3_mp3_h"
+      }
+    }
+  },
+  {
+    "id": "ntsradio",
+    "name": "NTS Radio 1",
+    "logo": "/logos/ntsradio.png",
+    "categories": [
+      "alternative",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "256": "https://stream-relay-geo.ntslive.net/stream?client=direct"
+      }
+    }
+  },
+  {
+    "id": "ondacero",
+    "name": "Onda Cero",
+    "logo": "/logos/ondacero.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://25593.live.streamtheworld.com/OC_HUELVAAAC.aac"
+      }
+    }
+  },
+  {
+    "id": "oe1",
+    "name": "ORF Ö1 Campus",
+    "logo": "/logos/oe1.png",
+    "categories": [
+      "culture",
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://orf-live.ors-shoutcast.at/campus-q1a",
+        "192": "https://orf-live.ors-shoutcast.at/campus-q2a"
+      }
+    }
+  },
+  {
+    "id": "ouifm",
+    "name": "OÜI FM",
+    "logo": "/logos/ouifm.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ouifm.ice.infomaniak.ch/ouifm-high.mp3"
+      }
+    }
+  },
+  {
+    "id": "qmusicnl",
+    "name": "Qmusic NL",
+    "logo": "/logos/qmusicnl.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "96": "https://icecast-qmusicnl-cdp.triple-it.nl/Qmusic_nl_live_96.mp3",
+        "128": "https://icecast-qmusicnl-cdp.triple-it.nl/Qmusic_nl_live.mp3"
+      },
+      "aac": {
+        "95": "https://stream.qmusic.nl/qmusic/aac"
+      }
+    }
+  },
+  {
+    "id": "radio105",
+    "name": "Radio 105",
+    "logo": "/logos/radio105.png",
+    "categories": [
+      "pop",
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.unitedradio.it/Radio105.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio357",
+    "name": "Radio 357",
+    "logo": "/logos/radio357.png",
+    "categories": [
+      "alternative"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://n-11-21.dcs.redcdn.pl/sc/o2/radio357/live/radio357_pr.livx?preroll=0"
+      }
+    }
+  },
+  {
+    "id": "radio538",
+    "name": "Radio 538",
+    "logo": "/logos/radio538.png",
+    "categories": [
+      "pop",
+      "dance"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3"
+      }
+    }
+  },
+  {
+    "id": "radio702",
+    "name": "Radio 702",
+    "logo": "/logos/radio702.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "aac": {
+        "192": "https://playerservices.streamtheworld.com/api/livestream-redirect/FM702_192AAC.aac"
+      }
+    }
+  },
+  {
+    "id": "radiobandeirantes",
+    "name": "Rádio Bandeirantes",
+    "logo": "/logos/radiobandeirantes.png",
+    "categories": [
+      "news"
+    ],
+    "streams": {
+      "aac": {
+        "96": "https://stm23.xcast.com.br:11284/stream"
+      }
+    }
+  },
+  {
+    "id": "radioclassique",
+    "name": "Radio Classique",
+    "logo": "/logos/radioclassique.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://str0.creacast.com/classique1"
+      }
+    }
+  },
+  {
+    "id": "radiocomercial",
+    "name": "Rádio Comercial",
+    "logo": "/logos/radiocomercial.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://stream-icy.bauermedia.pt/comercial.mp3"
+      },
+      "aac": {
+        "128": "https://stream-icy.bauermedia.pt/rctuga.aac"
+      }
+    }
+  },
+  {
+    "id": "radiomontecarlo",
+    "name": "Radio Monte Carlo",
+    "logo": "/logos/radiomontecarlo.png",
+    "categories": [
+      "chillout",
+      "jazz"
+    ],
+    "streams": {
+      "aac": {
+        "96": "https://icy.unitedradio.it/RMC.aac"
+      }
+    }
+  },
+  {
+    "id": "radionova",
+    "name": "Radio Nova",
+    "logo": "/logos/radionova.png",
+    "categories": [
+      "alternative",
+      "world"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://novazz.ice.infomaniak.ch/novazz-128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radionovafi",
+    "name": "Radio Nova Finland",
+    "logo": "/logos/radionovafi.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://stream-redirect.bauermedia.fi/radionova/radionova_64.aac?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=BMUK_tunein"
+      }
+    }
+  },
+  {
+    "id": "radioparadise",
+    "name": "Radio Paradise Main Mix",
+    "logo": "/logos/radioparadise.png",
+    "categories": [
+      "rock",
+      "alternative"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://stream.radioparadise.com/aac-64",
+        "320": "https://stream.radioparadise.com/ti-main-320"
+      }
+    }
+  },
+  {
+    "id": "radiopopolare",
+    "name": "Radio Popolare",
+    "logo": "/logos/radiopopolare.png",
+    "categories": [
+      "alternative",
+      "culture"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://livex.radiopopolare.it/radiopop2"
+      }
+    }
+  },
+  {
+    "id": "radioswissjazz",
+    "name": "Radio Swiss Jazz",
+    "logo": "/logos/radioswissjazz.png",
+    "categories": [
+      "jazz"
+    ],
+    "streams": {
+      "aac": {
+        "184": "https://stream.srg-ssr.ch/srgssr/rsj/aac/192"
+      }
+    }
+  },
+  {
+    "id": "radioswisspop",
+    "name": "Radio Swiss Pop",
+    "logo": "/logos/radioswisspop.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "aac": {
+        "216": "https://stream.srg-ssr.ch/srgssr/rsp/aac/192"
+      },
+      "mp3": {
+        "128": "https://livestreaming-node-2.srg-ssr.ch/srgssr/rsp/mp3/128"
+      }
+    }
+  },
+  {
+    "id": "radioveronica",
+    "name": "Radio Veronica",
+    "logo": "/logos/radioveronica.png",
+    "categories": [
+      "rock",
+      "oldies"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://playerservices.streamtheworld.com/api/livestream-redirect/VERONICA.mp3"
+      }
+    }
+  },
+  {
+    "id": "radiox",
+    "name": "Radio X",
+    "logo": "/logos/radiox.png",
+    "categories": [
+      "rock",
+      "indie"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://media-ssl.musicradio.com/RadioXLondonMP3"
+      }
+    }
+  },
+  {
+    "id": "radiofmsk",
+    "name": "Radio_FM",
+    "logo": "/logos/radiofmsk.png",
+    "categories": [
+      "alternative",
+      "world"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.stv.livebox.sk/fm_128.mp3"
+      }
+    }
+  },
+  {
+    "id": "radioeins",
+    "name": "radioeins",
+    "logo": "/logos/radioeins.png",
+    "categories": [
+      "alternative",
+      "culture"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://d111.rndfnk.com/ard/rbb/radioeins/live/mp3/128/stream.mp3?cid=01FC1WH12KJ93TCQPDSE2E5PZ9&sid=38H2kjN0x4u1GdSZWctD38pEdGw&token=vJIAseH2O1wZCpYIAz9FicGoAdboZYGoVJXxJEhpjBQ&tvf=MeCo25DYihhkMTExLnJuZGZuay5jb20"
+      }
+    }
+  },
+  {
+    "id": "rairadio2",
+    "name": "Rai Radio 2",
+    "logo": "/logos/rairadio2.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "256": "https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S35942484/yp5F67151K92/icecast"
+      }
+    }
+  },
+  {
+    "id": "rairadio3",
+    "name": "Rai Radio 3 Classica",
+    "logo": "/logos/rairadio3.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "256": "https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S53422322/bTdUFhYMnnra/icecast"
+      }
+    }
+  },
+  {
+    "id": "reactor1057",
+    "name": "Reactor 105.7",
+    "logo": "/logos/reactor1057.png",
+    "categories": [
+      "alternative"
+    ],
+    "streams": {
+      "mp3": {
+        "192": "https://securestreams7.autopo.st/?uri=http://184.164.75.138:8002/stream"
+      }
+    }
+  },
+  {
+    "id": "rinsefm",
+    "name": "Rinse FM",
+    "logo": "/logos/rinsefm.png",
+    "categories": [
+      "dance",
+      "hiphop"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://admin.stream.rinse.fm/proxy/rinse_uk/stream"
+      }
+    }
+  },
+  {
+    "id": "rmc",
+    "name": "RMC",
+    "logo": "/logos/rmc.png",
+    "categories": [
+      "sport",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://audio.bfmtv.com/rmcradio_128.mp3"
+      }
+    }
+  },
+  {
+    "id": "rmffm",
+    "name": "RMF FM",
+    "logo": "/logos/rmffm.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://rs101-krk.rmfstream.pl/rmf_fm"
+      }
+    }
+  },
+  {
+    "id": "rockantenne",
+    "name": "ROCK ANTENNE Heavy Metal",
+    "logo": "/logos/rockantenne.png",
+    "categories": [
+      "rock",
+      "metal"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://mp3channels.webradio.rockantenne.de/heavy-metal"
+      }
+    }
+  },
+  {
+    "id": "rockfm",
+    "name": "Rock FM",
+    "logo": "/logos/rockfm.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "96": "https://rockfm-cope-rrcast.flumotion.com/cope/rockfm-low.mp3"
+      }
+    }
+  },
+  {
+    "id": "rtlfrance",
+    "name": "RTL France",
+    "logo": "/logos/rtlfrance.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast.rtl.fr/rtl-1-44-128"
+      }
+    }
+  },
+  {
+    "id": "skyradio",
+    "name": "Sky Radio",
+    "logo": "/logos/skyradio.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://www.mp3streams.nl/zender/skyradio/stream/8-mp3-128"
+      }
+    }
+  },
+  {
+    "id": "somafmbootliquor",
+    "name": "SomaFM Boot Liquor",
+    "logo": "/logos/somafmbootliquor.png",
+    "categories": [
+      "country",
+      "folk"
+    ],
+    "streams": {
+      "mp3": {
+        "320": "https://ice4.somafm.com/bootliquor-320-mp3"
+      },
+      "aac": {
+        "128": "https://ice1.somafm.com/bootliquor-128-aac"
+      }
+    }
+  },
+  {
+    "id": "somafmgroovesalad",
+    "name": "SomaFM Groove Salad",
+    "logo": "/logos/somafmgroovesalad.png",
+    "categories": [
+      "chillout"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice5.somafm.com/groovesalad-128-mp3",
+        "256": "https://ice6.somafm.com/groovesalad-256-mp3"
+      },
+      "aac": {
+        "64": "https://ice2.somafm.com/groovesalad-64-aac",
+        "128": "https://ice5.somafm.com/groovesalad-128-aac"
+      }
+    }
+  },
+  {
+    "id": "somafmlush",
+    "name": "SomaFM Lush",
+    "logo": "/logos/somafmlush.png",
+    "categories": [
+      "chillout",
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice2.somafm.com/lush-128-mp3"
+      },
+      "aac": {
+        "64": "https://ice4.somafm.com/lush-64-aac",
+        "128": "https://ice5.somafm.com/lush-128-aac"
+      }
+    }
+  },
+  {
+    "id": "somafmsecretagent",
+    "name": "SomaFM Secret Agent",
+    "logo": "/logos/somafmsecretagent.png",
+    "categories": [
+      "chillout",
+      "jazz"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://ice6.somafm.com/secretagent-128-mp3"
+      },
+      "aac": {
+        "64": "https://ice2.somafm.com/secretagent-64-aac",
+        "128": "https://ice5.somafm.com/secretagent-128-aac"
+      }
+    }
+  },
+  {
+    "id": "srp1",
+    "name": "Sveriges Radio P1",
+    "logo": "/logos/srp1.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "aac": {
+        "312": "https://live1.sr.se/p1-aac-320"
+      }
+    }
+  },
+  {
+    "id": "sr2",
+    "name": "Sveriges Radio P2",
+    "logo": "/logos/sr2.png",
+    "categories": [
+      "classic",
+      "jazz"
+    ],
+    "streams": {
+      "aac": {
+        "328": "https://live1.sr.se/p2-aac-320"
+      }
+    }
+  },
+  {
+    "id": "srp3",
+    "name": "Sveriges Radio P3",
+    "logo": "/logos/srp3.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "aac": {
+        "312": "https://live1.sr.se/p3-aac-320"
+      },
+      "mp3": {
+        "168": "https://live1.sr.se/p3-mp3-96"
+      }
+    }
+  },
+  {
+    "id": "srp4plus",
+    "name": "Sveriges Radio P4 Plus",
+    "logo": "/logos/srp4plus.png",
+    "categories": [
+      "pop",
+      "oldies"
+    ],
+    "streams": {
+      "aac": {
+        "272": "https://live1.sr.se/p4plus-aac-320"
+      }
+    }
+  },
+  {
+    "id": "swr2",
+    "name": "SWR2",
+    "logo": "/logos/swr2.png",
+    "categories": [
+      "classic",
+      "culture"
+    ],
+    "streams": {
+      "mp3": {
+        "256": "https://f111.rndfnk.com/ard/swr/swr2/live/mp3/256/stream.mp3?aggregator=web&sid=28ew6Usq6cch83eglcsXwLlNRS3&token=Ip5bwQ_T81Lq_mqKc3HUjnxrk94ek2bDcfNyNHuqRGk&tvf=XFsRgyq06xZmMTExLnJuZGZuay5jb20"
+      },
+      "aac": {
+        "96": "https://liveradio.swr.de/sw890cl/swr2/"
+      }
+    }
+  },
+  {
+    "id": "timesradio",
+    "name": "Times Radio",
+    "logo": "/logos/timesradio.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://timesradio.wireless.radio/stream"
+      }
+    }
+  },
+  {
+    "id": "todayfm",
+    "name": "Today FM",
+    "logo": "/logos/todayfm.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://stream.audioxi.com/TD"
+      }
+    }
+  },
+  {
+    "id": "veniceclassic",
+    "name": "Venice Classic Radio",
+    "logo": "/logos/veniceclassic.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://uk2.streamingpulse.com/ssl/vcr1"
+      }
+    }
+  },
+  {
+    "id": "virginradiodubai",
+    "name": "Virgin Radio Dubai",
+    "logo": "/logos/virginradiodubai.png",
+    "categories": [
+      "pop"
+    ],
+    "streams": {
+      "aac": {
+        "127": "https://radio.virginradio.co.uk/stream"
+      }
+    }
+  },
+  {
+    "id": "virginradiouk",
+    "name": "Virgin Radio UK",
+    "logo": "/logos/virginradiouk.png",
+    "categories": [
+      "pop",
+      "rock"
+    ],
+    "streams": {
+      "aac": {
+        "127": "https://radio.virginradio.co.uk/stream?aw_0_1st.platform=vr-web"
+      }
+    }
+  },
+  {
+    "id": "wbgo",
+    "name": "WBGO Jazz 88.3",
+    "logo": "/logos/wbgo.png",
+    "categories": [
+      "jazz"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://ais-sa8.cdnstream1.com/3629_64.aac"
+      }
+    }
+  },
+  {
+    "id": "wdr3",
+    "name": "WDR 3",
+    "logo": "/logos/wdr3.png",
+    "categories": [
+      "classic",
+      "culture"
+    ],
+    "streams": {
+      "mp3": {
+        "256": "https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "wdr5",
+    "name": "WDR 5",
+    "logo": "/logos/wdr5.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3"
+      }
+    }
+  },
+  {
+    "id": "wfmu",
+    "name": "WFMU",
+    "logo": "/logos/wfmu.png",
+    "categories": [
+      "alternative"
+    ],
+    "streams": {
+      "aac": {
+        "256": "https://stream0.wfmu.org/freeform-extrahigh-primary.aac"
+      }
+    }
+  },
+  {
+    "id": "wfuv",
+    "name": "WFUV",
+    "logo": "/logos/wfuv.png",
+    "categories": [
+      "folk",
+      "alternative"
+    ],
+    "streams": {
+      "aac": {
+        "64": "https://onair.wfuv.org/onair-aacplus"
+      }
+    }
+  },
+  {
+    "id": "willy",
+    "name": "Willy",
+    "logo": "/logos/willy.png",
+    "categories": [
+      "rock"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://icecast-qmusicbe-cdp.triple-it.nl/willy.mp3"
+      },
+      "aac": {
+        "95": "https://streams.radio.dpgmedia.cloud/redirect/willy_be/aac",
+        "96": "https://icecast-qmusicbe-cdp.triple-it.nl/willy-class-x.aac"
+      }
+    }
+  },
+  {
+    "id": "wnyc",
+    "name": "WNYC",
+    "logo": "/logos/wnyc.png",
+    "categories": [
+      "news",
+      "talk"
+    ],
+    "streams": {
+      "mp3": {
+        "96": "https://fm939.wnyc.org/wnycfm-web"
+      }
+    }
+  },
+  {
+    "id": "wqxr",
+    "name": "WQXR",
+    "logo": "/logos/wqxr.png",
+    "categories": [
+      "classic"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://stream.wqxr.org/wqxr-web?nyprBrowserId=32c67956bf1d5600"
+      }
+    }
+  },
+  {
+    "id": "wwoz",
+    "name": "WWOZ New Orleans",
+    "logo": "/logos/wwoz.png",
+    "categories": [
+      "jazz",
+      "folk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://wwoz-sc.streamguys1.com/wwozhd2-hi"
+      }
+    }
+  },
+  {
+    "id": "wxpn",
+    "name": "WXPN",
+    "logo": "/logos/wxpn.png",
+    "categories": [
+      "alternative",
+      "folk"
+    ],
+    "streams": {
+      "mp3": {
+        "128": "https://wxpn.xpn.org/xpnmp3hi"
+      }
+    }
+  },
+  {
+    "id": "ylex",
+    "name": "YleX",
+    "logo": "/logos/ylex.png",
+    "categories": [
+      "pop",
+      "alternative"
+    ],
+    "streams": {
+      "aac": {
+        "128": "https://icecast.live.yle.fi/radio/YleX/icecast.audio"
+      }
+    }
   }
 ]

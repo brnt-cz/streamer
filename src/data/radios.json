@@ -566,21 +566,6 @@
     }
   },
   {
-    "id": "dabplus-top40",
-    "name": "DAB Plus Top 40",
-    "logo": "/logos/dabplus-top40.png",
-    "categories": [
-      "rnb",
-      "pop",
-      "dance"
-    ],
-    "streams": {
-      "mp3": {
-        "128": "https://icecast6.play.cz/dabplus-top40.mp3"
-      }
-    }
-  },
-  {
     "id": "radio-energic",
     "name": "ENERGIC",
     "logo": "/logos/radio-energic.png",
@@ -643,22 +628,6 @@
       "mp3": {
         "64": "https://icecast3.play.cz/hana64.mp3",
         "128": "https://icecast8.play.cz/hana128.mp3"
-      }
-    }
-  },
-  {
-    "id": "hardradiofm",
-    "name": "hardradio.fm",
-    "logo": "/logos/hardradiofm.png",
-    "categories": [
-      "rnb",
-      "hiphop",
-      "dance",
-      "90s"
-    ],
-    "streams": {
-      "mp3": {
-        "128": "https://icecast3.play.cz/hardradiofm128.mp3"
       }
     }
   },
@@ -780,22 +749,6 @@
     }
   },
   {
-    "id": "radio-o106",
-    "name": "O 106",
-    "logo": "/logos/radio-o106.png",
-    "categories": [
-      "pop",
-      "90s",
-      "80s",
-      "00s"
-    ],
-    "streams": {
-      "mp3": {
-        "128": "https://www.radioking.com/play/o106"
-      }
-    }
-  },
-  {
     "id": "proglas",
     "name": "Radio Proglas",
     "logo": "/logos/proglas.png",
@@ -882,21 +835,6 @@
       "mp3": {
         "128": "https://icecast3.play.cz/radiodixie128.mp3",
         "192": "https://icecast8.play.cz/radiodixie192.mp3"
-      }
-    }
-  },
-  {
-    "id": "radiodechovka",
-    "name": "Radio Dechovka",
-    "logo": "/logos/radiodechovka.png",
-    "categories": [
-      "dechovka"
-    ],
-    "streams": {
-      "mp3": {
-        "32": "https://icecast9.play.cz/dechovka32.mp3",
-        "64": "https://icecast5.play.cz/dechovka64.mp3",
-        "128": "https://icecast5.play.cz/dechovka128.mp3"
       }
     }
   },
@@ -1180,20 +1118,6 @@
     }
   },
   {
-    "id": "rockarena",
-    "name": "Rock Arena",
-    "logo": "/logos/rockarena.png",
-    "categories": [
-      "rock",
-      "metal"
-    ],
-    "streams": {
-      "mp3": {
-        "128": "https://icecast6.play.cz/rockarena.mp3"
-      }
-    }
-  },
-  {
     "id": "rockzone",
     "name": "RockZone 105,9",
     "logo": "/logos/rockzone.png",
@@ -1287,25 +1211,6 @@
       },
       "mp3": {
         "160": "https://icecast9.play.cz/slowdown.mp3"
-      }
-    }
-  },
-  {
-    "id": "streetradio",
-    "name": "StreetCulture",
-    "logo": "/logos/streetradio.png",
-    "categories": [
-      "talk",
-      "metal",
-      "indie",
-      "hiphop",
-      "folk",
-      "alternative",
-      "rock"
-    ],
-    "streams": {
-      "mp3": {
-        "128": "https://icecast2.play.cz/streetradio.mp3"
       }
     }
   },
