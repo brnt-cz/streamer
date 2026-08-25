@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
+import { readStored, writeStored } from '../utils/storage'
 
 export interface StreamItem {
   id: string
@@ -20,28 +21,10 @@ interface PlaylistData {
   folders?: PlaylistFolder[]
 }
 
-const COOKIE_PLAYLIST = 'streamer_playlist'
-const COOKIE_LAST_STREAM = 'streamer_last_stream'
-const COOKIE_FOLDER_COLLAPSED = 'streamer_folder_collapsed'
-const COOKIE_DAYS = 365
-
-function isSecureContext(): boolean {
-  return window.location.protocol === 'https:'
-}
-
-function setCookie(name: string, value: string, days: number): void {
-  const expires = new Date()
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
-  const secure = isSecureContext() ? ';Secure' : ''
-  document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Lax${secure}`
-}
-
-function getCookie(name: string): string | null {
-  const nameEQ = name + '='
-  const cookies = document.cookie.split(';')
-  const found = cookies.find(c => c.trim().startsWith(nameEQ))
-  return found ? decodeURIComponent(found.trim().substring(nameEQ.length)) : null
-}
+// klíč v localStorage : starší cookie, ze které se jednorázově migruje
+const STORAGE_PLAYLIST = 'streamer_playlist'
+const STORAGE_LAST_STREAM = 'streamer_last_stream'
+const STORAGE_FOLDER_COLLAPSED = 'streamer_folder_collapsed'
 
 function generateId(): string {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
@@ -87,7 +70,7 @@ interface LoadedPlaylistData {
   folders: PlaylistFolder[]
 }
 
-function loadPlaylistFromCookie(): LoadedPlaylistData {
+function loadPlaylist(): LoadedPlaylistData {
   const defaultItems: StreamItem[] = [
     {
       id: '1',
@@ -98,9 +81,9 @@ function loadPlaylistFromCookie(): LoadedPlaylistData {
   ]
 
   try {
-    const cookieValue = getCookie(COOKIE_PLAYLIST)
-    if (cookieValue) {
-      const data = JSON.parse(cookieValue) as PlaylistData
+    const stored = readStored(STORAGE_PLAYLIST, STORAGE_PLAYLIST)
+    if (stored) {
+      const data = JSON.parse(stored) as PlaylistData
       if (data.items && Array.isArray(data.items) && data.items.length > 0) {
         // Add bitrate if missing
         const items = data.items.map(item => ({
@@ -112,68 +95,58 @@ function loadPlaylistFromCookie(): LoadedPlaylistData {
       }
     }
   } catch (e) {
-    console.warn('Failed to load playlist from cookie:', e)
+    console.warn('Failed to load playlist:', e)
   }
 
   return { items: defaultItems, folders: [] }
 }
 
-function loadCollapsedStateFromCookie(): Record<string, boolean> {
+function loadCollapsedState(): Record<string, boolean> {
   try {
-    const cookieValue = getCookie(COOKIE_FOLDER_COLLAPSED)
-    if (cookieValue) {
-      return JSON.parse(cookieValue)
+    const stored = readStored(STORAGE_FOLDER_COLLAPSED, STORAGE_FOLDER_COLLAPSED)
+    if (stored) {
+      return JSON.parse(stored)
     }
   } catch (e) {
-    console.warn('Failed to load folder collapsed state from cookie:', e)
+    console.warn('Failed to load folder collapsed state:', e)
   }
   return {}
 }
 
-function loadLastStreamFromCookie(items: StreamItem[]): string | null {
+function loadLastStream(items: StreamItem[]): string | null {
   try {
-    const lastStreamId = getCookie(COOKIE_LAST_STREAM)
+    const lastStreamId = readStored(STORAGE_LAST_STREAM, STORAGE_LAST_STREAM)
     if (lastStreamId && items.some(item => item.id === lastStreamId)) {
       return lastStreamId
     }
   } catch (e) {
-    console.warn('Failed to load last stream from cookie:', e)
+    console.warn('Failed to load last stream:', e)
   }
   return items[0]?.id || null
 }
 
-function savePlaylistToCookie(items: StreamItem[], folders: PlaylistFolder[]) {
-  try {
-    setCookie(COOKIE_PLAYLIST, JSON.stringify({ items, folders }), COOKIE_DAYS)
-  } catch (e) {
-    console.warn('Failed to save playlist to cookie:', e)
-  }
+function savePlaylist(items: StreamItem[], folders: PlaylistFolder[]): boolean {
+  return writeStored(STORAGE_PLAYLIST, JSON.stringify({ items, folders }))
 }
 
-function saveCollapsedStateToCookie(collapsedState: Record<string, boolean>) {
-  try {
-    setCookie(COOKIE_FOLDER_COLLAPSED, JSON.stringify(collapsedState), COOKIE_DAYS)
-  } catch (e) {
-    console.warn('Failed to save folder collapsed state to cookie:', e)
-  }
+function saveCollapsedState(collapsedState: Record<string, boolean>): boolean {
+  return writeStored(STORAGE_FOLDER_COLLAPSED, JSON.stringify(collapsedState))
 }
 
-function saveLastStreamToCookie(id: string | null) {
-  try {
-    if (id) {
-      setCookie(COOKIE_LAST_STREAM, id, COOKIE_DAYS)
-    }
-  } catch (e) {
-    console.warn('Failed to save last stream to cookie:', e)
-  }
+function saveLastStream(id: string | null): boolean {
+  if (!id) return true
+  return writeStored(STORAGE_LAST_STREAM, id)
 }
 
 export const usePlaylistStore = defineStore('playlist', () => {
-  const loadedData = loadPlaylistFromCookie()
+  const loadedData = loadPlaylist()
   const items = ref<StreamItem[]>(loadedData.items)
   const folders = ref<PlaylistFolder[]>(loadedData.folders)
-  const folderCollapsedState = ref<Record<string, boolean>>(loadCollapsedStateFromCookie())
-  const currentId = ref<string | null>(loadLastStreamFromCookie(items.value))
+  const folderCollapsedState = ref<Record<string, boolean>>(loadCollapsedState())
+  const currentId = ref<string | null>(loadLastStream(items.value))
+  // true, když se playlist nepodařilo uložit — UI to musí ukázat, jinak
+  // uživatel o změny přijde a nedozví se to
+  const storageFailed = ref(false)
 
   const currentStream = computed(() => {
     return items.value.find(item => item.id === currentId.value) || null
@@ -189,9 +162,11 @@ export const usePlaylistStore = defineStore('playlist', () => {
     return items.value.filter(item => item.folderId === folderId)
   }
 
-  watch([items, folders], () => savePlaylistToCookie(items.value, folders.value), { deep: true })
-  watch(folderCollapsedState, () => saveCollapsedStateToCookie(folderCollapsedState.value), { deep: true })
-  watch(currentId, (id) => saveLastStreamToCookie(id))
+  watch([items, folders], () => {
+    storageFailed.value = !savePlaylist(items.value, folders.value)
+  }, { deep: true })
+  watch(folderCollapsedState, () => saveCollapsedState(folderCollapsedState.value), { deep: true })
+  watch(currentId, (id) => saveLastStream(id))
 
   function addStream(name: string, url: string, bitrate?: string, logo?: string): string {
     const id = generateId()
@@ -354,6 +329,7 @@ export const usePlaylistStore = defineStore('playlist', () => {
     items,
     folders,
     folderCollapsedState,
+    storageFailed,
     currentId,
     currentStream,
     rootItems,
