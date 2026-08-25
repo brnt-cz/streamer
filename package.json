@@ -12,7 +12,8 @@
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "check:streams": "node scripts/check-streams.cjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
