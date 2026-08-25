@@ -58,7 +58,7 @@
   --tracking-caps: 0.136em; /* ≈1.5px on 11px text */
 
   /* Z-index */
-  --z-modal: 1000;
+  --z-index-modal: 1000;
 
   /* Animation durations */
   --animate-duration-fast: 150ms;
