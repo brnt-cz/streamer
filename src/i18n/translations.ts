@@ -8,6 +8,8 @@ export const translations = {
     selectStream: 'Select a stream',
     streamError: 'Failed to play stream',
     streamLoadError: 'Error loading stream',
+    reconnecting: 'Connection lost — reconnecting…',
+    waitingForNetwork: 'No connection — will resume automatically',
 
     // Sleep Timer
     sleepTimer: 'Sleep Timer',
@@ -113,6 +115,8 @@ export const translations = {
     selectStream: 'Vyberte stream',
     streamError: 'Nepodařilo se přehrát stream',
     streamLoadError: 'Chyba při načítání streamu',
+    reconnecting: 'Spojení přerušeno — obnovuji…',
+    waitingForNetwork: 'Bez připojení — obnovím automaticky',
 
     // Sleep Timer
     sleepTimer: 'Časovač vypnutí',
