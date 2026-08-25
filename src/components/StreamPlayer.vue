@@ -17,6 +17,17 @@ const error = ref<string | null>(null)
 // Flag to ignore pause events during stream loading
 const isLoadingStream = ref(false)
 
+// Uživatelův záměr hrát. Drží se i přes výpadek sítě, aby bylo podle čeho
+// rozhodnout, jestli se má stream obnovovat — ruční pauzu oživovat nechceme.
+const wantsPlayback = ref(false)
+const isReconnecting = ref(false)
+const isOffline = ref(typeof navigator !== 'undefined' && !navigator.onLine)
+
+// Rostoucí odstup mezi pokusy, ať opakované selhání nezahltí síť
+const RECONNECT_DELAYS_MS = [1000, 2000, 4000, 8000, 15000, 30000]
+let reconnectAttempt = 0
+let reconnectTimer: ReturnType<typeof setTimeout> | null = null
+
 // Sleep Timer
 const sleepTimerMinutes = ref(0) // 0 = off, otherwise minutes until stop
 const sleepTimerRemaining = ref(0) // Seconds remaining
@@ -137,25 +148,90 @@ function playWhenReady(audio: HTMLAudioElement, onError?: (e: Error) => void): v
 function togglePlay(): void {
   if (!audioRef.value) return
 
-  if (isPlaying.value) {
+  if (isPlaying.value || isReconnecting.value) {
+    // Ruční pauza ukončuje i případné pokusy o obnovení
+    wantsPlayback.value = false
+    cancelReconnect()
     isPlaying.value = false
     stopAudio()
   } else {
     if (store.currentStream) {
-      const audio = audioRef.value
-      isLoadingStream.value = true
-      audio.src = store.currentStream.url
-      audio.load()
-      playWhenReady(audio, (e) => {
-        error.value = t.value.streamError + ': ' + e.message
-      })
+      wantsPlayback.value = true
+      error.value = null
+      reloadStream()
     }
   }
+}
+
+function cancelReconnect(): void {
+  if (reconnectTimer) {
+    clearTimeout(reconnectTimer)
+    reconnectTimer = null
+  }
+  reconnectAttempt = 0
+  isReconnecting.value = false
+}
+
+// Znovu načte aktuální stream; při dalším selhání naplánuje další pokus
+function reloadStream(): void {
+  if (!audioRef.value || !store.currentStream) return
+
+  const audio = audioRef.value
+  isLoadingStream.value = true
+  audio.src = store.currentStream.url
+  audio.load()
+  playWhenReady(audio, () => {
+    isLoadingStream.value = false
+    scheduleReconnect()
+  })
+}
+
+function scheduleReconnect(): void {
+  if (!wantsPlayback.value || reconnectTimer) return
+
+  isReconnecting.value = true
+
+  // Offline nemá smysl zkoušet — počká se na událost 'online'
+  if (!navigator.onLine) return
+
+  const delay = RECONNECT_DELAYS_MS[Math.min(reconnectAttempt, RECONNECT_DELAYS_MS.length - 1)]
+  reconnectAttempt++
+  reconnectTimer = setTimeout(() => {
+    reconnectTimer = null
+    reloadStream()
+  }, delay)
+}
+
+function handleOnline(): void {
+  isOffline.value = false
+  if (!wantsPlayback.value) return
+
+  // Výpadek přežil buffer a stream pořád hraje — jen zahodit stav obnovování
+  if (!audioRef.value?.paused) {
+    cancelReconnect()
+    return
+  }
+
+  // Síť je zpět, nemá cenu dočkávat odpočet — zkusit hned a od začátku
+  cancelReconnect()
+  isReconnecting.value = true
+  reloadStream()
+}
+
+function handleOffline(): void {
+  isOffline.value = true
+  if (!wantsPlayback.value) return
+  if (reconnectTimer) {
+    clearTimeout(reconnectTimer)
+    reconnectTimer = null
+  }
+  isReconnecting.value = true
 }
 
 function handlePlay(): void {
   isPlaying.value = true
   error.value = null
+  cancelReconnect()
   startKeepAlive()
 }
 
@@ -168,22 +244,21 @@ function handlePause(): void {
 }
 
 function handleError(): void {
-  error.value = t.value.streamLoadError
   isPlaying.value = false
+  isLoadingStream.value = false
+
+  // Po ruční pauze chybu jen ukážeme, jinak se pokusíme obnovit
+  if (!wantsPlayback.value) {
+    error.value = t.value.streamLoadError
+    return
+  }
+  scheduleReconnect()
 }
 
 // Handle stalled stream - try to resume
 function handleStalled(): void {
-  if (isPlaying.value && audioRef.value && store.currentStream) {
-    // Try to resume by reloading the stream
-    const audio = audioRef.value
-    const currentTime = audio.currentTime
-    audio.src = store.currentStream.url
-    audio.load()
-    audio.currentTime = currentTime
-    audio.play().catch(() => {
-      // Silent catch - will be handled by error event if persistent
-    })
+  if (wantsPlayback.value) {
+    scheduleReconnect()
   }
 }
 
@@ -273,15 +348,13 @@ useMediaSession({
   artwork: currentLogo,
   onPlay: () => {
     if (audioRef.value && store.currentStream) {
-      const audio = audioRef.value
-      audio.src = store.currentStream.url
-      audio.load()
-      playWhenReady(audio, (e) => {
-        error.value = t.value.streamError + ': ' + e.message
-      })
+      wantsPlayback.value = true
+      reloadStream()
     }
   },
   onPause: () => {
+    wantsPlayback.value = false
+    cancelReconnect()
     stopAudio()
   }
 })
@@ -311,6 +384,9 @@ onMounted(() => {
   }
   // Listen for visibility changes to resume playback
   document.addEventListener('visibilitychange', handleVisibilityChange)
+  // Obnovit hned po návratu sítě místo čekání na další pokus
+  window.addEventListener('online', handleOnline)
+  window.addEventListener('offline', handleOffline)
   // Close sleep timer menu when clicking outside
   document.addEventListener('click', closeSleepTimerMenu)
 })
@@ -325,7 +401,10 @@ onUnmounted(() => {
     clearInterval(sleepTimerInterval)
   }
   document.removeEventListener('visibilitychange', handleVisibilityChange)
+  window.removeEventListener('online', handleOnline)
+  window.removeEventListener('offline', handleOffline)
   document.removeEventListener('click', closeSleepTimerMenu)
+  cancelReconnect()
   stopAudio()
 })
 </script>
@@ -497,6 +576,19 @@ onUnmounted(() => {
     </div>
 
     <!-- Error Message -->
+    <!-- Obnovování spojení - ať uživatel ví, že se něco děje a nemusí klikat -->
+    <div
+      v-if="isReconnecting"
+      class="mt-4 p-3 px-4 bg-surface-lighter border border-border-light rounded-xl text-white/70 text-tiny flex items-center gap-2.5"
+      role="status"
+    >
+      <svg class="w-4 h-4 shrink-0 animate-spin" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.25"/>
+        <path d="M12 2a10 10 0 0110 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      {{ isOffline ? t.waitingForNetwork : t.reconnecting }}
+    </div>
+
     <div v-if="error" class="mt-4 p-3 px-4 bg-error-bg border border-error-border rounded-xl text-error-light text-tiny flex items-center gap-2.5">
       <svg class="w-4.5 h-4.5 shrink-0" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>

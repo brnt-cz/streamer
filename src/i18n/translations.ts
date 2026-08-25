@@ -9,6 +9,8 @@ export const translations = {
     streamError: 'Failed to play stream',
     storageFull: 'Playlist could not be saved — browser storage is full. Recent changes will be lost on reload.',
     streamLoadError: 'Error loading stream',
+    reconnecting: 'Connection lost — reconnecting…',
+    waitingForNetwork: 'No connection — will resume automatically',
 
     // Sleep Timer
     sleepTimer: 'Sleep Timer',
@@ -115,6 +117,8 @@ export const translations = {
     streamError: 'Nepodařilo se přehrát stream',
     storageFull: 'Playlist se nepodařilo uložit — úložiště prohlížeče je plné. Poslední změny se po načtení ztratí.',
     streamLoadError: 'Chyba při načítání streamu',
+    reconnecting: 'Spojení přerušeno — obnovuji…',
+    waitingForNetwork: 'Bez připojení — obnovím automaticky',
 
     // Sleep Timer
     sleepTimer: 'Časovač vypnutí',
