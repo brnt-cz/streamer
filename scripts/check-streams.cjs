@@ -20,11 +20,65 @@ const NEED_BYTES = 32000;      // dost na to, aby bylo jisté, že data opravdu 
 const TIMEOUT_MS = 10000;
 const CONCURRENCY = 5;
 const MAX_REDIRECTS = 4;
+const HLS_RE = /\.m3u8(\?|$)/i;
 
 const DATA_FILES = [
   path.join(__dirname, '../src/data/radios.json'),
   path.join(__dirname, '../src/data/radios-international.json')
 ];
+
+/**
+ * HLS se neověřuje počtem bajtů - playlist je jen krátký textový soubor.
+ * Ověří se, že je to platný playlist, a stáhne se první segment (u master
+ * playlistu se cestou projde i varianta), aby bylo jisté, že data opravdu tečou.
+ */
+async function probeHls(url, depth = 0) {
+  if (depth > 2) return { ok: false, why: 'zanoření playlistů' };
+
+  const playlist = await fetchText(url);
+  if (!playlist.ok) return playlist;
+  if (!playlist.body.includes('#EXTM3U')) return { ok: false, why: 'není platný m3u8' };
+
+  const prvniOdkaz = playlist.body
+    .split('\n')
+    .map(radek => radek.trim())
+    .find(radek => radek && !radek.startsWith('#'));
+
+  if (!prvniOdkaz) return { ok: false, why: 'playlist bez segmentů' };
+
+  const cil = new URL(prvniOdkaz, playlist.finalUrl).href;
+  if (HLS_RE.test(cil)) return probeHls(cil, depth + 1);
+
+  return probe(cil);
+}
+
+function fetchText(url, redirects = 0) {
+  return new Promise((resolve) => {
+    if (redirects > MAX_REDIRECTS) return resolve({ ok: false, why: 'too-many-redirects' });
+    const client = url.startsWith('https') ? https : http;
+    try {
+      const req = client.get(url, { headers: { 'User-Agent': UA }, timeout: TIMEOUT_MS, insecureHTTPParser: true }, (res) => {
+        const location = res.headers.location;
+        if (res.statusCode >= 300 && res.statusCode < 400 && location) {
+          res.destroy();
+          return resolve(fetchText(new URL(location, url).href, redirects + 1));
+        }
+        if (res.statusCode !== 200) { res.destroy(); return resolve({ ok: false, why: `http-${res.statusCode}` }); }
+        let body = '';
+        res.on('data', (chunk) => {
+          body += chunk;
+          if (body.length > 200000) req.destroy();
+        });
+        res.on('end', () => resolve({ ok: true, body, finalUrl: url }));
+        res.on('error', () => resolve({ ok: false, why: 'stream-error' }));
+      });
+      req.on('timeout', () => { req.destroy(); resolve({ ok: false, why: 'timeout' }); });
+      req.on('error', (e) => resolve({ ok: false, why: e.code || e.message }));
+    } catch {
+      resolve({ ok: false, why: 'bad-url' });
+    }
+  });
+}
 
 function probe(url, redirects = 0) {
   return new Promise((resolve) => {
@@ -38,7 +92,13 @@ function probe(url, redirects = 0) {
     };
 
     try {
-      req = client.get(url, { headers: { 'User-Agent': UA }, timeout: TIMEOUT_MS }, (res) => {
+      req = client.get(url, {
+        headers: { 'User-Agent': UA },
+        timeout: TIMEOUT_MS,
+        // Streamovací servery často odpovídají hlavičkami, které striktní parser
+        // v Node odmítne (HPE_CR_EXPECTED), i když stream normálně hraje
+        insecureHTTPParser: true
+      }, (res) => {
         const location = res.headers.location;
         if (res.statusCode >= 300 && res.statusCode < 400 && location) {
           res.destroy();
@@ -103,7 +163,7 @@ async function main() {
 
   const results = [];
   await runPool(jobs, async (job) => {
-    const result = await probe(job.url);
+    const result = HLS_RE.test(job.url) ? await probeHls(job.url) : await probe(job.url);
     results.push({ ...job, ...result });
     process.stdout.write(result.ok ? '.' : 'x');
   });
