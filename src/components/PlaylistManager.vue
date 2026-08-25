@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { usePlaylistStore, type PlaylistFolder } from '../stores/playlist'
 import { useI18n } from '../composables/useI18n'
+import StationName from './StationName.vue'
 
 const store = usePlaylistStore()
 const { t } = useI18n()
@@ -506,7 +507,7 @@ defineExpose({
 
                 <!-- Info -->
                 <div class="flex-1 min-w-0">
-                  <span class="block text-tiny font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ item.name }}</span>
+                  <span class="block text-tiny font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis"><StationName :name="item.name" /></span>
                 </div>
 
                 <!-- Actions -->
@@ -583,7 +584,7 @@ defineExpose({
 
         <!-- Info -->
         <div class="flex-1 min-w-0">
-          <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ item.name }}</span>
+          <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis"><StationName :name="item.name" /></span>
           <span class="block text-2xs text-white/30 whitespace-nowrap overflow-hidden text-ellipsis mt-0.5">{{ item.url }}</span>
         </div>
 

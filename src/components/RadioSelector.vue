@@ -3,6 +3,7 @@ import { ref, computed, watch, onUnmounted } from 'vue'
 import { useRadios, type Radio, type StreamFormat } from '../stores/radios'
 import { usePlaylistStore } from '../stores/playlist'
 import { useI18n } from '../composables/useI18n'
+import StationName from './StationName.vue'
 
 const { categories, formats, getAvailableFormats, getAvailableBitrates, getStreamUrl, filterRadios } = useRadios()
 const store = usePlaylistStore()
@@ -233,7 +234,7 @@ defineExpose({
                 >
                   <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-input object-cover bg-white/10" />
                   <div class="flex-1 min-w-0">
-                    <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis">{{ radio.name }}</span>
+                    <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis"><StationName :name="radio.name" /></span>
                     <span v-if="radio.categories.length" class="block text-xs text-white/35 whitespace-nowrap overflow-hidden text-ellipsis">
                       {{ radio.categories.map(getCategoryLabel).join(', ') }}
                     </span>
@@ -261,7 +262,7 @@ defineExpose({
               <div v-if="selectedRadio" class="flex items-center gap-3">
                 <img :src="selectedRadio.logo" :alt="selectedRadio.name" class="w-10 h-10 rounded-lg object-cover bg-white/10 shrink-0" />
                 <div class="flex-1 min-w-0">
-                  <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis">{{ selectedRadio.name }}</span>
+                  <span class="block text-sm font-medium text-white/90 whitespace-nowrap overflow-hidden text-ellipsis"><StationName :name="selectedRadio.name" /></span>
                   <span class="block text-xs text-text-muted">{{ (selectedFormat || getAvailableFormats(selectedRadio.id)[0] || '').toUpperCase() }} {{ selectedBitrate }}kbps</span>
                 </div>
                 <!-- Bitrate Selector -->

@@ -4,6 +4,7 @@ import { usePlaylistStore } from '../stores/playlist'
 import { useMediaSession } from '../composables/useMediaSession'
 import { useI18n } from '../composables/useI18n'
 import { useRadios } from '../stores/radios'
+import StationName from './StationName.vue'
 
 const store = usePlaylistStore()
 const { t } = useI18n()
@@ -392,7 +393,7 @@ onUnmounted(() => {
       <div class="text-center">
         <div v-if="store.currentStream">
           <span class="block text-2xs font-medium text-text-muted uppercase tracking-caps mb-1.5">{{ t.nowPlaying }}</span>
-          <span class="text-lg font-semibold text-text">{{ store.currentStream.name }}</span>
+          <span class="text-lg font-semibold text-text"><StationName :name="store.currentStream.name" /></span>
         </div>
         <div v-else>
           <span class="text-lg font-semibold text-text-muted">{{ t.selectStream }}</span>
