@@ -30,21 +30,6 @@
     }
   },
   {
-    "id": "foxnewstalk",
-    "name": "FOX News Talk",
-    "logo": "/logos/foxnewstalk.png",
-    "categories": [
-      "news",
-      "talk"
-    ],
-    "country": "US",
-    "streams": {
-      "mp3": {
-        "64": "https://live.amperwave.net/direct/foxnewsradio-foxnewstalkAudio-imc"
-      }
-    }
-  },
-  {
     "id": "talksport",
     "name": "talkSPORT",
     "logo": "/logos/talksport.png",
@@ -337,20 +322,6 @@
     }
   },
   {
-    "id": "absoluteradio",
-    "name": "Absolute Radio",
-    "logo": "/logos/absoluteradio.png",
-    "categories": [
-      "rock"
-    ],
-    "country": "GB",
-    "streams": {
-      "mp3": {
-        "128": "https://ais-edge09-live365-dal02.cdnstream.com/a25710"
-      }
-    }
-  },
-  {
     "id": "classicfm",
     "name": "Classic FM",
     "logo": "/logos/classicfm.png",
@@ -361,20 +332,6 @@
     "streams": {
       "mp3": {
         "128": "https://media-ice.musicradio.com/ClassicFMMP3"
-      }
-    }
-  },
-  {
-    "id": "jazzfm",
-    "name": "Jazz FM",
-    "logo": "/logos/jazzfm.png",
-    "categories": [
-      "jazz"
-    ],
-    "country": "MK",
-    "streams": {
-      "aac": {
-        "64": "https://edge-bauerall-01-gos2.sharp-stream.com/jazzfm.aac"
       }
     }
   },

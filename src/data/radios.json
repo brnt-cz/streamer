@@ -83,7 +83,7 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://icecast6.play.cz/cesky-impuls.mp3"
+        "128": "https://icecast4.play.cz/ceskyimpuls.mp3"
       }
     }
   },
@@ -165,10 +165,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/pohoda.mp3"
+        "128": "https://ice-cro3.play.cz/pohoda.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/pohoda_high.aac"
+        "192": "https://ice-cro3.play.cz/pohoda_high.aac"
       }
     }
   },
@@ -183,10 +183,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/radiozurnal.mp3"
+        "128": "https://ice-cro3.play.cz/radiozurnal.mp3"
       },
       "aac": {
-        "192": "https://ice-cro2.play.cz/radiozurnal_high.aac"
+        "192": "https://ice-cro3.play.cz/radiozurnal_high.aac"
       }
     }
   },
@@ -201,10 +201,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/radiozurnal_sport.mp3"
+        "128": "https://ice-cro3.play.cz/radiozurnal_sport.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/radiozurnal_sport_high.aac"
+        "192": "https://ice-cro3.play.cz/radiozurnal_sport_high.aac"
       }
     }
   },
@@ -219,10 +219,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro2.play.cz/dvojka.mp3"
+        "128": "https://ice-cro3.play.cz/dvojka.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/dvojka_high.aac"
+        "192": "https://ice-cro3.play.cz/dvojka_high.aac"
       }
     }
   },
@@ -234,10 +234,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/vltava.mp3"
+        "128": "https://ice-cro3.play.cz/vltava.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/vltava_high.aac"
+        "192": "https://ice-cro3.play.cz/vltava_high.aac"
       }
     }
   },
@@ -251,10 +251,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/plus.mp3"
+        "128": "https://ice-cro3.play.cz/plus.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/plus_high.aac"
+        "192": "https://ice-cro3.play.cz/plus_high.aac"
       }
     }
   },
@@ -266,10 +266,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/radio_prague_int.mp3"
+        "128": "https://ice-cro3.play.cz/radio_prague_int.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/radio_prague_int_high.aac"
+        "192": "https://ice-cro3.play.cz/radio_prague_int_high.aac"
       }
     }
   },
@@ -287,10 +287,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/radio_wave.mp3"
+        "128": "https://ice-cro3.play.cz/radio_wave.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/radio_wave_high.aac"
+        "192": "https://ice-cro3.play.cz/radio_wave_high.aac"
       }
     }
   },
@@ -304,10 +304,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/ddur.mp3"
+        "128": "https://ice-cro3.play.cz/ddur.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/ddur_high.aac"
+        "192": "https://ice-cro3.play.cz/ddur_high.aac"
       }
     }
   },
@@ -322,10 +322,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/jazz.mp3"
+        "128": "https://ice-cro3.play.cz/jazz.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/jazz_high.aac"
+        "192": "https://ice-cro3.play.cz/jazz_high.aac"
       }
     }
   },
@@ -341,10 +341,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/radio_junior.mp3"
+        "128": "https://ice-cro3.play.cz/radio_junior.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/radio_junior_high.aac"
+        "192": "https://ice-cro3.play.cz/radio_junior_high.aac"
       }
     }
   },
@@ -359,10 +359,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/brno.mp3"
+        "128": "https://ice-cro3.play.cz/brno.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/brno_high.aac"
+        "192": "https://ice-cro3.play.cz/brno_high.aac"
       }
     }
   },
@@ -377,10 +377,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/ceske_budejovice.mp3"
+        "128": "https://ice-cro3.play.cz/ceske_budejovice.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/ceske_budejovice_high.aac"
+        "192": "https://ice-cro3.play.cz/ceske_budejovice_high.aac"
       }
     }
   },
@@ -395,10 +395,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro2.play.cz/hradec_kralove.mp3"
+        "128": "https://ice-cro3.play.cz/hradec_kralove.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/hradec_kralove_high.aac"
+        "192": "https://ice-cro3.play.cz/hradec_kralove_high.aac"
       }
     }
   },
@@ -413,10 +413,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro2.play.cz/olomouc.mp3"
+        "128": "https://ice-cro3.play.cz/olomouc.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/olomouc_high.aac"
+        "192": "https://ice-cro3.play.cz/olomouc_high.aac"
       }
     }
   },
@@ -431,10 +431,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/ostrava.mp3"
+        "128": "https://ice-cro3.play.cz/ostrava.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/ostrava_high.aac"
+        "192": "https://ice-cro3.play.cz/ostrava_high.aac"
       }
     }
   },
@@ -449,10 +449,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/pardubice.mp3"
+        "128": "https://ice-cro3.play.cz/pardubice.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/pardubice_high.aac"
+        "192": "https://ice-cro3.play.cz/pardubice_high.aac"
       }
     }
   },
@@ -467,10 +467,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/plzen.mp3"
+        "128": "https://ice-cro3.play.cz/plzen.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/plzen_high.aac"
+        "192": "https://ice-cro3.play.cz/plzen_high.aac"
       }
     }
   },
@@ -485,10 +485,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/karlovy_vary.mp3"
+        "128": "https://ice-cro3.play.cz/karlovy_vary.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/karlovy_vary_high.aac"
+        "192": "https://ice-cro3.play.cz/karlovy_vary_high.aac"
       }
     }
   },
@@ -502,10 +502,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/radio_dab_praha.mp3"
+        "128": "https://ice-cro3.play.cz/radio_dab_praha.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/radio_dab_praha_high.aac"
+        "192": "https://ice-cro3.play.cz/radio_dab_praha_high.aac"
       }
     }
   },
@@ -519,10 +519,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/region.mp3"
+        "128": "https://ice-cro3.play.cz/region.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/region_high.aac"
+        "192": "https://ice-cro3.play.cz/region_high.aac"
       }
     }
   },
@@ -534,10 +534,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/vysocina.mp3"
+        "128": "https://ice-cro3.play.cz/vysocina.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/vysocina_high.aac"
+        "192": "https://ice-cro3.play.cz/vysocina_high.aac"
       }
     }
   },
@@ -553,10 +553,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/sever.mp3"
+        "128": "https://ice-cro3.play.cz/sever.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/sever_high.aac"
+        "192": "https://ice-cro3.play.cz/sever_high.aac"
       }
     }
   },
@@ -575,10 +575,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/liberec.mp3"
+        "128": "https://ice-cro3.play.cz/liberec.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/liberec_high.aac"
+        "192": "https://ice-cro3.play.cz/liberec_high.aac"
       }
     }
   },
@@ -592,10 +592,10 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "128": "https://ice-cro1.play.cz/zlin.mp3"
+        "128": "https://ice-cro3.play.cz/zlin.mp3"
       },
       "aac": {
-        "192": "https://ice-cro1.play.cz/zlin_high.aac"
+        "192": "https://ice-cro3.play.cz/zlin_high.aac"
       }
     }
   },
@@ -698,8 +698,7 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "64": "https://icecast1.play.cz/impuls64.mp3",
-        "128": "https://icecast1.play.cz/impuls128.mp3"
+        "128": "https://icecast1.play.cz/impuls.mp3"
       }
     }
   },
@@ -794,21 +793,6 @@
     }
   },
   {
-    "id": "proglas",
-    "name": "Radio Proglas",
-    "logo": "/logos/proglas.png",
-    "categories": [
-      "allformat"
-    ],
-    "country": "CZ",
-    "streams": {
-      "mp3": {
-        "32": "https://icecast1.play.cz/xnostream.mp3",
-        "128": "https://icecast1.play.cz/xnostream.mp3"
-      }
-    }
-  },
-  {
     "id": "radio1",
     "name": "Radio 1",
     "logo": "/logos/radio1.png",
@@ -870,22 +854,6 @@
         "64": "https://icecast7.play.cz/casradio64.mp3",
         "128": "https://icecast6.play.cz/casradio128.mp3",
         "192": "https://icecast9.play.cz/casradio192.mp3"
-      }
-    }
-  },
-  {
-    "id": "radiodixie",
-    "name": "RADIO DIXIE",
-    "logo": "/logos/radiodixie.png",
-    "categories": [
-      "rock",
-      "country"
-    ],
-    "country": "CZ",
-    "streams": {
-      "mp3": {
-        "128": "https://icecast3.play.cz/radiodixie128.mp3",
-        "192": "https://icecast8.play.cz/radiodixie192.mp3"
       }
     }
   },
@@ -1122,55 +1090,6 @@
     }
   },
   {
-    "id": "radio-trojka",
-    "name": "Rádio Trojka",
-    "logo": "/logos/radio-trojka.png",
-    "categories": [
-      "news",
-      "rock",
-      "rnb",
-      "pop",
-      "oldies",
-      "talk",
-      "hiphop",
-      "dance",
-      "90s",
-      "80s",
-      "00s"
-    ],
-    "country": "CZ",
-    "streams": {
-      "aac": {
-        "32": "https://rbx2.hnux.com/https://12901.cloudrad.io:9306/mobile"
-      },
-      "mp3": {
-        "128": "https://rbx2.hnux.com/https://12901.cloudrad.io:9306/live"
-      }
-    }
-  },
-  {
-    "id": "radio-xaver",
-    "name": "Radio Xaver",
-    "logo": "/logos/radio-xaver.png",
-    "categories": [
-      "rock",
-      "talk",
-      "jazz",
-      "folk",
-      "country"
-    ],
-    "country": "CZ",
-    "streams": {
-      "aac": {
-        "96": "https://icecast6.play.cz/radio-xaver.aac",
-        "256": "https://icecast9.play.cz/radio-xaver-hd.aac"
-      },
-      "mp3": {
-        "192": "https://icecast9.play.cz/radio-xaver.mp3"
-      }
-    }
-  },
-  {
     "id": "rock-natvrdo",
     "name": "Rádio Čas Rock NATVRDO",
     "logo": "/logos/rock-natvrdo.png",
@@ -1194,8 +1113,7 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "64": "https://icecast2.play.cz/rockzone64.mp3",
-        "128": "https://icecast2.play.cz/rockzone128.mp3"
+        "128": "https://icecast1.play.cz/rockzone.mp3"
       }
     }
   },
@@ -1260,7 +1178,6 @@
     "country": "CZ",
     "streams": {
       "mp3": {
-        "64": "https://icecast3.play.cz/skyrock64.mp3",
         "128": "https://icecast8.play.cz/skyrock128.mp3"
       }
     }
