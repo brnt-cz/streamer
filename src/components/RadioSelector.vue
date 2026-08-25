@@ -200,13 +200,13 @@ defineExpose({
                 />
               </div>
 
-              <!-- Filter Row -->
-              <div class="flex gap-3">
+              <!-- Filter Row - na úzkém displeji se tři selecty vedle sebe nevejdou -->
+              <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 <!-- Country Selector -->
                 <select
                   v-model="selectedCountry"
                   :aria-label="t.filterByCountry"
-                  class="select-custom py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
+                  class="select-custom w-full min-w-0 py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
                 >
                   <option value="" class="bg-surface text-text">{{ t.allCountries }}</option>
                   <option v-for="c in countries" :key="c.code" :value="c.code" class="bg-surface text-text">
@@ -217,7 +217,7 @@ defineExpose({
                 <select
                   v-model="selectedCategory"
                   :aria-label="t.filterByCategory"
-                  class="select-custom flex-1 py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
+                  class="select-custom w-full min-w-0 py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
                 >
                   <option value="" class="bg-surface text-text">{{ t.allCategories }}</option>
                   <option v-for="cat in categories" :key="cat" :value="cat" class="bg-surface text-text">
@@ -229,7 +229,7 @@ defineExpose({
                 <select
                   v-model="selectedFormat"
                   :aria-label="t.filterByFormat"
-                  class="select-custom py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
+                  class="select-custom w-full min-w-0 col-span-2 py-2.5 sm:col-span-1 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
                 >
                   <option value="" class="bg-surface text-text">{{ t.allFormats }}</option>
                   <option v-for="format in availableFormats" :key="format" :value="format" class="bg-surface text-text">
