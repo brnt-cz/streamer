@@ -4,8 +4,9 @@ import { useRadios, type Radio, type StreamFormat } from '../stores/radios'
 import { usePlaylistStore } from '../stores/playlist'
 import { useI18n } from '../composables/useI18n'
 import StationName from './StationName.vue'
+import { toFlagEmoji } from '../utils/countryFlags'
 
-const { categories, formats, getAvailableFormats, getAvailableBitrates, getStreamUrl, filterRadios } = useRadios()
+const { categories, countries, formats, getAvailableFormats, getAvailableBitrates, getStreamUrl, filterRadios } = useRadios()
 const store = usePlaylistStore()
 const { t, getCategoryLabel } = useI18n()
 
@@ -13,6 +14,7 @@ const isOpen = ref(false)
 const search = ref('')
 const debouncedSearch = ref('')
 const selectedCategory = ref('')
+const selectedCountry = ref('')
 const selectedFormat = ref<StreamFormat | ''>('')
 const selectedBitrate = ref('128')
 const selectedRadio = ref<Radio | null>(null)
@@ -39,12 +41,12 @@ onUnmounted(() => {
   }
 })
 
-const filteredRadios = computed(() => filterRadios(debouncedSearch.value, selectedCategory.value || undefined, selectedFormat.value || undefined))
+const filteredRadios = computed(() => filterRadios(debouncedSearch.value, selectedCategory.value || undefined, selectedFormat.value || undefined, selectedCountry.value || undefined))
 
 // Only show formats that have at least one radio (considering search and category)
 const availableFormats = computed(() => {
   return formats.filter(format =>
-    filterRadios(debouncedSearch.value, selectedCategory.value || undefined, format).length > 0
+    filterRadios(debouncedSearch.value, selectedCategory.value || undefined, format, selectedCountry.value || undefined).length > 0
   )
 })
 
@@ -88,6 +90,7 @@ function closeSelector() {
   isOpen.value = false
   search.value = ''
   selectedCategory.value = ''
+  selectedCountry.value = ''
   selectedRadio.value = null
   addError.value = null
 }
@@ -199,6 +202,17 @@ defineExpose({
 
               <!-- Filter Row -->
               <div class="flex gap-3">
+                <!-- Country Selector -->
+                <select
+                  v-model="selectedCountry"
+                  class="select-custom py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
+                >
+                  <option value="" class="bg-surface text-text">{{ t.allCountries }}</option>
+                  <option v-for="c in countries" :key="c.code" :value="c.code" class="bg-surface text-text">
+                    {{ toFlagEmoji(c.code) }} {{ c.code }} ({{ c.count }})
+                  </option>
+                </select>
+
                 <select
                   v-model="selectedCategory"
                   class="select-custom flex-1 py-2.5 pl-3.5 pr-9 bg-white/4 border border-border-light rounded-input text-tiny text-text cursor-pointer focus:outline-none focus:border-brand/50"
@@ -234,7 +248,9 @@ defineExpose({
                 >
                   <img :src="radio.logo" :alt="radio.name" class="w-12 h-12 rounded-input object-cover bg-white/10" />
                   <div class="flex-1 min-w-0">
-                    <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis"><StationName :name="radio.name" /></span>
+                    <span class="block text-sm font-medium text-white/90 mb-0.5 whitespace-nowrap overflow-hidden text-ellipsis">
+                      <span role="img" :aria-label="radio.country" :title="radio.country" class="mr-1">{{ toFlagEmoji(radio.country) }}</span><StationName :name="radio.name" />
+                    </span>
                     <span v-if="radio.categories.length" class="block text-xs text-white/35 whitespace-nowrap overflow-hidden text-ellipsis">
                       {{ radio.categories.map(getCategoryLabel).join(', ') }}
                     </span>

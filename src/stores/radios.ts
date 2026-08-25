@@ -13,6 +13,8 @@ export interface Radio {
   name: string
   logo: string
   categories: string[]
+  /** ISO 3166-1 alpha-2 */
+  country: string
   streams: RadioStreams
 }
 
@@ -38,6 +40,7 @@ function validateRadios(data: unknown): Radio[] {
     typeof (item as Radio).id === 'string' &&
     typeof (item as Radio).name === 'string' &&
     typeof (item as Radio).logo === 'string' &&
+    typeof (item as Radio).country === 'string' &&
     Array.isArray((item as Radio).categories) &&
     typeof (item as Radio).streams === 'object'
   )
@@ -58,6 +61,17 @@ function sortBitratesDescending(bitrates: string[]): string[] {
 }
 
 export function useRadios() {
+  // Země seřazené podle počtu stanic, ať jsou nahoře ty užitečné
+  const countries = computed(() => {
+    const counts = new Map<string, number>()
+    radios.value.forEach(radio => {
+      counts.set(radio.country, (counts.get(radio.country) || 0) + 1)
+    })
+    return Array.from(counts.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([code, count]) => ({ code, count }))
+  })
+
   const categories = computed(() => {
     const cats = new Set<string>()
     radios.value.forEach(radio => {
@@ -107,8 +121,12 @@ export function useRadios() {
     return null
   }
 
-  function filterRadios(search: string, category?: string, format?: StreamFormat): Radio[] {
+  function filterRadios(search: string, category?: string, format?: StreamFormat, country?: string): Radio[] {
     let filtered = radios.value
+
+    if (country) {
+      filtered = filtered.filter(r => r.country === country)
+    }
 
     if (category) {
       filtered = filtered.filter(r => r.categories.includes(category))
@@ -132,6 +150,7 @@ export function useRadios() {
   return {
     radios,
     categories,
+    countries,
     formats: FORMATS,
     bitrates: BITRATES,
     getAvailableFormats,

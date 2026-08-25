@@ -7,6 +7,7 @@
       "news",
       "world"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_world_service.m3u8"
@@ -21,6 +22,7 @@
       "news",
       "talk"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://npr-ice.streamguys1.com/live.mp3"
@@ -35,6 +37,7 @@
       "news",
       "talk"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "64": "https://live.amperwave.net/direct/foxnewsradio-foxnewstalkAudio-imc"
@@ -49,6 +52,7 @@
       "sport",
       "talk"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "128": "https://radio.talksport.com/stream"
@@ -63,6 +67,7 @@
       "pop",
       "dance"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_radio_one.m3u8"
@@ -77,6 +82,7 @@
       "pop",
       "rock"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8"
@@ -91,6 +97,7 @@
       "classic",
       "jazz"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_radio_three.m3u8"
@@ -105,6 +112,7 @@
       "news",
       "talk"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_fourfm.m3u8"
@@ -119,6 +127,7 @@
       "sport",
       "news"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_five_live.m3u8"
@@ -133,6 +142,7 @@
       "alternative",
       "rock"
     ],
+    "country": "GB",
     "streams": {
       "hls": {
         "96": "https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_6music.m3u8"
@@ -147,6 +157,7 @@
       "culture",
       "talk"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://icecast.radiofrance.fr/franceculture-midfi.mp3"
@@ -160,6 +171,7 @@
     "categories": [
       "news"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://icecast.radiofrance.fr/franceinfo-midfi.mp3"
@@ -174,6 +186,7 @@
       "talk",
       "news"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://icecast.radiofrance.fr/franceinter-midfi.mp3"
@@ -187,6 +200,7 @@
     "categories": [
       "classic"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://icecast.radiofrance.fr/francemusique-midfi.mp3"
@@ -200,6 +214,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://wdr-wdr2-rheinland.icecastssl.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3"
@@ -213,6 +228,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://icecast.ndr.de/ndr/ndr2/niedersachsen/mp3/128/stream.mp3"
@@ -226,6 +242,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://liveradio.swr.de/sw282p3/swr3/play.mp3"
@@ -239,6 +256,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://dispatcher.rndfnk.com/hr/hr3/live/mp3/128/stream.mp3"
@@ -252,6 +270,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://stream.antenne1.de/a1stg/livestream2.mp3"
@@ -266,6 +285,7 @@
       "news",
       "talk"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "192": "https://icecast.omroep.nl/radio1-bb-mp3"
@@ -279,6 +299,7 @@
     "categories": [
       "pop"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "192": "https://icecast.omroep.nl/radio2-bb-mp3"
@@ -293,6 +314,7 @@
       "pop",
       "alternative"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "192": "https://icecast.omroep.nl/3fm-bb-mp3"
@@ -307,6 +329,7 @@
       "news",
       "talk"
     ],
+    "country": "IT",
     "streams": {
       "mp3": {
         "128": "https://icestreaming.rai.it/1.mp3"
@@ -320,6 +343,7 @@
     "categories": [
       "rock"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://ais-edge09-live365-dal02.cdnstream.com/a25710"
@@ -333,6 +357,7 @@
     "categories": [
       "classic"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://media-ice.musicradio.com/ClassicFMMP3"
@@ -346,6 +371,7 @@
     "categories": [
       "jazz"
     ],
+    "country": "MK",
     "streams": {
       "aac": {
         "64": "https://edge-bauerall-01-gos2.sharp-stream.com/jazzfm.aac"
@@ -360,6 +386,7 @@
       "pop",
       "oldies"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://media-ice.musicradio.com/SmoothUKMP3"
@@ -375,6 +402,7 @@
       "indie",
       "pop"
     ],
+    "country": "AT",
     "streams": {
       "mp3": {
         "128": "https://orf-live.ors-shoutcast.at/fm4-q1a"
@@ -388,6 +416,7 @@
     "categories": [
       "pop"
     ],
+    "country": "PL",
     "streams": {
       "mp3": {
         "128": "https://zt01.cdn.eurozet.pl/zet-net.mp3"
@@ -401,6 +430,7 @@
     "categories": [
       "rock"
     ],
+    "country": "PL",
     "streams": {
       "mp3": {
         "128": "https://an04.cdn.eurozet.pl/ant-web.mp3"
@@ -415,6 +445,7 @@
       "chillout",
       "jazz"
     ],
+    "country": "PL",
     "streams": {
       "mp3": {
         "128": "https://ch.cdn.eurozet.pl/chi-net.mp3"
@@ -429,6 +460,7 @@
       "pop",
       "oldies"
     ],
+    "country": "AF",
     "streams": {
       "aac": {
         "128": "https://22713.live.streamtheworld.com/MELORADIOAAC.aac"
@@ -443,6 +475,7 @@
       "pop",
       "dance"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3"
@@ -457,6 +490,7 @@
       "culture",
       "talk"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://dispatcher.rndfnk.com/br/br2/live/mp3/mid"
@@ -470,6 +504,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://dispatcher.rndfnk.com/br/br3/live/mp3/mid"
@@ -483,6 +518,7 @@
     "categories": [
       "classic"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://dispatcher.rndfnk.com/br/brklassik/live/mp3/high"
@@ -497,6 +533,7 @@
       "news",
       "talk"
     ],
+    "country": "ES",
     "streams": {
       "mp3": {
         "128": "https://playerservices.streamtheworld.com/api/livestream-redirect/SER_MAS_MADRID.mp3"
@@ -511,6 +548,7 @@
       "pop",
       "dance"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://media-ssl.musicradio.com/CapitalMP3"
@@ -525,6 +563,7 @@
       "news",
       "talk"
     ],
+    "country": "CA",
     "streams": {
       "mp3": {
         "128": "https://26733.live.streamtheworld.com/CBLAFM_CBC_SC"
@@ -539,6 +578,7 @@
       "folk",
       "jazz"
     ],
+    "country": "CA",
     "streams": {
       "mp3": {
         "69": "https://ais-sa1.streamon.fm/7000_64k.mp3"
@@ -552,6 +592,7 @@
     "categories": [
       "pop"
     ],
+    "country": "SG",
     "streams": {
       "aac": {
         "64": "https://playerservices.streamtheworld.com/api/livestream-redirect/CLASS95_PREM.aac"
@@ -566,6 +607,7 @@
       "news",
       "culture"
     ],
+    "country": "DE",
     "streams": {
       "aac": {
         "96": "https://st01.sslstream.dlf.de/dlf/01/mid/aac/stream.aac?aggregator=web",
@@ -583,6 +625,7 @@
     "categories": [
       "culture"
     ],
+    "country": "DE",
     "streams": {
       "aac": {
         "96": "https://st02.sslstream.dlf.de/dlf/02/mid/aac/stream.aac?aggregator=web",
@@ -601,6 +644,7 @@
       "news",
       "talk"
     ],
+    "country": "FR",
     "streams": {
       "aac": {
         "128": "https://stream.europe1.fr/europe1.aac"
@@ -618,6 +662,7 @@
       "jazz",
       "world"
     ],
+    "country": "FR",
     "streams": {
       "aac": {
         "192": "https://icecast.radiofrance.fr/fip-hifi.aac"
@@ -631,6 +676,7 @@
     "categories": [
       "alternative"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://dispatcher.rndfnk.com/rbb/fritz/live/mp3/mid"
@@ -644,6 +690,7 @@
     "categories": [
       "dance"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://icecast.funradio.fr/fun-1-44-128"
@@ -657,6 +704,7 @@
     "categories": [
       "dance"
     ],
+    "country": "NZ",
     "streams": {
       "aac": {
         "131": "https://mediaworks.streamguys1.com/george_net_icy"
@@ -671,6 +719,7 @@
       "80s",
       "pop"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://media-ssl.musicradio.com/Heart80sMP3"
@@ -685,6 +734,7 @@
       "dance",
       "pop"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://media-ssl.musicradio.com/HeartDanceMP3"
@@ -698,6 +748,7 @@
     "categories": [
       "pop"
     ],
+    "country": "AT",
     "streams": {
       "mp3": {
         "128": "https://ors-sn03.ors-shoutcast.at/oe3-q1a",
@@ -712,6 +763,7 @@
     "categories": [
       "pop"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://cdnradio.streamakaci.com/cheriefm1.mp3"
@@ -725,6 +777,7 @@
     "categories": [
       "jazz"
     ],
+    "country": "FR",
     "streams": {
       "aac": {
         "64": "https://jazzradio.ice.infomaniak.ch/jazzradio-high.aac?i=65443"
@@ -738,6 +791,7 @@
     "categories": [
       "jazz"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "64": "https://knkx-live-a.edge.audiocdn.com/6285_64k",
@@ -756,6 +810,7 @@
       "pop",
       "oldies"
     ],
+    "country": "BE",
     "streams": {
       "mp3": {
         "128": "https://icecast-qmusicbe-cdp.triple-it.nl/joe.mp3"
@@ -773,6 +828,7 @@
       "alternative",
       "news"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "256": "https://streams.kcrw.com/e24_aac"
@@ -790,6 +846,7 @@
       "alternative",
       "indie"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "162": "https://kexp.streamguys1.com/kexp160.aac?listenerid=f4bcb5c771d830fbdd4195088a946ea6&awparams=companionAds%3Atrue"
@@ -807,6 +864,7 @@
       "rock",
       "alternative"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "192": "https://playerservices.streamtheworld.com/api/livestream-redirect/KINK.mp3"
@@ -823,6 +881,7 @@
     "categories": [
       "pop"
     ],
+    "country": "ES",
     "streams": {
       "mp3": {
         "128": "https://frontend.streamonkey.net/fhn-gong971/stream/mp3"
@@ -837,6 +896,7 @@
       "dance",
       "hiphop"
     ],
+    "country": "MX",
     "streams": {
       "mp3": {
         "112": "https://live-kiss.sharp-stream.com/kiss100.mp3"
@@ -851,6 +911,7 @@
       "news",
       "talk"
     ],
+    "country": "HU",
     "streams": {
       "mp3": {
         "96": "https://hu-stream03.klubradio.hu:8443/bpstream"
@@ -865,6 +926,7 @@
       "news",
       "talk"
     ],
+    "country": "HU",
     "streams": {
       "mp3": {
         "64": "https://icast.connectmedia.hu/4736/mr1.mp3"
@@ -879,6 +941,7 @@
       "indie",
       "alternative"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "192": "https://streams.kut.org/4428_192.mp3"
@@ -893,6 +956,7 @@
       "pop",
       "oldies"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "112": "https://stream-mz.hellorayo.co.uk/magicnational.mp3?direct=true&aw_0_1st.playerid=BMUK_TuneIn&aw_0_1st.skey=7374499933&stationCode=mag"
@@ -907,6 +971,7 @@
       "world",
       "news"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://montecarlodoualiya128k.ice.infomaniak.ch/mc-doualiya.mp3"
@@ -920,6 +985,7 @@
     "categories": [
       "pop"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://icecast.ndr.de/ndr/njoy/live/mp3/128/stream.mp3"
@@ -933,6 +999,7 @@
     "categories": [
       "classic"
     ],
+    "country": "DE",
     "streams": {
       "aac": {
         "256": "https://f131.rndfnk.com/ard/ndr/ndrkultur/live/aac/192/stream.aac?aggregator=web&cid=01FBQ2EJ6T7QK3WENQ5KT9S2FB&sid=2aWrl15TtQvWg6RQ9hvrVfdh99E&token=cgylLQKukz6c0ajNCSHCboafG1Q474A1QN0WA3_K3Hg&tvf=4vGFz6J7pxdmMTMxLnJuZGZuay5jb20"
@@ -950,6 +1017,7 @@
       "news",
       "talk"
     ],
+    "country": "IE",
     "streams": {
       "aac": {
         "64": "https://live-bauerie.sharp-stream.com/NTAAC"
@@ -963,6 +1031,7 @@
     "categories": [
       "oldies"
     ],
+    "country": "FR",
     "streams": {
       "aac": {
         "128": "https://streaming.nrjaudio.fm/ouwgwqsk6j4d",
@@ -977,6 +1046,7 @@
     "categories": [
       "classic"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "192": "https://icecast.omroep.nl:80/radio4-bb-mp3"
@@ -993,6 +1063,7 @@
     "categories": [
       "oldies"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "192": "https://icecast.omroep.nl/radio5-bb-mp3"
@@ -1010,6 +1081,7 @@
       "pop",
       "dance"
     ],
+    "country": "FR",
     "streams": {
       "aac": {
         "128": "https://streaming.nrjaudio.fm/ou7xugf3s5gi?origine=playernrj&aw_0_req.userConsentV2=&aw_0_1st.station=NRJ-Hits"
@@ -1023,6 +1095,7 @@
     "categories": [
       "folk"
     ],
+    "country": "NO",
     "streams": {
       "aac": {
         "159": "https://lyd.nrk.no/icecast/aac/high/s0w7hwn47m/folkemusikk"
@@ -1037,6 +1110,7 @@
       "pop",
       "alternative"
     ],
+    "country": "NO",
     "streams": {
       "mp3": {
         "192": "https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p3_mp3_h"
@@ -1051,6 +1125,7 @@
       "alternative",
       "dance"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "256": "https://stream-relay-geo.ntslive.net/stream?client=direct"
@@ -1065,6 +1140,7 @@
       "news",
       "talk"
     ],
+    "country": "ES",
     "streams": {
       "aac": {
         "128": "https://25593.live.streamtheworld.com/OC_HUELVAAAC.aac"
@@ -1079,6 +1155,7 @@
       "culture",
       "classic"
     ],
+    "country": "AT",
     "streams": {
       "mp3": {
         "128": "https://orf-live.ors-shoutcast.at/campus-q1a",
@@ -1093,6 +1170,7 @@
     "categories": [
       "rock"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://ouifm.ice.infomaniak.ch/ouifm-high.mp3"
@@ -1106,6 +1184,7 @@
     "categories": [
       "pop"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "96": "https://icecast-qmusicnl-cdp.triple-it.nl/Qmusic_nl_live_96.mp3",
@@ -1124,6 +1203,7 @@
       "pop",
       "rock"
     ],
+    "country": "IT",
     "streams": {
       "mp3": {
         "128": "https://icecast.unitedradio.it/Radio105.mp3"
@@ -1137,6 +1217,7 @@
     "categories": [
       "alternative"
     ],
+    "country": "PL",
     "streams": {
       "aac": {
         "128": "https://n-11-21.dcs.redcdn.pl/sc/o2/radio357/live/radio357_pr.livx?preroll=0"
@@ -1151,6 +1232,7 @@
       "pop",
       "dance"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "128": "https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3"
@@ -1165,6 +1247,7 @@
       "news",
       "talk"
     ],
+    "country": "ZA",
     "streams": {
       "aac": {
         "192": "https://playerservices.streamtheworld.com/api/livestream-redirect/FM702_192AAC.aac"
@@ -1178,6 +1261,7 @@
     "categories": [
       "news"
     ],
+    "country": "BR",
     "streams": {
       "aac": {
         "96": "https://stm23.xcast.com.br:11284/stream"
@@ -1191,6 +1275,7 @@
     "categories": [
       "classic"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://str0.creacast.com/classique1"
@@ -1204,6 +1289,7 @@
     "categories": [
       "pop"
     ],
+    "country": "PT",
     "streams": {
       "mp3": {
         "128": "https://stream-icy.bauermedia.pt/comercial.mp3"
@@ -1221,6 +1307,7 @@
       "chillout",
       "jazz"
     ],
+    "country": "IT",
     "streams": {
       "aac": {
         "96": "https://icy.unitedradio.it/RMC.aac"
@@ -1235,6 +1322,7 @@
       "alternative",
       "world"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://novazz.ice.infomaniak.ch/novazz-128.mp3"
@@ -1248,6 +1336,7 @@
     "categories": [
       "pop"
     ],
+    "country": "FI",
     "streams": {
       "aac": {
         "64": "https://stream-redirect.bauermedia.fi/radionova/radionova_64.aac?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=BMUK_tunein"
@@ -1262,6 +1351,7 @@
       "rock",
       "alternative"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "64": "https://stream.radioparadise.com/aac-64",
@@ -1277,6 +1367,7 @@
       "alternative",
       "culture"
     ],
+    "country": "IT",
     "streams": {
       "aac": {
         "64": "https://livex.radiopopolare.it/radiopop2"
@@ -1290,6 +1381,7 @@
     "categories": [
       "jazz"
     ],
+    "country": "CH",
     "streams": {
       "aac": {
         "184": "https://stream.srg-ssr.ch/srgssr/rsj/aac/192"
@@ -1303,6 +1395,7 @@
     "categories": [
       "pop"
     ],
+    "country": "CH",
     "streams": {
       "aac": {
         "216": "https://stream.srg-ssr.ch/srgssr/rsp/aac/192"
@@ -1320,6 +1413,7 @@
       "rock",
       "oldies"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "128": "https://playerservices.streamtheworld.com/api/livestream-redirect/VERONICA.mp3"
@@ -1334,6 +1428,7 @@
       "rock",
       "indie"
     ],
+    "country": "GB",
     "streams": {
       "mp3": {
         "128": "https://media-ssl.musicradio.com/RadioXLondonMP3"
@@ -1348,6 +1443,7 @@
       "alternative",
       "world"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://icecast.stv.livebox.sk/fm_128.mp3"
@@ -1362,6 +1458,7 @@
       "alternative",
       "culture"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://d111.rndfnk.com/ard/rbb/radioeins/live/mp3/128/stream.mp3?cid=01FC1WH12KJ93TCQPDSE2E5PZ9&sid=38H2kjN0x4u1GdSZWctD38pEdGw&token=vJIAseH2O1wZCpYIAz9FicGoAdboZYGoVJXxJEhpjBQ&tvf=MeCo25DYihhkMTExLnJuZGZuay5jb20"
@@ -1375,6 +1472,7 @@
     "categories": [
       "pop"
     ],
+    "country": "IT",
     "streams": {
       "mp3": {
         "256": "https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S35942484/yp5F67151K92/icecast"
@@ -1388,6 +1486,7 @@
     "categories": [
       "classic"
     ],
+    "country": "IT",
     "streams": {
       "mp3": {
         "256": "https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S53422322/bTdUFhYMnnra/icecast"
@@ -1401,6 +1500,7 @@
     "categories": [
       "alternative"
     ],
+    "country": "MX",
     "streams": {
       "mp3": {
         "192": "https://securestreams7.autopo.st/?uri=http://184.164.75.138:8002/stream"
@@ -1415,6 +1515,7 @@
       "dance",
       "hiphop"
     ],
+    "country": "GB",
     "streams": {
       "aac": {
         "128": "https://admin.stream.rinse.fm/proxy/rinse_uk/stream"
@@ -1429,6 +1530,7 @@
       "sport",
       "talk"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://audio.bfmtv.com/rmcradio_128.mp3"
@@ -1442,6 +1544,7 @@
     "categories": [
       "pop"
     ],
+    "country": "PL",
     "streams": {
       "mp3": {
         "128": "https://rs101-krk.rmfstream.pl/rmf_fm"
@@ -1456,6 +1559,7 @@
       "rock",
       "metal"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://mp3channels.webradio.rockantenne.de/heavy-metal"
@@ -1469,6 +1573,7 @@
     "categories": [
       "rock"
     ],
+    "country": "ES",
     "streams": {
       "mp3": {
         "96": "https://rockfm-cope-rrcast.flumotion.com/cope/rockfm-low.mp3"
@@ -1483,6 +1588,7 @@
       "news",
       "talk"
     ],
+    "country": "FR",
     "streams": {
       "mp3": {
         "128": "https://icecast.rtl.fr/rtl-1-44-128"
@@ -1496,6 +1602,7 @@
     "categories": [
       "pop"
     ],
+    "country": "NL",
     "streams": {
       "mp3": {
         "128": "https://www.mp3streams.nl/zender/skyradio/stream/8-mp3-128"
@@ -1510,6 +1617,7 @@
       "country",
       "folk"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "320": "https://ice4.somafm.com/bootliquor-320-mp3"
@@ -1526,6 +1634,7 @@
     "categories": [
       "chillout"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://ice5.somafm.com/groovesalad-128-mp3",
@@ -1545,6 +1654,7 @@
       "chillout",
       "pop"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://ice2.somafm.com/lush-128-mp3"
@@ -1563,6 +1673,7 @@
       "chillout",
       "jazz"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://ice6.somafm.com/secretagent-128-mp3"
@@ -1581,6 +1692,7 @@
       "news",
       "talk"
     ],
+    "country": "SE",
     "streams": {
       "aac": {
         "312": "https://live1.sr.se/p1-aac-320"
@@ -1595,6 +1707,7 @@
       "classic",
       "jazz"
     ],
+    "country": "SE",
     "streams": {
       "aac": {
         "328": "https://live1.sr.se/p2-aac-320"
@@ -1608,6 +1721,7 @@
     "categories": [
       "pop"
     ],
+    "country": "SE",
     "streams": {
       "aac": {
         "312": "https://live1.sr.se/p3-aac-320"
@@ -1625,6 +1739,7 @@
       "pop",
       "oldies"
     ],
+    "country": "SE",
     "streams": {
       "aac": {
         "272": "https://live1.sr.se/p4plus-aac-320"
@@ -1639,6 +1754,7 @@
       "classic",
       "culture"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "256": "https://f111.rndfnk.com/ard/swr/swr2/live/mp3/256/stream.mp3?aggregator=web&sid=28ew6Usq6cch83eglcsXwLlNRS3&token=Ip5bwQ_T81Lq_mqKc3HUjnxrk94ek2bDcfNyNHuqRGk&tvf=XFsRgyq06xZmMTExLnJuZGZuay5jb20"
@@ -1656,6 +1772,7 @@
       "news",
       "talk"
     ],
+    "country": "GB",
     "streams": {
       "aac": {
         "128": "https://timesradio.wireless.radio/stream"
@@ -1669,6 +1786,7 @@
     "categories": [
       "pop"
     ],
+    "country": "IE",
     "streams": {
       "mp3": {
         "128": "https://stream.audioxi.com/TD"
@@ -1682,6 +1800,7 @@
     "categories": [
       "classic"
     ],
+    "country": "IT",
     "streams": {
       "mp3": {
         "128": "https://uk2.streamingpulse.com/ssl/vcr1"
@@ -1695,6 +1814,7 @@
     "categories": [
       "pop"
     ],
+    "country": "AE",
     "streams": {
       "aac": {
         "127": "https://radio.virginradio.co.uk/stream"
@@ -1709,6 +1829,7 @@
       "pop",
       "rock"
     ],
+    "country": "GB",
     "streams": {
       "aac": {
         "127": "https://radio.virginradio.co.uk/stream?aw_0_1st.platform=vr-web"
@@ -1722,6 +1843,7 @@
     "categories": [
       "jazz"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "64": "https://ais-sa8.cdnstream1.com/3629_64.aac"
@@ -1736,6 +1858,7 @@
       "classic",
       "culture"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "256": "https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/256/stream.mp3"
@@ -1750,6 +1873,7 @@
       "news",
       "talk"
     ],
+    "country": "DE",
     "streams": {
       "mp3": {
         "128": "https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3"
@@ -1763,6 +1887,7 @@
     "categories": [
       "alternative"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "256": "https://stream0.wfmu.org/freeform-extrahigh-primary.aac"
@@ -1777,6 +1902,7 @@
       "folk",
       "alternative"
     ],
+    "country": "US",
     "streams": {
       "aac": {
         "64": "https://onair.wfuv.org/onair-aacplus"
@@ -1790,6 +1916,7 @@
     "categories": [
       "rock"
     ],
+    "country": "BE",
     "streams": {
       "mp3": {
         "128": "https://icecast-qmusicbe-cdp.triple-it.nl/willy.mp3"
@@ -1808,6 +1935,7 @@
       "news",
       "talk"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "96": "https://fm939.wnyc.org/wnycfm-web"
@@ -1821,6 +1949,7 @@
     "categories": [
       "classic"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://stream.wqxr.org/wqxr-web?nyprBrowserId=32c67956bf1d5600"
@@ -1835,6 +1964,7 @@
       "jazz",
       "folk"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://wwoz-sc.streamguys1.com/wwozhd2-hi"
@@ -1849,6 +1979,7 @@
       "alternative",
       "folk"
     ],
+    "country": "US",
     "streams": {
       "mp3": {
         "128": "https://wxpn.xpn.org/xpnmp3hi"
@@ -1863,6 +1994,7 @@
       "pop",
       "alternative"
     ],
+    "country": "FI",
     "streams": {
       "aac": {
         "128": "https://icecast.live.yle.fi/radio/YleX/icecast.audio"
