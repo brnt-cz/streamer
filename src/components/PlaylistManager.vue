@@ -269,6 +269,15 @@ defineExpose({
     <!-- Header -->
     <div class="mb-4 px-1">
       <h2 class="text-md font-semibold text-white/90 mb-3">{{ t.yourStations }}</h2>
+
+      <!-- Uložení playlistu selhalo (plné úložiště) - ať to uživatel nezjistí až po reloadu -->
+      <p
+        v-if="store.storageFailed"
+        class="mb-3 py-2 px-3 rounded-input bg-brand/15 border border-brand/40 text-2xs text-white/80"
+        role="alert"
+      >
+        {{ t.storageFull }}
+      </p>
       <div class="flex gap-2">
         <button
           @click="openFolderForm"
