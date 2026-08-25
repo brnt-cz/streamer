@@ -4,6 +4,7 @@
     "name": "Americana Radio",
     "logo": "/logos/radio-americana.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "aac": {
         "128": "https://icecast1.play.cz/americana-192.aac"
@@ -21,6 +22,7 @@
       "rock",
       "metal"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast1.play.cz/beat64.mp3",
@@ -36,6 +38,7 @@
       "rock",
       "metal"
     ],
+    "country": "CZ",
     "streams": {
       "aac": {
         "48": "https://icecast5.play.cz/blackfm-radio.aac"
@@ -61,6 +64,7 @@
       "80s",
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast1.play.cz/bikersradiodoupe64.mp3",
@@ -76,6 +80,7 @@
       "pop",
       "oldies"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast6.play.cz/cesky-impuls.mp3"
@@ -89,6 +94,7 @@
     "categories": [
       "classic"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast2.play.cz/classic32.mp3",
@@ -108,6 +114,7 @@
       "dance",
       "90s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast2.play.cz/Clubradio.mp3"
@@ -127,6 +134,7 @@
       "dance",
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast8.play.cz/color128.mp3",
@@ -141,6 +149,7 @@
     "categories": [
       "country"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast2.play.cz/country64.mp3",
@@ -153,6 +162,7 @@
     "name": "Český rozhlas Pohoda",
     "logo": "/logos/cropohoda.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/pohoda.mp3"
@@ -170,6 +180,7 @@
       "news",
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/radiozurnal.mp3"
@@ -187,6 +198,7 @@
       "news",
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/radiozurnal_sport.mp3"
@@ -204,6 +216,7 @@
       "pop",
       "oldies"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro2.play.cz/dvojka.mp3"
@@ -218,6 +231,7 @@
     "name": "Český rozhlas Vltava",
     "logo": "/logos/cro3.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/vltava.mp3"
@@ -234,6 +248,7 @@
     "categories": [
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/plus.mp3"
@@ -248,6 +263,7 @@
     "name": "Radio Prague International",
     "logo": "/logos/cro7.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/radio_prague_int.mp3"
@@ -268,6 +284,7 @@
       "folk",
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/radio_wave.mp3"
@@ -284,6 +301,7 @@
     "categories": [
       "classic"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/ddur.mp3"
@@ -301,6 +319,7 @@
       "jazz",
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/jazz.mp3"
@@ -319,6 +338,7 @@
       "pop",
       "talk"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/radio_junior.mp3"
@@ -336,6 +356,7 @@
       "news",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/brno.mp3"
@@ -353,6 +374,7 @@
       "pop",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/ceske_budejovice.mp3"
@@ -370,6 +392,7 @@
       "pop",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro2.play.cz/hradec_kralove.mp3"
@@ -387,6 +410,7 @@
       "oldies",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro2.play.cz/olomouc.mp3"
@@ -404,6 +428,7 @@
       "news",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/ostrava.mp3"
@@ -421,6 +446,7 @@
       "pop",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/pardubice.mp3"
@@ -438,6 +464,7 @@
       "oldies",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/plzen.mp3"
@@ -455,6 +482,7 @@
       "oldies",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/karlovy_vary.mp3"
@@ -471,6 +499,7 @@
     "categories": [
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/radio_dab_praha.mp3"
@@ -487,6 +516,7 @@
     "categories": [
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/region.mp3"
@@ -501,6 +531,7 @@
     "name": "Český rozhlas Vysočina",
     "logo": "/logos/croregionvysocina.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/vysocina.mp3"
@@ -519,6 +550,7 @@
       "country",
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/sever.mp3"
@@ -540,6 +572,7 @@
       "90s",
       "80s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/liberec.mp3"
@@ -556,6 +589,7 @@
     "categories": [
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://ice-cro1.play.cz/zlin.mp3"
@@ -570,6 +604,7 @@
     "name": "ENERGIC",
     "logo": "/logos/radio-energic.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "160": "https://icecast9.play.cz/energic.mp3"
@@ -589,6 +624,7 @@
       "dance",
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast5.play.cz/expres64mp3",
@@ -609,6 +645,7 @@
       "dance",
       "90s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast8.play.cz/freeradio32.mp3",
@@ -624,6 +661,7 @@
     "categories": [
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast3.play.cz/hana64.mp3",
@@ -642,6 +680,7 @@
       "80s",
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast8.play.cz/hey-radio64.mp3",
@@ -656,6 +695,7 @@
     "categories": [
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast1.play.cz/impuls64.mp3",
@@ -677,6 +717,7 @@
       "80s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast4.play.cz/jih32.mp3",
@@ -696,6 +737,7 @@
       "90s",
       "80s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast4.play.cz/krokodyl32.mp3",
@@ -711,6 +753,7 @@
     "categories": [
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast8.play.cz/limonadovyjoe128.mp3"
@@ -726,6 +769,7 @@
       "pop",
       "jazz"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "160": "https://icecast9.play.cz/music-dreamer.mp3"
@@ -742,6 +786,7 @@
       "80s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast9.play.cz/netro-life-radio.mp3"
@@ -755,6 +800,7 @@
     "categories": [
       "allformat"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast1.play.cz/xnostream.mp3",
@@ -769,6 +815,7 @@
     "categories": [
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast2.play.cz/radio1-64.mp3",
@@ -784,6 +831,7 @@
     "categories": [
       "talk"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast1.play.cz/radio7cz32.mp3",
@@ -798,6 +846,7 @@
     "categories": [
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast7.play.cz/casrock32.mp3",
@@ -814,6 +863,7 @@
     "categories": [
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast7.play.cz/casradio32.mp3",
@@ -831,6 +881,7 @@
       "rock",
       "country"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast3.play.cz/radiodixie128.mp3",
@@ -845,6 +896,7 @@
     "categories": [
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast1.play.cz/fajnrock64.mp3",
@@ -858,6 +910,7 @@
     "name": "JIH - Vánoční Rádio Jih",
     "logo": "/logos/jihcimbalka.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast4.play.cz/jihcimbalka32.mp3",
@@ -873,6 +926,7 @@
     "categories": [
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast1.play.cz/radiojihlava32.mp3",
@@ -891,6 +945,7 @@
       "90s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast2.play.cz/kiss64.mp3",
@@ -912,6 +967,7 @@
       "90s",
       "80s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "32": "https://icecast8.play.cz/radio-kromeriz32.mp3",
@@ -931,6 +987,7 @@
       "80s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast3.play.cz/radiomb.mp3"
@@ -942,6 +999,7 @@
     "name": "Radio Metropole",
     "logo": "/logos/metropole.png",
     "categories": [],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast9.play.cz/metropole64.mp3",
@@ -961,6 +1019,7 @@
       "80s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast-u1.play.cz/radio-nostalgie128.mp3"
@@ -981,6 +1040,7 @@
       "metal",
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "192": "https://icecast9.play.cz/radio-ostravan.mp3",
@@ -996,6 +1056,7 @@
       "rock",
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast3.play.cz/relax64.mp3",
@@ -1013,6 +1074,7 @@
       "folk",
       "country"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast8.play.cz/samsonfm128.mp3"
@@ -1032,6 +1094,7 @@
       "90s",
       "80s"
     ],
+    "country": "CZ",
     "streams": {
       "aac": {
         "32": "https://icecast1.play.cz/sazava32DABaac"
@@ -1050,6 +1113,7 @@
       "hiphop",
       "dance"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast1.play.cz/spin64.mp3",
@@ -1074,6 +1138,7 @@
       "80s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "aac": {
         "32": "https://rbx2.hnux.com/https://12901.cloudrad.io:9306/mobile"
@@ -1094,6 +1159,7 @@
       "folk",
       "country"
     ],
+    "country": "CZ",
     "streams": {
       "aac": {
         "96": "https://icecast6.play.cz/radio-xaver.aac",
@@ -1111,6 +1177,7 @@
     "categories": [
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast8.play.cz/rocknatvrdo.mp3"
@@ -1124,6 +1191,7 @@
     "categories": [
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast2.play.cz/rockzone64.mp3",
@@ -1141,6 +1209,7 @@
       "house",
       "dance"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast6.play.cz/seejay128.mp3"
@@ -1155,6 +1224,7 @@
       "oldies",
       "pop"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast1.play.cz/signal-brno64.mp3",
@@ -1171,6 +1241,7 @@
       "pop",
       "oldies"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast2.play.cz/signal64.mp3",
@@ -1186,6 +1257,7 @@
     "categories": [
       "rock"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "64": "https://icecast3.play.cz/skyrock64.mp3",
@@ -1205,6 +1277,7 @@
       "funk",
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "aac": {
         "32": "https://icecast5.play.cz/slowdown.aac"
@@ -1223,6 +1296,7 @@
       "folk",
       "alternative"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "128": "https://icecast2.play.cz/Underground128.mp3"
@@ -1243,6 +1317,7 @@
       "80s",
       "00s"
     ],
+    "country": "CZ",
     "streams": {
       "mp3": {
         "192": "https://icecast9.play.cz/zun192.mp3"

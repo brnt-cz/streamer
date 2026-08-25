@@ -49,8 +49,8 @@ test.describe('Radio Catalog', () => {
     const modalList = page.locator('.modal ul')
     const initialCount = await modalList.getByRole('listitem').count()
 
-    // When I select "Jazz" category from the first dropdown (category)
-    await page.getByRole('combobox').first().selectOption('jazz')
+    // When I select "Jazz" category
+    await page.getByRole('combobox', { name: 'Filter by category' }).selectOption('jazz')
     await page.waitForTimeout(300)
 
     // Then fewer radios are displayed
@@ -98,8 +98,8 @@ test.describe('Radio Catalog', () => {
     const modalList = page.locator('.modal ul')
     await modalList.getByRole('listitem').first().click()
 
-    // When I look for format dropdown (second combobox), it should be visible
-    const formatDropdown = page.getByRole('combobox').nth(1)
+    // When I look for the format dropdown, it should be visible
+    const formatDropdown = page.getByRole('combobox', { name: 'Filter by format' })
     await expect(formatDropdown).toBeVisible()
 
     // The Add to Playlist button should be enabled
