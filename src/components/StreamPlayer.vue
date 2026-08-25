@@ -3,10 +3,12 @@ import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import { usePlaylistStore } from '../stores/playlist'
 import { useMediaSession } from '../composables/useMediaSession'
 import { useI18n } from '../composables/useI18n'
+import { useAudioSource } from '../composables/useAudioSource'
 import { useRadios } from '../stores/radios'
 import StationName from './StationName.vue'
 
 const store = usePlaylistStore()
+const { attachSource, clearSource } = useAudioSource()
 const { t } = useI18n()
 const { radios } = useRadios()
 const audioRef = ref<HTMLAudioElement | null>(null)
@@ -115,8 +117,7 @@ function throttledUpdateVolume(): void {
 function stopAudio(): void {
   if (!audioRef.value) return
   audioRef.value.pause()
-  audioRef.value.removeAttribute('src')
-  audioRef.value.load()
+  clearSource(audioRef.value)
 }
 
 // Helper: Clean up any pending canplay listener
@@ -178,8 +179,7 @@ function reloadStream(): void {
 
   const audio = audioRef.value
   isLoadingStream.value = true
-  audio.src = store.currentStream.url
-  audio.load()
+  attachSource(audio, store.currentStream.url)
   playWhenReady(audio, () => {
     isLoadingStream.value = false
     scheduleReconnect()
@@ -273,8 +273,7 @@ function startKeepAlive(): void {
       audioRef.value.play().catch(() => {
         // If can't resume, reload stream
         if (store.currentStream) {
-          audioRef.value!.src = store.currentStream.url
-          audioRef.value!.load()
+          attachSource(audioRef.value!, store.currentStream.url)
           playWhenReady(audioRef.value!, () => {})
         }
       })
@@ -301,8 +300,7 @@ watch(() => store.currentStream, (newStream, oldStream) => {
     audioRef.value.pause()
 
     // Set new source and load
-    audioRef.value.src = newStream.url
-    audioRef.value.load()
+    attachSource(audioRef.value, newStream.url)
 
     // Auto-play when stream is ready
     if (shouldAutoPlay) {
@@ -367,8 +365,7 @@ function handleVisibilityChange(): void {
       audioRef.value.play().catch(() => {
         // If play fails, try reloading the stream
         if (store.currentStream) {
-          audioRef.value!.src = store.currentStream.url
-          audioRef.value!.load()
+          attachSource(audioRef.value!, store.currentStream.url)
           playWhenReady(audioRef.value!, () => {
             error.value = t.value.streamError
           })
