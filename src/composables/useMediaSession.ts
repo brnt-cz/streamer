@@ -18,6 +18,10 @@ export function useMediaSession(options: MediaSessionOptions) {
   // Set up action handlers
   navigator.mediaSession.setActionHandler('play', onPlay)
   navigator.mediaSession.setActionHandler('pause', onPause)
+  // U živého vysílání je to fakticky stop - zdroj se zahodí a další spuštění
+  // naskočí do aktuálního vysílání. Systémová tlačítka umí obojí, ať se
+  // chová správně i ovládání mimo aplikaci.
+  navigator.mediaSession.setActionHandler('stop', onPause)
 
   // Update playback state
   watch(isPlaying, (playing) => {
