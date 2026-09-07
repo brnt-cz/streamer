@@ -5,6 +5,8 @@ export const translations = {
 
     // StreamPlayer
     nowPlaying: 'Now Playing',
+    play: 'Play',
+    stop: 'Stop',
     selectStream: 'Select a stream',
     streamError: 'Failed to play stream',
     storageFull: 'Playlist could not be saved — browser storage is full. Recent changes will be lost on reload.',
@@ -117,6 +119,8 @@ export const translations = {
 
     // StreamPlayer
     nowPlaying: 'Nyní hraje',
+    play: 'Přehrát',
+    stop: 'Zastavit',
     selectStream: 'Vyberte stream',
     streamError: 'Nepodařilo se přehrát stream',
     storageFull: 'Playlist se nepodařilo uložit — úložiště prohlížeče je plné. Poslední změny se po načtení ztratí.',

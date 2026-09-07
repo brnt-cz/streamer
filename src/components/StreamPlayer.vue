@@ -481,6 +481,7 @@ onUnmounted(() => {
     <div class="flex justify-center mb-6">
       <button
         @click="togglePlay"
+        :aria-label="isPlaying || isReconnecting ? t.stop : t.play"
         :disabled="!store.currentStream || isLoadingStream"
         class="w-14 h-14 bg-gradient-brand-simple border-none rounded-full cursor-pointer flex items-center justify-center transition-all duration-200 shadow-brand hover:scale-105 hover:shadow-brand-hover active:scale-98 disabled:bg-white/10 disabled:shadow-none disabled:cursor-not-allowed"
       >
@@ -493,10 +494,10 @@ onUnmounted(() => {
         <svg v-else-if="!isPlaying" class="w-6 h-6 text-white shrink-0" :class="{ 'text-white/30': !store.currentStream }" viewBox="0 0 24 24" fill="none">
           <path d="M8 5.14v14.72a1 1 0 001.5.86l11-7.36a1 1 0 000-1.72l-11-7.36a1 1 0 00-1.5.86z" fill="currentColor"/>
         </svg>
-        <!-- Pause icon -->
+        <!-- Stop icon - u živého vysílání se nedá navázat tam, kde se přestalo,
+             takže se zdroj zahazuje a další spuštění naskočí do aktuálního vysílání -->
         <svg v-else class="w-6 h-6 text-white shrink-0" viewBox="0 0 24 24" fill="none">
-          <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/>
-          <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+          <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>
         </svg>
       </button>
     </div>
